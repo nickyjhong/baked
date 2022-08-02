@@ -1,14 +1,13 @@
-//this is the access point for all things database related!
-
 const db = require('./db')
 
+// Imported db [category] models
 const User = require('./models/User')
-
-//associations could go here!
+const Product = require('./models/Product')
 
 module.exports = {
   db,
   models: {
     User,
+    Product,
   },
 }
