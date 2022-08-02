@@ -28,13 +28,13 @@ const customers = [
     password: '123',
     name: 'Amy',
     address: '2 Coding Blvd',
-    userType: 'customer'
+    userType: 'admin'
   }, {
     email: 'chris@gmail.com',
     password: '123',
     name: 'Chris',
     address: '1 Coding Blvd',
-    userType: 'customer'
+    userType: 'admin'
   }
 ]
 
@@ -45,7 +45,7 @@ const products = [
     price: 7.99,
     description: "If there's a Fullstack Academy, why isn't there a Fullerstack Academy?",
     SKU: 482488,
-    category: 'book',
+    category: 'cookie',
   },
   {
     name: 'Glass Half Fullstack Academy',
@@ -53,7 +53,7 @@ const products = [
     price: 5.99,
     description: "For the optimists who want to learn to code",
     SKU: 327048,
-    category: 'electronic',
+    category: 'cake',
   },
 ];
 

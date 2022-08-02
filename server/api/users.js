@@ -15,3 +15,22 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newUser = await User.create(req.body);
+    const userToken = await newUser.generateToken();
+    res.send(userToken);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/', async (req, res, next) => {
+  try {
+    const token = await User.authenticate(req.body);
+    res.send(token);
+  } catch (error) {
+    next(error);
+  }
+});
