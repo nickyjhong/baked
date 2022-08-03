@@ -12,7 +12,17 @@ npm install
 npm run start:dev
 ```
 
-3. Enter in your browser: `localhost:8080`
+3. Create a database with:
+```
+createdb grace-shopper
+```
+
+4. Seed our data with:
+```
+npm run seed
+```
+
+5. Enter in your browser search bar: `localhost:8080` and welcome to our homepage!
 
 
 Technologies Used Include:
