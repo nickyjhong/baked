@@ -19,7 +19,7 @@ class UserProfile extends React.Component {
         <div className="user-profile">
           <div className="welcome">
             <p id="welcome-user">
-              <strong>Welcome, {/* {this.props.name} */}</strong>
+              <strong>Welcome, {this.props.name}</strong>
             </p>
             <p>Click here to view previous orders</p>
             <button>Past Orders</button>
