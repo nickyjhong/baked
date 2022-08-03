@@ -20,6 +20,7 @@ export const setUsers = (users) => {
   };
 };
 
+
 // Thunks
 export const createUser = (user, history) => {
   return async (dispatch) => {
@@ -42,11 +43,10 @@ export const fetchUsers = () => {
   };
 };
 
-
 // Reducer
 const initialState = [];
 
-export default function createUserReducer(state = initialState, action) {
+export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER:
       return action.name;
