@@ -2,11 +2,18 @@
 
 In this Github repo is our codebase for our baked goods, including cakes and cookies! Feel free to browse and enjoy the sweets!
 
-If you clone our repo, remember to open the directory in your terminal and run:
-```npm install```
+1. If you clone our repo, remember to open the directory in your terminal and run:
+```
+npm install
+```
 
-After the installation is complete, to run the project:
-```npm run start:dev```
+2. After the installation is complete, run the project in the same directory with:
+```
+npm run start:dev
+
+```
+3. Enter in your browser: `localhost:8080`
+
 
 Technologies Used Include:
 - Javascript
