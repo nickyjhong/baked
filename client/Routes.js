@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import { Login } from './components/AuthForm';
 import Home from './components/Home';
+import Shop from './components/Shop';
 import Cart from './components/Cart';
 import UserProfile from './components/UserProfile';
 import CreateUser from './components/CreateUser';
@@ -33,6 +34,7 @@ class Routes extends Component {
         ) : (
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route path="/products" component={Shop} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={CreateUser} />
             <Route path="/cart" component={Cart} />
