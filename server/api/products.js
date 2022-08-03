@@ -3,7 +3,7 @@ const router = require('express').Router()
 const Product  = require('../db/models/product');
 
 // USER VIEW: VIEW ALL PRODUCTS
-router.get('/shop', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
       const products = await Product.findAll();
   
@@ -14,7 +14,7 @@ router.get('/shop', async (req, res, next) => {
   })
   
 //   USER VIEW: VIEW A SINGLE PRODUCT
-  router.get('/shop/:id', async (req, res, next) => {
+  router.get('/:id', async (req, res, next) => {
     try {
       const products = await Product.findByPk(req.params.id)
       res.json(products)
@@ -24,7 +24,7 @@ router.get('/shop', async (req, res, next) => {
   })
   
 //   ADMIN VIEW: ADD A NEW PRODUCT TO SHOP PAGE
-  router.post('/shop', async (req, res, next) => {
+  router.post('/', async (req, res, next) => {
     try {
       res.status(201).send(await Product.create(req.body));
     } catch (error) {
@@ -33,7 +33,7 @@ router.get('/shop', async (req, res, next) => {
   });
   
   //   ADMIN VIEW: UPDATE A NEW PRODUCT TO SHOP PAGE
-  router.put('/shop/:id', async (req, res, next) => {
+  router.put('/:id', async (req, res, next) => {
     try {
       const product = await Product.findByPk(req.params.id);
       res.send(await product.update(req.body));
