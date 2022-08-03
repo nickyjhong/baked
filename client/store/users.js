@@ -1,4 +1,5 @@
 import axios from "axios";
+import { me } from './auth'
 
 // Action type
 const CREATE_USER = 'CREATE_USER';
@@ -25,6 +26,7 @@ export const createUser = (user, history) => {
     const { data: token } = await axios.post('/api/users', user);
     window.localStorage.setItem('token', token);
     dispatch(_createUser(user));
+    dispatch(me())
     history.push('/');
   };
 };
