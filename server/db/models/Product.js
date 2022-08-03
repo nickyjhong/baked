@@ -18,7 +18,7 @@ const Product = db.define("product", {
     defaultValue: 'https://www.electricmirror.com/wp-content/uploads/2022/05/image-coming-soon-300x300.jpg',
   },
   price: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true,
@@ -35,9 +35,9 @@ const Product = db.define("product", {
     type: Sequelize.INTEGER,
     validate: {
       min: 0,
-      max: 10,
+      max: 100,
     },
-    defaultValue: 0,
+    defaultValue: 50,
   },
   category: {
     type: Sequelize.ENUM('cake', 'cookie')
