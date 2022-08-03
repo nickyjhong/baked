@@ -1,0 +1,32 @@
+@import 'forms.css';
+
+html {
+  font-family: "Roboto", Helvetica, sans-serif;
+  font-size: 2.5vh;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0px;
+  min-height: 100%;
+  width: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+label {
+  display: block;
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}

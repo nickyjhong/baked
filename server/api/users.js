@@ -5,10 +5,10 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      // explicitly select only the id and email fields - even though
+      // explicitly select only the name and email fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ['id', 'email']
+      attributes: ['name', 'email']
     })
     res.json(users)
   } catch (err) {
@@ -26,11 +26,11 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
-  try {
-    const token = await User.authenticate(req.body);
-    res.send(token);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.post('/', async (req, res, next) => {
+//   try {
+//     const token = await User.authenticate(req.body);
+//     res.send(token);
+//   } catch (error) {
+//     next(error);
+//   }
+// });

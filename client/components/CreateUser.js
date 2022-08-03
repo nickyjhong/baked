@@ -37,9 +37,9 @@ export class CreateUser extends React.Component {
     return (
       <div className="form">
         <form onSubmit={this.handleSubmit}>
-          <div className="formContainer">
+          <div className="form-container">
 
-          <div className="secondFormContainer">
+          <div className="input-container">
               <label className="labelName" htmlFor="name">
                 <p>First Name</p>
               </label>
@@ -52,7 +52,7 @@ export class CreateUser extends React.Component {
               />
             </div>
 
-            <div className="secondFormContainer">
+            <div className="input-container">
               <label className="labelName" htmlFor="email">
                 <p>Email</p>
               </label>
@@ -65,7 +65,7 @@ export class CreateUser extends React.Component {
               />
             </div>
 
-            <div className="secondFormContainer">
+            <div className="input-container">
               <label htmlFor="password" className="labelName">
                 <p>Password</p>
               </label>
@@ -78,7 +78,7 @@ export class CreateUser extends React.Component {
               />
             </div>
             <div>
-              <button className="button" type="submit">
+              <button className="button submit-btn" type="submit">
                 Submit
               </button>
             </div>
