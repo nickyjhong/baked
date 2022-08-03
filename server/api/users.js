@@ -1,6 +1,8 @@
-const router = require('express').Router()
-const { models: { User }} = require('../db')
-module.exports = router
+const router = require('express').Router();
+const {
+  models: { User, Cart, Order },
+} = require('../db');
+module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
@@ -8,13 +10,13 @@ router.get('/', async (req, res, next) => {
       // explicitly select only the name and email fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ['name', 'email']
-    })
-    res.json(users)
+      attributes: ['name', 'email'],
+    });
+    res.json(users);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
 router.post('/', async (req, res, next) => {
   try {
@@ -28,13 +30,111 @@ router.post('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.id)
-    res.send(user)
+    const user = await User.findByPk(req.params.id);
+    res.send(user);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
+router.get('/:id/orders', async (req, res, next) => {
+  try {
+    const userOrder = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Order,
+        },
+      ],
+      attributes: ['email'],
+    });
+    res.send(userOrder);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:id/orders/:orderId', async (req, res, next) => {
+  try {
+    const userOrder = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Order,
+          where: {
+            id: req.params.orderId,
+          },
+        },
+      ],
+      attributes: ['email'],
+    });
+    res.send(userOrder);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:id/orders/:orderId', async (req, res, next) => {
+  try {
+    const userOrder = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Order,
+          where: {
+            id: req.params.orderId,
+          },
+        },
+      ],
+      attributes: ['email'],
+    });
+    res.send(userOrder);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:id/cart', async (req, res, next) => {
+  try {
+    const userOrder = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Cart,
+        },
+      ],
+      attributes: ['email'],
+    });
+    res.send(userOrder);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Once user and cart associated by id, come back to write code
+// router.put('/:id/cart', async (req, res, next) => {
+//   try {
+//     const userOrder = await User.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Cart,
+//         },
+//       ],
+//       attributes: ['email'],
+//     });
+//     res.send(userOrder);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// Update user, do this when we get to tier 2
+// router.put('/:id', async (req, res, next) => {
+//   try {
+//     const user = await User.findByPk(req.params.id);
+//     res.send(user);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+// Create login token
 // router.post('/', async (req, res, next) => {
 //   try {
 //     const token = await User.authenticate(req.body);
