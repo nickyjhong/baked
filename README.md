@@ -10,8 +10,8 @@ npm install
 2. After the installation is complete, run the project in the same directory with:
 ```
 npm run start:dev
-
 ```
+
 3. Enter in your browser: `localhost:8080`
 
 
