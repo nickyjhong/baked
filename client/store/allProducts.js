@@ -34,7 +34,7 @@ export const createProduct = (product, history) => {
   return async (dispatch) => {
     const { data: created } = await axios.post('/api/products', product);
     dispatch(_createProduct(created));
-    history.push('/shop')
+    history.push('/products')
   }
 }
 
@@ -49,7 +49,7 @@ export const deleteProduct = (id, history) => {
   return async (dispatch) => {
     const { data: product } = await axios.delete(`/api/products/${id}`);
     dispatch(_deleteProduct(product));
-    history.push('/shop')
+    history.push('/products')
   }
 }
 
