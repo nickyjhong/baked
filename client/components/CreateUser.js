@@ -23,19 +23,11 @@ export class CreateUser extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    try {
-      this.props.createUser(this.state);
-    } catch (error) {
-      this.setState({
-        name: "",
-        email: "",
-        password: "",
-      });
-    }
+    this.props.createUser(this.state);
   }
   render() {
     return (
-      <div className="form">
+      <div className="create-form form">
         <form onSubmit={this.handleSubmit}>
           <div className="form-container">
 
