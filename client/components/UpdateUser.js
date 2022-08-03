@@ -4,6 +4,7 @@ import { updateUser, setUser } from '../store/singleUser'
 
 export class UpdateUser extends Component {
   constructor() {
+    super()
     this.state = {
       name: '',
       email: '',

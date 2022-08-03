@@ -25,6 +25,7 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/cart" component={Cart} />
+            {/* <Route path="/users/:id" component={UserProfile} /> */}
             <Route path="/profile" component={UserProfile} />
           </Switch>
         ) : (

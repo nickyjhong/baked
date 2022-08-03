@@ -1,39 +1,36 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
-// thunk from redux store?
-// import EditUser as a button?
+// import UpdateUser from './UpdateUser'
+import {connect} from 'react-redux'
 
-// if not logged in, show login here or sign up here
-class UserProfile extends React.Component {
-  componentDidMount() {
-    try {
-      console.log(this);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-  render() {
+export function UserProfile(props) {
+  // const { name, email, password } = props
+  const { name } = props
     return (
-      <React.Fragment>
-        <div className="user-profile">
-          <div className="welcome">
-            <p id="welcome-user">
-              <strong>Welcome, {this.props.name}</strong>
-            </p>
-            <p>Click here to view previous orders</p>
-            <button>Past Orders</button>
-            {/* Previous order component? */}
-          </div>
-          <div className="edit-profile">
-            <p>Click here to update profile</p>
-            <button>Edit Profile</button>
-            {/* Edit Profile component */}
-          </div>
-        </div>
-      </React.Fragment>
-    );
+    <div className="user-profile">
+      <div className="welcome">
+        <span id="welcome-user">
+          <h1>Welcome, { name }</h1>
+          {/* <p>{email}</p>
+          <p>{password}</p> */}
+        </span>
+        <p>Click here to view previous orders</p>
+        <button>Past Orders</button>
+          {/* Previous order component? */}
+      </div>
+      {/* <div className="edit-profile">
+        <p>Edit profile</p>
+        <UpdateUser />
+      </div> */}
+    </div>
+  );
+}
+
+const mapState = state => {
+  return {
+    name: state.auth.name,
+    // email: state.auth.email,
+    // password: state.auth.password
   }
 }
 
-export default UserProfile;
+export default connect(mapState)(UserProfile)
