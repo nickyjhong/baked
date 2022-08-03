@@ -1,7 +1,6 @@
 import axios from "axios";
-import { me } from './auth'
 
-// Action type
+// Action types
 const UPDATE_USER = 'UPDATE_USER'
 const SET_USER = 'SET_USER';
 
