@@ -25,13 +25,21 @@ router.get('/:id', async (req, res, next) => {
 });
 
 //   ADMIN VIEW: ADD A NEW PRODUCT TO SHOP PAGE
+// router.post('/', async (req, res, next) => {
+//   try {
+//     res.status(201).send(await Product.create(req.body));
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 router.post('/', async (req, res, next) => {
   try {
-    res.status(201).send(await Product.create(req.body));
-  } catch (error) {
-    next(error);
+    const product = await Product.create(req.body);
+    res.send(product)
+  } catch (err) {
+    next(err)
   }
-});
+})
 
 //   ADMIN VIEW: UPDATE A NEW PRODUCT TO SHOP PAGE
 router.put('/:id', async (req, res, next) => {
