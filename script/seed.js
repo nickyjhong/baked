@@ -422,7 +422,7 @@ const seed = async () => {
 
     let user1 = await User.findByPk(1, { include: [{ model: Order }] });
 
-    const order1 = await Order.create({ type: 'closed' });
+    const order1 = await Order.create({ type: true });
     await order1.setUser(user1);
 
     const dessert1 = await Product.findByPk(1);
@@ -431,7 +431,7 @@ const seed = async () => {
     await order1.addProduct(dessert1);
     await order1.addProduct(dessert2);
 
-    const order2 = await Order.create({ type: 'active' });
+    const order2 = await Order.create({ type: false });
     await order2.setUser(user1);
 
     await order2.addProduct(dessert1);

@@ -1,6 +1,7 @@
 import React from 'react';
 // import UpdateUser from './UpdateUser'
 import {connect} from 'react-redux'
+import PreviousOrders from './PreviousOrders';
 
 export function UserProfile(props) {
   // const { name, email, password } = props
@@ -13,9 +14,8 @@ export function UserProfile(props) {
           {/* <p>{email}</p>
           <p>{password}</p> */}
         </span>
-        <p>Click here to view previous orders</p>
-        <button>Past Orders</button>
-          {/* Previous order component? */}
+        <p>PREVIOUS ORDERS BELOW</p>
+          <PreviousOrders />
       </div>
       {/* <div className="edit-profile">
         <p>Edit profile</p>

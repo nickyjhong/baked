@@ -37,6 +37,8 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+
+// SHOWS ALL ORDERS
 router.get('/:id/orders', async (req, res, next) => {
   try {
     const userOrder = await User.findByPk(req.params.id, {
@@ -53,24 +55,25 @@ router.get('/:id/orders', async (req, res, next) => {
   }
 });
 
-router.get('/:id/orders/:orderId', async (req, res, next) => {
-  try {
-    const userOrder = await User.findByPk(req.params.id, {
-      include: [
-        {
-          model: Order,
-          where: {
-            id: req.params.orderId,
-          },
-        },
-      ],
-      attributes: ['email'],
-    });
-    res.send(userOrder);
-  } catch (err) {
-    next(err);
-  }
-});
+// SHOWS ONLY ACTIVE ORDER ( AKA CART )
+// router.get('/:id/orders', async (req, res, next) => {
+//   try {
+//     const userOrder = await User.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Order,
+//           where: {
+//             type: "active"
+//           }
+//         },
+//       ],
+//       attributes: ['email'],
+//     });
+//     res.send(userOrder);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 router.get('/:id/orders/:orderId', async (req, res, next) => {
   try {
