@@ -1,0 +1,74 @@
+/* GRID STYLING */
+.grid-section {
+    margin: 150px;
+    font-size: 40px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 100px 50px;
+    margin-top: 20px;
+    /* font-size: .7em; */
+  }
+
+  .grid-section-left {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 100px 50px;
+    margin-top: 20px;
+    font-size: .5em;
+  }
+
+  .grid-section-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 100px 50px;
+    margin-top: 20px;
+    font-size: .5em;
+}
+
+  .shop-image {
+    height: 14.5rem;
+    width: 14rem;
+    border-radius: 20px;
+    opacity: 85%;
+    transition-duration: .5s;
+  }
+
+  .shop-image:hover {
+    height: 14.7rem;
+    width: 14.2rem;
+    border-radius: 20px;
+    opacity: 100%;
+    transition-duration: .5s;
+  }
+
+  .grid-item {
+  font-size: .5em;
+  transition-duration: .5s;
+  }
+
+  .grid-item:hover {
+    transition-duration: .5s;
+  }
+
+  .grid-item-text {
+    color: #000000;
+    opacity: 85%;
+    transition-duration: .5s;
+  }
+
+  .grid-item-text:hover {
+    color: #000000;
+    opacity: 100%;
+    transition-duration: .5s;
+  }
+
+  .category-search {
+    height: .1rem;
+    width: 11em;
+    border-radius: 5px;
+}
+
+  /* END OF GRID STYLING */
