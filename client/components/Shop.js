@@ -32,6 +32,7 @@ export class Shop extends Component {
           <div className="grid-section-right">
           {this.props.products.map((product) => {
             return (
+                <Link to={`/products/${product.id}`}>
               <div className="grid-item" key={product.id}>
                 <img
                   className="shop-image"
@@ -45,6 +46,8 @@ export class Shop extends Component {
                   <p>${product.price / 100}</p>
                 </div>
               </div>
+
+                </Link>
             );
           })}
           </div>
