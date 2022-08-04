@@ -1,16 +1,10 @@
 import axios from "axios";
 
 // Action type
-// const GET_SINGLE_PRODUCT = "GET_SINGLE_PRODUCT";
+const SET_PRODUCT = 'SET_PRODUCT';
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 
-
-const SET_PRODUCT = 'SET_PRODUCT'
 // Action creator
-// export const _getSingleProduct = (product) => ({
-//   type: GET_SINGLE_PRODUCT,
-//   product,
-// });
-
 export const setProduct = (product) => {
   return {
     type: SET_PRODUCT,
@@ -18,16 +12,14 @@ export const setProduct = (product) => {
   }
 }
 
-// Thunk creator
-// export const getSingleProduct = (product) => async (dispatch) => {
-//   try {
-//     const { data } = await axios.get(`/api/products/${product.id}`);
-//     dispatch(_getSingleProduct(data));
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+const _updateProduct = product => {
+  return {
+    type: UPDATE_PRODUCT,
+    product
+  }
+}
 
+// Thunk creator
 export const fetchProduct = (id) => {
   return async (dispatch) => {
     try {
@@ -39,11 +31,25 @@ export const fetchProduct = (id) => {
   }
 }
 
+export const updateProduct = (id, update) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/api/products/${id}`, update);
+      dispatch(_updateProduct(data));
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+
 // Reducer
 const initialState = {};
 export default function singleProductReducer(state = initialState, action) {
   switch (action.type) {
     case SET_PRODUCT:
+      return action.product;
+    case UPDATE_PRODUCT:
       return action.product;
     default:
       return state;

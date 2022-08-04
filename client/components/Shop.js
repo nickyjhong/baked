@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProducts } from '../store/allproducts';
+import { fetchProducts } from '../store/allProducts';
 
 export class Shop extends Component {
 

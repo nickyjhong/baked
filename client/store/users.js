@@ -6,10 +6,10 @@ const CREATE_USER = 'CREATE_USER';
 const SET_USERS = 'SET_USERS';
 
 // Action creators
-export const _createUser = (name) => {
+export const _createUser = (user) => {
   return {
     type: CREATE_USER,
-    name,
+    user,
   };
 };
 
@@ -49,7 +49,7 @@ const initialState = [];
 export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER:
-      return action.name;
+      return action.user;
     case SET_USERS:
       return action.users;
     default:

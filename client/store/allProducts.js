@@ -3,7 +3,7 @@ import axios from "axios";
 // Action type
 const SET_PRODUCTS = "SET_PRODUCTS";
 const CREATE_PRODUCT = 'CREATE_PRODUCT';
-const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+// const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
 // Action creator
@@ -14,12 +14,12 @@ const _createProduct = product => {
   }
 }
 
-const _updateProduct = product => {
-  return {
-    type: UPDATE_PRODUCT,
-    product
-  }
-}
+// const _updateProduct = product => {
+//   return {
+//     type: UPDATE_PRODUCT,
+//     product
+//   }
+// }
 
 const _deleteProduct = product => {
   return {
@@ -38,12 +38,12 @@ export const createProduct = (product, history) => {
   }
 }
 
-export const updateProduct = (product) => {
-  return async (dispatch) => {
-    const { data } = await axios.put(`/api/products/${product.id}`, product);
-    dispatch(_updateProduct(data));
-  }
-}
+// export const updateProduct = (product) => {
+//   return async (dispatch) => {
+//     const { data } = await axios.put(`/api/products/${product.id}`, product);
+//     dispatch(_updateProduct(data));
+//   }
+// }
 
 export const deleteProduct = (id, history) => {
   return async (dispatch) => {
@@ -72,8 +72,8 @@ export default function productsReducer(state = initialState, action) {
       return action.products;
     case CREATE_PRODUCT:
       return [...state, action.products];
-    case UPDATE_PRODUCT:
-      return action.campus
+    // case UPDATE_PRODUCT:
+    //   return action.campus
     case DELETE_PRODUCT:
       return state.filter((product) => product.id !== action.product.id);
     default:
