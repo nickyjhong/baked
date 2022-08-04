@@ -59,7 +59,7 @@ export default function productsReducer(state = initialState, action) {
     case SET_PRODUCTS:
       return action.products;
     case CREATE_PRODUCT:
-      return action.product;
+      return [...state, action.product]
     // case UPDATE_PRODUCT:
     //   return action.campus
     case DELETE_PRODUCT:

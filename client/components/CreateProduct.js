@@ -12,7 +12,7 @@ class CreateProduct extends React.Component {
       price: 0,
       description: "",
       quantity: 0,
-      // category: "",
+      category: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +22,7 @@ class CreateProduct extends React.Component {
     this.setState({...this.state,
       [event.target.name]: event.target.value,
     });
+    console.log(this.state)
   }
 
   handleSubmit(event) {
@@ -118,7 +119,7 @@ class CreateProduct extends React.Component {
           <br />
           <br />
           <label htmlFor="productName">Category</label>
-          <select>
+          <select onChange={handleChange} name='category'>
             <option value={category}></option>
             <option value="cake">cake</option>
             <option value="cookie">cookie</option>
@@ -129,15 +130,6 @@ class CreateProduct extends React.Component {
           <br />
           <br />
           <button type="submit">Add</button>
-          {/* <button
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            window.location.href = "http://localhost:8080/products";
-          }}
-        >
-          Add
-        </button> */}
           <button type="button">
             <Link to="/products">Cancel</Link>
           </button>

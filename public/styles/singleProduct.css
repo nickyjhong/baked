@@ -1,0 +1,31 @@
+.s-product-name {
+  display: flex;
+  justify-content: center;
+}
+
+.s-product-main {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px;
+}
+
+.s-product-img {
+  height: 23rem;
+  width: 23rem;
+  border-radius: 20px;
+  opacity: 85%;
+}
+
+.s-product-main-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.s-product-detail {
+  padding: 0 20px;
+}
+
+.category {
+  font-size: .6rem;
+}
