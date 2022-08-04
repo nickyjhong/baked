@@ -26,9 +26,9 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/cart" component={Cart} />
+            <Route exact path="/cart" component={Cart} />
             {/* <Route path="/users/:id" component={UserProfile} /> */}
-            <Route path="/profile" component={UserProfile} />
+            <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/products" component={Shop} />
             <Route path="/products/:id" component={SingleProduct} />
           </Switch>
@@ -36,9 +36,9 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/products" component={Shop} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={CreateUser} />
-            <Route path="/cart" component={Cart} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={CreateUser} />
+            <Route exact path="/cart" component={Cart} />
             <Route path="/products/:id" component={SingleProduct} />
           </Switch>
         )}
