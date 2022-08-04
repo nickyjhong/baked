@@ -14,6 +14,25 @@ body {
   width: auto;
 }
 
+/* GRID STYLING */
+.grid-section {
+  margin: 150px;
+  font-size: 40px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 100px 50px;
+  border-style: solid red;
+  margin-top: 20px;
+  font-size: .5em;
+}
+.grid-item {
+
+}
+/* END OF GRID STYLING */
+
 a {
   text-decoration: none;
 }
