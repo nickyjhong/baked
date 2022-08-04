@@ -1,5 +1,6 @@
 @import './styles/forms.css';
 @import './styles/userProfile.css';
+@import './styles/shop.css';
 
 html {
   font-family: "Roboto", Helvetica, sans-serif;
