@@ -12,12 +12,29 @@ class SingleProduct extends React.Component {
     const { name, imageURL, price, description, category } = this.props.product
     console.log('PROPS',this.props)
     return (
-      <div>
-        <p>{name}</p>
-        <img src={imageURL} />
-        <p>{price}</p>
-        <p>{description}</p>
-        <p>{category}</p>
+      <div className="s-product-container">
+        <section className="s-product-name">
+          <h1>{name}</h1>
+        </section>
+
+        <div className="s-product-main">
+          <div className="s-product-main-box">
+            <img src={imageURL} className="s-product-img"/>
+          </div>
+          <div className="s-product-main-description">
+            <p className="s-product-detail price">${price / 100}</p>
+            <p className="s-product-detail description">{description}</p>
+            <p className="s-product-detail description"><span>Quantity here</span><span>Add To Cart Btn</span></p>
+            <p className="s-product-detail category">Tags: {category}</p>
+          </div>
+        </div>
+
+        
+        {/* Possibly for DESCRIPTION/REVIEW on bottom if time
+        <div className="s-product-description">
+
+        
+        </div> */}
       </div>
     )
   }
