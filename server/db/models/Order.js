@@ -7,8 +7,8 @@ const Order = db.define("order", {
     defaultValue: 1,
   },
   type: {
-    type: Sequelize.ENUM("active", "closed"),
-    defaultValue: "active",
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
   },
   totalPrice: {
     type: Sequelize.INTEGER,

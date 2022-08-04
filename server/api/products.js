@@ -1,4 +1,3 @@
-const express = require('express');
 const router = require('express').Router();
 const Product = require('../db/models/product');
 
