@@ -8,17 +8,26 @@ export class Shop extends Component {
     this.props.getProducts();
   }
   render() {
+    {console.log('props', this.props.products)}
     return (
       <section className="grid-section">
         Baked Goods
         <div className="grid-container">
           <div className="grid-section-left">
             <input className="category-search" placeholder="Search"></input>
-            {/* <h3>Cookies</h3>
-            <h3>Cakes</h3>
-            <h3>Pastries</h3>
-            <h3>Doughnuts</h3>
-            <h3>Cold Items</h3> */}
+            <p className="grid-section-left-category-bold">Categories</p>
+            {/* <p>Cookies</p>
+            <p>Cakes</p>
+            <p>Pastries</p>
+            <p>Doughnuts</p>
+            <p>Cold Items</p> */}
+            <ul>
+                <li>Cakes</li>
+                <li>Cookie</li>
+                <li>Cupcake</li>
+                <li>Mini</li>
+                <li>Other</li>
+            </ul>
           </div>
           <div className="grid-section-right">
           {this.props.products.map((product) => {
@@ -33,7 +42,7 @@ export class Shop extends Component {
                   <Link to={`/products/${product.id}`}>
                     <h3 className="grid-item-text">{product.name}</h3>
                   </Link>
-                  <p>${product.price}</p>
+                  <p>${product.price / 100}</p>
                 </div>
               </div>
             );
