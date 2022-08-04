@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchProducts } from "../store/allProducts";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchProducts } from '../store/allProducts';
 
 export class Shop extends Component {
   componentDidMount() {
     this.props.getProducts();
   }
   render() {
-    {console.log('props', this.props.products)}
+    {
+      console.log('props', this.props.products);
+    }
     return (
       <section className="grid-section">
         Baked Goods
@@ -22,34 +24,33 @@ export class Shop extends Component {
             <p>Doughnuts</p>
             <p>Cold Items</p> */}
             <ul>
-                <li>Cakes</li>
-                <li>Cookie</li>
-                <li>Cupcake</li>
-                <li>Mini</li>
-                <li>Other</li>
+              <li>Cakes</li>
+              <li>Cookie</li>
+              <li>Cupcake</li>
+              <li>Mini</li>
+              <li>Other</li>
             </ul>
           </div>
           <div className="grid-section-right">
-          {this.props.products.map((product) => {
-            return (
+            {this.props.products.map((product) => {
+              return (
                 <Link to={`/products/${product.id}`}>
-              <div className="grid-item" key={product.id}>
-                <img
-                  className="shop-image"
-                  src={product.imageURL}
-                  alt={`Image of ${product.name}`}
-                />
-                <div>
-                  <Link to={`/products/${product.id}`}>
-                    <h3 className="grid-item-text">{product.name}</h3>
-                  </Link>
-                  <p>${product.price / 100}</p>
-                </div>
-              </div>
-
+                  <div className="grid-item" key={product.id}>
+                    <img
+                      className="shop-image"
+                      src={product.imageURL}
+                      alt={`Image of ${product.name}`}
+                    />
+                    <div>
+                      <Link to={`/products/${product.id}`}>
+                        <h3 className="grid-item-text">{product.name}</h3>
+                      </Link>
+                      <p>${product.price / 100}</p>
+                    </div>
+                  </div>
                 </Link>
-            );
-          })}
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,7 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-export default function Cart() {
+const Cart = () => {
   return (
-    <div>Cart</div>
-  )
-}
+    <React.Fragment>
+      <div className="shopping-cart-title">
+        <h1>Shopping Cart</h1>
+      </div>
+      <div className="parentContainer">
+        <div className="product-list"></div>
+        <div className="cart-total"></div>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export default Cart;
