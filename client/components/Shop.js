@@ -11,7 +11,7 @@ export class Shop extends Component {
   render() {
     return (
       <div>
-        Shop
+        Shopp
         {console.log(this.props.products)}
         <div>
             {this.props.products.map((product) => {
@@ -25,7 +25,7 @@ export class Shop extends Component {
                         <Link to={`/products/${product.id}`}>
                             <h3>{product.name}</h3>
                         </Link>
-                        <p>{product.price}</p>
+                        <p>${product.price}</p>
                     </div>
                 </div>
 
