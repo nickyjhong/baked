@@ -14,12 +14,6 @@ const _createProduct = product => {
   }
 }
 
-// const _updateProduct = product => {
-//   return {
-//     type: UPDATE_PRODUCT,
-//     product
-//   }
-// }
 
 const _deleteProduct = product => {
   return {
@@ -38,12 +32,6 @@ export const createProduct = (product, history) => {
   }
 }
 
-// export const updateProduct = (product) => {
-//   return async (dispatch) => {
-//     const { data } = await axios.put(`/api/products/${product.id}`, product);
-//     dispatch(_updateProduct(data));
-//   }
-// }
 
 export const deleteProduct = (id, history) => {
   return async (dispatch) => {
@@ -63,15 +51,15 @@ export const fetchProducts = () => async (dispatch) => {
   dispatch(setProducts(data));
 };
 
-const initialState = [];
 
+const initialState = [];
 
 export default function productsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_PRODUCTS:
       return action.products;
     case CREATE_PRODUCT:
-      return [...state, action.products];
+      return action.product;
     // case UPDATE_PRODUCT:
     //   return action.campus
     case DELETE_PRODUCT:

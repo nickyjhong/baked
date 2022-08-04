@@ -7,6 +7,7 @@ import Shop from './components/Shop';
 import Cart from './components/Cart';
 import UserProfile from './components/UserProfile';
 import CreateUser from './components/CreateUser';
+import CreateProduct from './components/CreateProduct';
 import SingleProduct from './components/SingleProduct';
 import { me } from './store';
 
@@ -30,6 +31,7 @@ class Routes extends Component {
             {/* <Route path="/users/:id" component={UserProfile} /> */}
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/products" component={Shop} />
+            <Route exact path="/add" component={CreateProduct} />
             <Route path="/products/:id" component={SingleProduct} />
           </Switch>
         ) : (
