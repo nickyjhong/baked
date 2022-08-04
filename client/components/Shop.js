@@ -10,13 +10,12 @@ export class Shop extends Component {
     }
   render() {
     return (
-      <div>
-        Shop
-        {console.log(this.props.products)}
-        <div>
+      <section className='grid-section'>
+        Shopp
+        <div className='grid-container'>
             {this.props.products.map((product) => {
                 return (
-                <div key={product.id}>
+                <div className='grid-item' key={product.id}>
                     <img
                         src={product.imageURL}
                         alt={`Image of ${product.name}`}
@@ -25,14 +24,14 @@ export class Shop extends Component {
                         <Link to={`/products/${product.id}`}>
                             <h3>{product.name}</h3>
                         </Link>
-                        <p>{product.price}</p>
+                        <p>${product.price}</p>
                     </div>
                 </div>
 
                 )
             })}
-        </div>
-      </div>
+        </div> 
+      </section> 
     )
   }
 }
