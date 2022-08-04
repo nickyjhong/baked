@@ -128,7 +128,16 @@ class CreateProduct extends React.Component {
           </select>
           <br />
           <br />
-          <button type="submit">Add</button>
+          {/* <button type="submit">Add</button> */}
+          <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "http://localhost:8080/products";
+          }}
+        >
+          Add
+        </button>
           <button type="button">
             <Link to="/products">Cancel</Link>
           </button>
