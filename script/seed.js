@@ -43,11 +43,11 @@ const customers = [
 
 const products = [
   {
-    name: 'Salted Chocolate Chip Cookie',
+    name: 'Sea Salt Chocolate Chip Cookie',
     imageURL:
       'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80',
     price: 199,
-    description: "Better than McDonald's",
+    description: 'The most iconic cookie of all time topped with sea salt',
     category: 'cookie',
   },
   {
@@ -124,7 +124,7 @@ const products = [
     category: 'cookie',
   },
   {
-    name: 'Red Velvet',
+    name: 'Red Velvet Cake Slice',
     imageURL:
       'https://images.unsplash.com/photo-1602630209855-dceac223adfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2FrZSUyMHNsaWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
     price: 499,
@@ -132,7 +132,7 @@ const products = [
     category: 'cake',
   },
   {
-    name: 'Layered Chocolate',
+    name: 'Layered Chocolate Cake Slice',
     imageURL:
       'https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
     price: 499,
@@ -141,7 +141,7 @@ const products = [
     category: 'cake',
   },
   {
-    name: 'Cheesecake',
+    name: 'Cheesecake Slice',
     imageURL:
       'https://images.unsplash.com/photo-1524351199678-941a58a3df50?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80',
     price: 499,
@@ -157,7 +157,7 @@ const products = [
     category: 'cake',
   },
   {
-    name: 'Berry Neopolitan',
+    name: 'Berry Napolean Cake Slice',
     imageURL:
       'https://i.pinimg.com/736x/73/55/6b/73556b985375c8ecc9472d716eaa01bd.jpg',
     price: 499,
@@ -166,7 +166,7 @@ const products = [
     category: 'cake',
   },
   {
-    name: 'Strawberry Shortcake',
+    name: 'Strawberry Shortcake Slice',
     imageURL:
       'https://images.unsplash.com/photo-1627308595171-d1b5d67129c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3RyYXdiZXJyeSUyMHNob3J0Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
     price: 499,
@@ -174,7 +174,7 @@ const products = [
     category: 'cake',
   },
   {
-    name: 'Tiramisu',
+    name: 'Tiramisu Cake Slice',
     imageURL:
       'https://justisafourletterword.com/wp-content/uploads/2021/06/Slice-of-Tiramisu-cake-on-a-plate-with-spoon.jpg',
     price: 499,
@@ -183,7 +183,7 @@ const products = [
     category: 'cake',
   },
   {
-    name: 'Rainbow',
+    name: 'Rainbow Cake Slice',
     imageURL:
       'https://www.crazyforcrust.com/wp-content/uploads/2022/05/rainbow-cake-5-668x1002.jpg',
     price: 499,
@@ -191,21 +191,217 @@ const products = [
     category: 'cake',
   },
   {
-    name: 'Mille Feuille Crepe',
+    name: 'Mille Feuille Crepe Slice',
     imageURL:
-      'https://static.wikia.nocookie.net/cookingmama/images/6/69/20170202_mille.jpg/revision/latest?cb=20191024082003',
+      'https://blog.cooksofcrocushill.com/wp-content/uploads/2020/06/CrepeCake-2-1-1024x683.jpg',
     price: 499,
     description:
       'French inspired cake with thin layers sandwiched between sweet cream',
     category: 'cake',
   },
   {
-    name: 'Vanilla',
+    name: 'Layered Vanilla Cake Slice',
     imageURL:
       'https://www.lifeloveandsugar.com/wp-content/uploads/2022/03/White-Cake-Recipe4.jpg',
     price: 499,
     description: 'Fluffy vanilla layered cake with vanilla buttercream',
     category: 'cake',
+  },
+  {
+    name: 'Strawberry Cupcake',
+    imageURL: 'https://images.unsplash.com/photo-1563778084459-859099e48677?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    price: 299,
+    description: 'Strawberry cupcake topped with naturally flavored strawberry frosting and a chocolate covered strawberry',
+    category: 'cupcake',
+  },
+  {
+    name: 'Red Velvet Cupcake',
+    imageURL: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y3VwY2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    price: 299,
+    description: 'Our red velvet cake but in a cupcake form',
+    category: 'cupcake',
+  },
+  {
+    name: 'Chocolate Hazelnut Delight Cupcake',
+    imageURL: 'https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y3VwY2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    price: 399,
+    description: 'Chocolate cupcake topped with rich chocolate frosting, crushed hazelnuts, and a Ferrero Rocher',
+    category: 'cupcake',
+  },
+  {
+    name: 'Cookies and Cream Cupcake',
+    imageURL: 'https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGN1cGNha2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+    price: 399,
+    description: 'Oreos 🤝 Cupcake',
+    category: 'cupcake',
+  },
+  {
+    name: 'Thin Mint Cupcake',
+    imageURL: 'https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGN1cGNha2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+    price: 399,
+    description: 'A Girl Scout Thin Mint cookie becomes a cupcake',
+    category: 'cupcake',
+  },
+  {
+    name: 'Flower Cupcake',
+    imageURL: 'https://www.brides.com/thmb/4AzF95j4aqj8-DIofiEaw8TEIDI=/3608x3608/filters:no_upscale():max_bytes(150000):strip_icc()/cozyoven_coralcupcakes-c5b8a15af6cd4fb085fddf2f0bc3ef38.jpg',
+    price: 299,
+    description: 'Limited edition seasonal flower cupcake only available in the spring',
+    category: 'cupcake',
+  },
+  {
+    name: 'Chocolate Cupcake',
+    imageURL: 'https://sallysbakingaddiction.com/wp-content/uploads/2017/06/moist-chocolate-cupcakes-5.jpg',
+    price: 299,
+    description: 'Our take on the classic chocolate cupcake',
+    category: 'cupcake',
+  },
+  {
+    name: 'Vanilla Cupcake',
+    imageURL: 'https://www.lifeloveandsugar.com/wp-content/uploads/2017/01/Moist-Vanilla-Cupcakes5-1.jpg',
+    price: 299,
+    description: 'The most iconic and classic cupcake of them all',
+    category: 'cupcake',
+  },
+  {
+    name: 'Pineapple Upside Down Cupcake',
+    imageURL: 'https://budgetdelicious.com/wp-content/uploads/2021/02/pineapple-upside-down-cupcakes-resized-DSCF0668.jpg',
+    price: 299,
+    description: 'ǝʞɐɔdnɔ ǝlddɐǝuᴉԀ',
+    category: 'cupcake',
+  },
+  {
+    name: 'Stroopwafel Inspired Cupcake',
+    imageURL: 'https://images.unsplash.com/photo-1623246123320-0d6636755796?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fG11ZmZpbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    price: 299,
+    description: 'Caramel injected cupcake topped with caramel sauce and a waffle cone',
+    category: 'cupcake',
+  },
+  {
+    name: 'Strawberry and Cream Tart',
+    imageURL: 'https://images.unsplash.com/photo-1592382419665-40ded771c471?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    price: 299,
+    description: 'Housemade fresh whipped cream in an edible shell topped with fresh strawberries',
+    category: 'mini',
+  },
+  {
+    name: 'Berries and Cream Tart',
+    imageURL: 'https://images.unsplash.com/photo-1561339405-e1dd0d129449?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZnJ1aXQlMjB0YXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    price: 299,
+    description: 'Fresh fruit tart with blackberries, raspberries, and strawberries',
+    category: 'mini',
+  },
+  {
+    name: 'Lemon Tart',
+    imageURL: 'https://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dw113cc44b/images/project/WLRECIP-418/Lemon-Raspberry-Tarts.jpg?sw=800&sh=800',
+    price: 299,
+    description: 'Zesty homemade lemon curd filled in a pastry cup',
+    category: 'mini',
+  },
+  {
+    name: 'Portugese Egg Tart',
+    imageURL: 'https://assets.bonappetit.com/photos/59b807037f7c9a1ef926e5f6/5:7/w_2380,h_3332,c_limit/portuguese-egg-custard-tarts.jpg',
+    price: 299,
+    description: 'Egg custard with a flakey crust and burnt top',
+    category: 'mini',
+  },
+  {
+    name: 'Apple Pie',
+    imageURL: 'https://i0.wp.com/www.livewellbakeoften.com/wp-content/uploads/2017/08/Mini-Apple-Pies.jpg?w=1360&ssl=1',
+    price: 199,
+    description: 'Individual portion of a classic pie',
+    category: 'mini',
+  },
+  {
+    name: 'Pumpkin Pie',
+    imageURL: 'https://www.mybakingaddiction.com/wp-content/uploads/2018/10/Mini-Pumpkin-Pies-Pic.jpg',
+    price: 199,
+    description: 'Individual serving of pumpkin pie',
+    category: 'mini',
+  },
+  {
+    name: 'Brownie',
+    imageURL: 'https://images.unsplash.com/photo-1583516867196-ea9a73ecdc13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+    price: 299,
+    description: 'Fudgey brownie made with the highest quality chocolate',
+    category: 'other',
+  },
+  {
+    name: 'Blondie',
+    imageURL: 'https://www.tablefortwoblog.com/wp-content/uploads/2021/03/blondie-brownies-photo-tablefortwoblog-2-800x1200.jpg',
+    price: 299,
+    description: 'A traditional brownie but made with white chocolate',
+    category: 'other',
+  },
+  {
+    name: 'Cheesecake Brownie',
+    imageURL: 'https://preppykitchen.com/wp-content/uploads/2016/06/cheesecake-brownies-feature-1.jpg',
+    price: 399,
+    description: 'Cheesecake and brownie lovers unite',
+    category: 'other',
+  },
+  {
+    name: 'Brookie',
+    imageURL: 'https://www.dessarts.com/wp-content/uploads/2020/03/Brookies_720px_3.jpg',
+    price: 399,
+    description: 'If a chocolate chip cookie and brownies had babies this would be the creation',
+    category: 'other',
+  },
+  {
+    name: 'Croissant',
+    imageURL: 'https://images.unsplash.com/photo-1619540158579-1b4fd3529849?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fGNyb2lzc2FudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    price: 299,
+    description: 'We swear these are homemade and not from Costco',
+    category: 'other',
+  },
+  {
+    name: 'Almond Croissant',
+    imageURL: 'https://images.unsplash.com/photo-1625425404751-19b16c027511?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjF8fGNyb2lzc2FudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    price: 299,
+    description: 'Our classic buttery flakey croissant topped with slithered almonds',
+    category: 'other',
+  },
+  {
+    name: 'Pain Au Chocolat',
+    imageURL: 'https://data.thefeedfeed.com/recommended/post_3975085.jpeg',
+    price: 299,
+    description: 'Classic French pastry paired with chocolate',
+    category: 'other',
+  },
+  {
+    name: 'Banana Nut Muffin',
+    imageURL: 'https://images.unsplash.com/photo-1557925923-6982bd9650ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bXVmZmlufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    price: 299,
+    description: 'Homemade classic muffin',
+    category: 'other',
+  },
+  {
+    name: 'Blueberry Muffin',
+    imageURL: 'https://images.unsplash.com/photo-1599320207475-3d793554fda0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fG11ZmZpbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    price: 299,
+    description: 'Classic muffin perfect for a snack or on the go',
+    category: 'other',
+  },
+  {
+    name: 'Lemon Poppy Seed Muffin',
+    imageURL: 'https://www.lecremedelacrumb.com/wp-content/uploads/2021/02/lemon-poppy-seed-muffins-18sm-7.jpg',
+    price: 299,
+    description: 'WARNING: do not consume prior to drug tests. We do not take responsibility for any unwanted outcomes and consumption of this product is the choice of the consumer',
+    category: 'other',
+  },
+  {
+    name: 'Cinnamon Roll',
+    imageURL: 'https://kellyneil.com/wp-content/uploads/2020/10/Small-Batch-Cinnamon-Rolls-52-500x500.jpg',
+    price: 299,
+    description: 'Warmed (upon request) topped with glaze',
+    category: 'other',
+  },
+  {
+    name: 'Palmier',
+    imageURL: 'https://www.garnishandglaze.com/wp-content/uploads/2021/12/palmier-cookies-2.jpg',
+    price: 199,
+    description: 'Flakey crispy cookie topped with granulated sugar',
+    category: 'other',
   },
 ];
 

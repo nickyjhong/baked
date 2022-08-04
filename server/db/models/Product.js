@@ -40,7 +40,7 @@ const Product = db.define("product", {
     defaultValue: 50,
   },
   category: {
-    type: Sequelize.ENUM('cake', 'cookie')
+    type: Sequelize.ENUM('cake', 'cookie', 'cupcake', 'mini', 'other')
   },
 });
 
