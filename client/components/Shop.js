@@ -25,7 +25,6 @@ export class Shop extends Component {
   }
 
   render() {
-    console.log('all products', this.props.products.category);
     const { products } = this.props;
 
     const productFilter = products.filter((product) => {

@@ -49,7 +49,6 @@ router.get('/:id/orders', async (req, res, next) => {
           // }
         },
       ],
-      attributes: ['email'],
     });
     res.send(userOrder);
   } catch (err) {

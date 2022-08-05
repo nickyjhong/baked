@@ -15,7 +15,7 @@ export const UserProfile = (props) => {
           <p>{password}</p> */}
         </span>
         <p>PREVIOUS ORDERS BELOW</p>
-        <PreviousOrders />
+        {/* <PreviousOrders /> */}
       </div>
       {/* <div className="edit-profile">
         <p>Edit profile</p>
