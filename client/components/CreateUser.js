@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createUser } from "../store/users";
+import { createUser } from "../store/allUsers";
 
 export class CreateUser extends React.Component {
   constructor(props) {

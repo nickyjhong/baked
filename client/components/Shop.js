@@ -30,10 +30,8 @@ export class Shop extends Component {
     const productFilter = products.filter((product) => {
       if (this.state.filtered === 'All') return product;
       if (this.state.filtered === 'Cakes') return product.category === 'cake';
-      if (this.state.filtered === 'Cookies')
-        return product.category === 'cookie';
-      if (this.state.filtered === 'Cupcakes')
-        return product.category === 'cupcake';
+      if (this.state.filtered === 'Cookies') return product.category === 'cookie';
+      if (this.state.filtered === 'Cupcakes') return product.category === 'cupcake';
       if (this.state.filtered === 'Mini') return product.category === 'mini';
       if (this.state.filtered === 'Other') return product.category === 'other';
     });
@@ -46,8 +44,9 @@ export class Shop extends Component {
           <div className="grid-section-left">
             <input className="category-search" placeholder="Search"></input>
             <p className="grid-section-left-category-bold">Categories</p>
-            <ul>
+            <ul >
               <li
+                key="all"
                 onClick={() => {
                   this.handleFilterClick('All');
                 }}
@@ -55,6 +54,7 @@ export class Shop extends Component {
                 All
               </li>
               <li
+                key="cakes"
                 onClick={() => {
                   this.handleFilterClick('Cakes');
                 }}
@@ -62,6 +62,7 @@ export class Shop extends Component {
                 Cakes
               </li>
               <li
+                key="{cookies}"
                 onClick={() => {
                   this.handleFilterClick('Cookies');
                 }}
@@ -69,6 +70,7 @@ export class Shop extends Component {
                 Cookies
               </li>
               <li
+                key="cupcakes"
                 onClick={() => {
                   this.handleFilterClick('Cupcakes');
                 }}
@@ -76,6 +78,7 @@ export class Shop extends Component {
                 Cupcakes
               </li>
               <li
+                key="mini"
                 onClick={() => {
                   this.handleFilterClick('Mini');
                 }}
@@ -83,6 +86,7 @@ export class Shop extends Component {
                 Mini
               </li>
               <li
+                key="other"
                 onClick={() => {
                   this.handleFilterClick('Other');
                 }}
@@ -94,7 +98,7 @@ export class Shop extends Component {
           <div className="grid-section-right">
             {productFilter.map((product) => {
               return (
-                <Link to={`/products/${product.id}`}>
+                <Link to={`/products/${product.id}`} key={product.id}>
                   <div className="grid-item" key={product.id}>
                     <img
                       className="shop-image"
