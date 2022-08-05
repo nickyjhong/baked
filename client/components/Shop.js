@@ -11,15 +11,19 @@ export class Shop extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+
   componentDidMount() {
     this.props.getProducts();
   }
+
   handleChange(event) {
     this.setState({ filtered: event.target.value });
   }
+
   handleFilterClick(categoryName) {
     this.setState({ filtered: categoryName });
   }
+
   render() {
     console.log('all products', this.props.products.category);
     const { products } = this.props;
@@ -34,6 +38,7 @@ export class Shop extends Component {
       if (this.state.filtered === 'Mini') return product.category === 'mini';
       if (this.state.filtered === 'Other') return product.category === 'other';
     });
+
     console.log('FILTER', this.state.filtered);
     return (
       <section className="grid-section">
@@ -42,32 +47,6 @@ export class Shop extends Component {
           <div className="grid-section-left">
             <input className="category-search" placeholder="Search"></input>
             <p className="grid-section-left-category-bold">Categories</p>
-            {/* <p onClick="">Cookies</p>
-            <p>Cakes</p>
-            <p>Pastries</p>
-            <p>Doughnuts</p>
-            <p>Cold Items</p> */}
-            {/* <ul>
-              <li>All</li>
-              <li>Cakes</li>
-              <li>Cookie</li>
-              <li>Cupcake</li>
-              <li>Mini</li>
-              <li>Other</li>
-            </ul> */}
-            <select
-              value={this.state.filtered}
-              onChange={this.handleChange}
-              name="filtered"
-            >
-              <option>All</option>
-              <option>Cakes</option>
-              <option>Cookies</option>
-              <option>Cupcakes</option>
-              <option>Mini</option>
-              <option>Other</option>
-            </select>
-
             <ul>
               <li
                 onClick={() => {
