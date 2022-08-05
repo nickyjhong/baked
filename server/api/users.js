@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { User, Cart, Order },
+  models: { User, Cart, Order, Product },
 } = require('../db');
 module.exports = router;
 
@@ -44,6 +44,9 @@ router.get('/:id/orders', async (req, res, next) => {
       include: [
         {
           model: Order,
+          // where: {
+          //   status: 'open'
+          // }
         },
       ],
       attributes: ['email'],
@@ -55,7 +58,7 @@ router.get('/:id/orders', async (req, res, next) => {
 });
 
 // SHOWS ONLY ACTIVE ORDER ( AKA CART )
-router.get('/:id/orders', async (req, res, next) => {
+router.get('/:id/cart', async (req, res, next) => {
   try {
     const userOrder = await User.findByPk(req.params.id, {
       include: [
@@ -64,11 +67,12 @@ router.get('/:id/orders', async (req, res, next) => {
           where: {
             status: 'open',
           },
+          include: [Product]
         },
       ],
       // attributes: ['email'],
     });
-    res.send(userOrder[0]);
+    res.send(userOrder);
   } catch (err) {
     next(err);
   }
