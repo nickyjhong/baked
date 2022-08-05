@@ -13,7 +13,7 @@ export const _createUser = (user) => {
   };
 };
 
-export const setUsers = (users) => {
+export const _setUsers = (users) => {
   return {
     type: SET_USERS,
     users,
@@ -36,7 +36,7 @@ export const fetchUsers = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get('/api/users');
-      dispatch(setUsers(data));
+      dispatch(_setUsers(data));
     } catch (err) {
       console.log(err);
     }

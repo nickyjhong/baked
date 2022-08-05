@@ -6,7 +6,7 @@ const SET_USER = 'SET_USER';
 
 // Action creators
 
-export const setUser = (user) => {
+export const _setUser = (user) => {
   return {
     type: SET_USER,
     user,
@@ -35,7 +35,7 @@ export const fetchUser = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/api/users/${id}`);
-      dispatch(setUser(data));
+      dispatch(_setUser(data));
     } catch (err) {
       console.log(err);
     }

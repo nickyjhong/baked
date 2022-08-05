@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchOrders } from "../store/allOrders";
+import { fetchOrder } from "../store/singleOrder";
+// import { fetchOrders } from "../store/allOrders";
 
 export class Cart extends Component {
 
   componentDidMount() {
-    this.props.getOrders(this.props.match.params.id);
+    this.props.getOrder(this.props.match.params.id);
   }
 
   render() {
-    console.log('this.props: \n', this.props);
+    console.log('this.props: \n', this.props.getOrder());
     
     const usersOrders = this.props.allOrders.orders || []
     if (usersOrders === false) {
@@ -61,7 +62,8 @@ const mapStateToProps = (reduxState) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getOrders: (userId) => dispatch(fetchOrders(userId))
+  fetchOrder: () => dispatch(fetchOrder()),
+  getOrder: (userId) => dispatch(fetchOrder(userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
