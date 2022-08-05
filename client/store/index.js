@@ -3,11 +3,11 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
-import singleUserReducer from './singleUser'
 import usersReducer from './allUsers'
 import productsReducer from './allProducts'
-import singleProductReducer from './singleProduct'
 import ordersReducer from './allOrders'
+import singleUserReducer from './singleUser'
+import singleProductReducer from './singleProduct'
 import singleOrderReducer from './singleOrder'
 
 const reducer = combineReducers({ 

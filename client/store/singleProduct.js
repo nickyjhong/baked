@@ -5,7 +5,7 @@ const SET_PRODUCT = 'SET_PRODUCT';
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 
 // Action creator
-export const _setProduct = (product) => {
+export const setProduct = (product) => {
   return {
     type: SET_PRODUCT,
     product
@@ -24,7 +24,7 @@ export const fetchProduct = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/api/products/${id}`)
-      dispatch(_setProduct(data))
+      dispatch(setProduct(data))
     } catch (err) {
       console.log(err)
     }
