@@ -37,22 +37,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// SHOWS ALL ORDERS
-router.get('/:id/orders', async (req, res, next) => {
-  try {
-    const userOrder = await User.findByPk(req.params.id, {
-      include: [
-        {
-          model: Order,
-          include: [Product]
-        },
-      ],
-    });
-    res.send(userOrder);
-  } catch (err) {
-    next(err);
-  }
-});
+
 
 // SHOWS ONLY ACTIVE ORDER ( AKA CART )
 router.get('/:id/cart', async (req, res, next) => {
@@ -67,7 +52,26 @@ router.get('/:id/cart', async (req, res, next) => {
           include: [Product]
         },
       ],
-      // attributes: ['email'],
+    });
+    res.send(userOrder);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// SHOWS ONLY CLOSED ORDERS
+router.get('/:id/pastorders', async (req, res, next) => {
+  try {
+    const userOrder = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Order,
+          where: {
+            status: 'closed',
+          },
+          include: [Product]
+        },
+      ],
     });
     res.send(userOrder);
   } catch (err) {
@@ -94,21 +98,21 @@ router.get('/:id/orders/:orderId', async (req, res, next) => {
   }
 });
 
-router.get('/:id/cart', async (req, res, next) => {
-  try {
-    const userOrder = await User.findByPk(req.params.id, {
-      include: [
-        {
-          model: Order,
-        },
-      ],
-      attributes: ['email'],
-    });
-    res.send(userOrder);
-  } catch (err) {
-    next(err);
-  }
-});
+// router.get('/:id/cart', async (req, res, next) => {
+//   try {
+//     const userOrder = await User.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Order,
+//         },
+//       ],
+//       attributes: ['email'],
+//     });
+//     res.send(userOrder);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 // Once user and cart associated by id, come back to write code
 // router.put('/:id/cart', async (req, res, next) => {
