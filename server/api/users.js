@@ -44,9 +44,7 @@ router.get('/:id/orders', async (req, res, next) => {
       include: [
         {
           model: Order,
-          // where: {
-          //   status: 'open'
-          // }
+          include: [Product]
         },
       ],
     });

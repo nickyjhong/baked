@@ -10,22 +10,54 @@ export class Cart extends Component {
 
   render() {
     console.log('this.props: \n', this.props);
-    return (
-      <>
-        <div className="shopping-cart-title">
-          <h1>Shopping Cart</h1>
+    
+    const usersOrders = this.props.allOrders.orders || []
+    if (usersOrders === false) {
+      return (
+        <div>
+          loading
         </div>
-        <div className="parent-container">
-          <div className="product-list"></div>
-          <div className="cart-total"></div>
+      )
+    } else {
+      return (
+        <div>
+          {usersOrders.length ? (usersOrders.map(order => {
+            return (
+              <div key={order.id}>
+                <ol>
+                  {order.products.map(product => {
+                    return (
+                      <li key={product.id}>
+                        {product.name}
+                      </li>
+                    )
+                  })}
+                </ol>
+              </div>
+            )
+          })): (
+            <div>I'm still loading</div>
+          )}
         </div>
-      </>
-    );
+      )
+    }
+
+    // return (
+    //   <>
+    //     <div className="shopping-cart-title">
+    //       <h1>Shopping Cart</h1>
+    //     </div>
+    //     <div className="parent-container">
+    //       <div className="product-list"></div>
+    //       <div className="cart-total"></div>
+    //     </div>
+    //   </>
+    // );
   }
 }
 
 const mapStateToProps = (reduxState) => ({
-  orders: reduxState.orders
+  allOrders: reduxState.orders
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -11,9 +11,6 @@ import CreateProduct from './components/CreateProduct';
 import SingleProduct from './components/SingleProduct';
 import { me } from './store';
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
@@ -49,9 +46,7 @@ class Routes extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
+
 const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
