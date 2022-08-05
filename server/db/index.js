@@ -3,7 +3,7 @@ const db = require('./db');
 // Imported db [category] models
 const User = require('./models/User');
 const Product = require('./models/Product');
-const Cart = require('./models/Cart');
+const CartItem = require('./models/CartItem');
 const Order = require('./models/Order');
 
 module.exports = {
@@ -12,13 +12,13 @@ module.exports = {
     User,
     Product,
     Order,
-    Cart,
+    CartItem,
   },
 };
 
 User.hasMany(Order);
 Order.belongsTo(User);
-Order.belongsToMany(Product, { through: Cart });
-Product.belongsToMany(Order, { through: Cart });
+Order.belongsToMany(Product, { through: CartItem });
+Product.belongsToMany(Order, { through: CartItem });
 // Product.belongsToMany(Cart, { through: Order });
 // Cart.belongsToMany(Product, { through: Order });
