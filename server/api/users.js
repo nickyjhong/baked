@@ -37,7 +37,6 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-
 // SHOWS ALL ORDERS
 router.get('/:id/orders', async (req, res, next) => {
   try {
@@ -56,24 +55,24 @@ router.get('/:id/orders', async (req, res, next) => {
 });
 
 // SHOWS ONLY ACTIVE ORDER ( AKA CART )
-// router.get('/:id/orders', async (req, res, next) => {
-//   try {
-//     const userOrder = await User.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: Order,
-//           where: {
-//             type: "active"
-//           }
-//         },
-//       ],
-//       attributes: ['email'],
-//     });
-//     res.send(userOrder);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+router.get('/:id/orders', async (req, res, next) => {
+  try {
+    const userOrder = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Order,
+          where: {
+            status: 'open',
+          },
+        },
+      ],
+      // attributes: ['email'],
+    });
+    res.send(userOrder[0]);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.get('/:id/orders/:orderId', async (req, res, next) => {
   try {
@@ -99,7 +98,7 @@ router.get('/:id/cart', async (req, res, next) => {
     const userOrder = await User.findByPk(req.params.id, {
       include: [
         {
-          model: Cart,
+          model: Order,
         },
       ],
       attributes: ['email'],

@@ -1,14 +1,14 @@
-const Sequelize = require("sequelize");
-const db = require("../db");
+const Sequelize = require('sequelize');
+const db = require('../db');
 
-const Order = db.define("order", {
+const Order = db.define('order', {
   quantity: {
     type: Sequelize.INTEGER,
     defaultValue: 1,
   },
-  closedOrder: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
+  status: {
+    type: Sequelize.ENUM('open', 'closed'),
+    defaultValue: 'open',
   },
   totalPrice: {
     type: Sequelize.INTEGER,

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Cart, Order, Product, User } = require('../db');
 
 // USER VIEW: VIEW ITEMS WITHIN CART
-// router.get('/:id/orders', async (req, res, next) => {
+// router.get('/cart', async (req, res, next) => {
 //   try {
 //     const userOrder = await User.findByPk(req.params.id, {
 //       include: [
@@ -41,12 +41,13 @@ const { Cart, Order, Product, User } = require('../db');
 //   }
 // })
 
-router.get("/:id", async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const cart = await Order.findAll({
-      where: { 
+      where: {
         userId: req.params.id,
-        closedOrder: false },
+        closedOrder: false,
+      },
     });
     res.send(cart);
   } catch (err) {
