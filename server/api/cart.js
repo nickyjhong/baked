@@ -9,7 +9,7 @@ const { Cart, Order, Product, User } = require('../db');
 //         {
 //           model: Order,
 //           where: {
-//             type: "active"
+//             closedOrder: false
 //           }
 //         },
 //       ],
@@ -26,7 +26,7 @@ const { Cart, Order, Product, User } = require('../db');
 //     const data = await Order.findAll({
 //       where: {
 //         userId: req.user.id,
-//         type: "active"
+//         closedOrder: true
 //       },
 //       include: [
 //         {
@@ -46,7 +46,7 @@ router.get("/:id", async (req, res, next) => {
     const cart = await Order.findAll({
       where: { 
         userId: req.params.id,
-        type: false },
+        closedOrder: false },
     });
     res.send(cart);
   } catch (err) {

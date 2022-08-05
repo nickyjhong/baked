@@ -6,7 +6,7 @@ const Order = db.define("order", {
     type: Sequelize.INTEGER,
     defaultValue: 1,
   },
-  type: {
+  closedOrder: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
