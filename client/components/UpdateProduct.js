@@ -162,9 +162,9 @@ class UpdateProduct extends React.Component {
 const mapStateToProps = (state) => ({
     product: state.singleProduct
 })
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, { history }) => ({
   fetchProduct: (id) => dispatch(fetchProduct(id)),
-  updateProduct: (id, product) => (dispatch(updateProduct(id, product)))
+  updateProduct: (product) => (dispatch(updateProduct(product, history)))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateProduct);

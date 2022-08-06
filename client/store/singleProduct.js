@@ -31,13 +31,12 @@ export const fetchProduct = (id) => {
   }
 }
 
-export const updateProduct = (product, id) => {
+export const updateProduct = (product, history) => {
   return async (dispatch) => {
-    console.log('product: \n', product);
-    console.log('id: \n', id);
     try {
       const { data: updated } = await axios.put(`/api/products/${product.id}`, product);
       dispatch(_updateProduct(updated, product));
+      history.push('/products');
     } catch (err) {
       console.log(err)
     }
