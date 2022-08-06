@@ -457,25 +457,41 @@ const seed = async () => {
     );
 
     let user1 = await User.findByPk(1, { include: [{ model: Order }] });
-
-    const order1 = await Order.create({ status: 'open' });
-    await order1.setUser(user1);
+    let user2 = await User.findByPk(2, { include: [{ model: Order }] });
 
     const dessert1 = await Product.findByPk(1);
     const dessert2 = await Product.findByPk(2);
     const dessert3 = await Product.findByPk(3);
+    const dessert4 = await Product.findByPk(4);
+    const dessert5 = await Product.findByPk(5);
+
+    const order1 = await Order.create({ status: 'open' });
+    const order2 = await Order.create({ status: 'closed' });
+    const order3 = await Order.create({ status: 'open' });
+    const order4 = await Order.create({ status: 'closed' });
+
+    await order1.setUser(user1);
+    await order2.setUser(user1);
+    await order3.setUser(user2);
+    await order4.setUser(user2);
+    
 
     await order1.addProduct(dessert1);
     await order1.addProduct(dessert2);
     await order1.addProduct(dessert3);
 
-    const order2 = await Order.create({ status: 'closed' });
-    await order2.setUser(user1);
-
     await order2.addProduct(dessert1);
     await order2.addProduct(dessert2);
 
+    await order3.addProduct(dessert4);
+    await order3.addProduct(dessert5);
+    await order3.addProduct(dessert1);
+
+    await order4.addProduct(dessert5);
+    await order4.addProduct(dessert4);
+
     user1 = await User.findByPk(1, { include: { model: Order } });
+    user2 = await User.findByPk(2, { include: { model: Order } });
 
     // Associate cart with user
   } catch (err) {
