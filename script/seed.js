@@ -463,9 +463,11 @@ const seed = async () => {
 
     const dessert1 = await Product.findByPk(1);
     const dessert2 = await Product.findByPk(2);
+    const dessert3 = await Product.findByPk(3);
 
     await order1.addProduct(dessert1);
     await order1.addProduct(dessert2);
+    await order1.addProduct(dessert3);
 
     const order2 = await Order.create({ status: 'closed' });
     await order2.setUser(user1);
