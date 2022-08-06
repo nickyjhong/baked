@@ -10,6 +10,7 @@ import CreateUser from './components/CreateUser';
 import CreateProduct from './components/CreateProduct';
 import SingleProduct from './components/SingleProduct';
 import { me } from './store';
+import UpdateProduct from './components/UpdateProduct';
 
 class Routes extends Component {
   componentDidMount() {
@@ -26,8 +27,9 @@ class Routes extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/users/:id/cart" component={Cart} />
             <Route path="/users/:id" component={UserProfile} />
-            <Route exact path="/products" component={Shop} />
             <Route exact path="/add" component={CreateProduct} />
+            <Route exact path="/products" component={Shop} />
+            <Route exact path="/products/:id/update" component={UpdateProduct} />
             <Route path="/products/:id" component={SingleProduct} />
           </Switch>
         ) : (
