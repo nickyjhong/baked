@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchProduct, updateProduct } from "../store/singleProduct"
+import { allProducts, deleteProduct } from "../store/allProducts"
 
 class UpdateProduct extends React.Component {
   constructor() {
@@ -16,6 +17,7 @@ class UpdateProduct extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +50,10 @@ class UpdateProduct extends React.Component {
     event.preventDefault();
     console.log('this.props in handleSubmit: \n', this.props);
     this.props.updateProduct({ ...this.props.product, ...this.state });
+  }
+
+  handleDelete() {
+
   }
 
   render() {
@@ -150,6 +156,11 @@ class UpdateProduct extends React.Component {
           <br />
           <br />
           <button type="submit">Update</button>
+          <br />
+          <button type="button" onClick={() => {
+            this.props.deleteProduct(this.props.match.params.id)
+          }}>Delete</button>
+          <br />
           <button type="button">
             <Link to="/products">Cancel</Link>
           </button>
@@ -164,7 +175,8 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch, { history }) => ({
   fetchProduct: (id) => dispatch(fetchProduct(id)),
-  updateProduct: (product) => (dispatch(updateProduct(product, history)))
+  updateProduct: (product) => (dispatch(updateProduct(product, history))),
+  deleteProduct: (id) => dispatch(deleteProduct(id, history))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateProduct);

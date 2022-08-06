@@ -71,6 +71,19 @@ export const deleteProduct = (id, history) => {
   };
 };
 
+// export const deleteProduct = (product, history) => {
+//   return async (dispatch) => {
+//     try {
+//       const { data: deleted } = await axios.delete(`/api/products/${product.id}`);
+//       dispatch(_deleteProduct(product));
+//       history.push('/products');
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
+// };
+
+
 // export const fetchProductType = (categoryName) => {
 //   return async (dispatch) => {
 //     try {
