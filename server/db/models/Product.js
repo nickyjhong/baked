@@ -18,7 +18,7 @@ const Product = db.define("product", {
     defaultValue: 'https://www.electricmirror.com/wp-content/uploads/2022/05/image-coming-soon-300x300.jpg',
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT,
     allowNull: false,
     validate: {
       notEmpty: true,
@@ -43,6 +43,10 @@ const Product = db.define("product", {
     type: Sequelize.ENUM('cake', 'cookie', 'cupcake', 'mini', 'other'),
   },
 });
+
+Product.beforeSave((product) => {
+  product.price *= 100
+})
 
 module.exports = Product;
 
