@@ -44,10 +44,7 @@ router.get('/:id/orders', async (req, res, next) => {
       include: [
         {
           model: Order,
-          // where: {
-          //   status: 'open'
-          // }
-          include: [Product]
+          include: [Product],
         },
       ],
     });
@@ -67,11 +64,25 @@ router.get('/:id/cart', async (req, res, next) => {
           where: {
             status: 'open',
           },
-          include: [Product]
+          include: [Product],
         },
       ],
-      // attributes: ['email'],
+      attributes: ['email'],
     });
+    res.send(userOrder);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// ADD TO CART (ACTIVE ORDER) ROUTE
+router.post('/:id/cart', async (req, res, next) => {
+  try {
+    console.log(req);
+    const userOrder = await Order.findOrCreate({
+      where: { userId: req.user.id, status: 'open' },
+    });
+    console.log(userOrder);
     res.send(userOrder);
   } catch (err) {
     next(err);
@@ -97,21 +108,21 @@ router.get('/:id/orders/:orderId', async (req, res, next) => {
   }
 });
 
-router.get('/:id/cart', async (req, res, next) => {
-  try {
-    const userOrder = await User.findByPk(req.params.id, {
-      include: [
-        {
-          model: Order,
-        },
-      ],
-      attributes: ['email'],
-    });
-    res.send(userOrder);
-  } catch (err) {
-    next(err);
-  }
-});
+// router.get('/:id/cart', async (req, res, next) => {
+//   try {
+//     const userOrder = await User.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Order,
+//         },
+//       ],
+//       attributes: ['email'],
+//     });
+//     res.send(userOrder);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 // Once user and cart associated by id, come back to write code
 // router.put('/:id/cart', async (req, res, next) => {
