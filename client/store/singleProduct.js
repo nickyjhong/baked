@@ -31,11 +31,13 @@ export const fetchProduct = (id) => {
   }
 }
 
-export const updateProduct = (id, update) => {
+export const updateProduct = (product, id) => {
   return async (dispatch) => {
+    console.log('product: \n', product);
+    console.log('id: \n', id);
     try {
-      const { data } = await axios.put(`/api/products/${id}`, update);
-      dispatch(_updateProduct(data));
+      const { data: updated } = await axios.put(`/api/products/${product.id}`, product);
+      dispatch(_updateProduct(updated, product));
     } catch (err) {
       console.log(err)
     }
@@ -50,7 +52,7 @@ export default function singleProductReducer(state = initialState, action) {
     case SET_PRODUCT:
       return action.product;
     case UPDATE_PRODUCT:
-      return action.product;
+      return { ...action.product, product: action.product };
     default:
       return state;
   }
