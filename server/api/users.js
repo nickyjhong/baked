@@ -2,9 +2,10 @@ const router = require('express').Router();
 const {
   models: { User, CartItem, Order, Product },
 } = require('../db');
+const { requireToken } = require('./gateKeepingMiddleware');
 module.exports = router;
 
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the name and email fields - even though
@@ -47,7 +48,7 @@ router.get('/:id/orders', async (req, res, next) => {
           // where: {
           //   status: 'open'
           // }
-          include: [Product]
+          include: [Product],
         },
       ],
     });
@@ -67,7 +68,7 @@ router.get('/:id/cart', async (req, res, next) => {
           where: {
             status: 'open',
           },
-          include: [Product]
+          include: [Product],
         },
       ],
       // attributes: ['email'],

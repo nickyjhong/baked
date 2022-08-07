@@ -28,9 +28,9 @@ const User = db.define('user', {
   address: {
     type: Sequelize.STRING,
   },
-  userType: {
-    type: Sequelize.ENUM('customer', 'admin'),
-    defaultValue: 'customer',
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
   },
 });
 
