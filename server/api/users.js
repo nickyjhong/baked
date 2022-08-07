@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {
   models: { User, CartItem, Order, Product },
 } = require('../db');
+const { requireToken } = require('./middleware');
 module.exports = router;
 
 // ADMIN VIEW: RETRIEVE ALL USERS ***requireToken + isAdmin 
@@ -13,7 +14,7 @@ router.get('/', async (req, res, next) => {
       // send everything to anyone who asks!
       attributes: ['firstName', 'lastName', 'email'],
     });
-    res.json(users);
+    res.send(users);
   } catch (err) {
     next(err);
   }
@@ -53,11 +54,11 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 // USER CAN SEE THEIR PROFILE -> NEED ***requireToken TO WORK
-router.get('/profile', async (req, res, next) => {
+router.get('/profile', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.dataValues.id, {
       attributes: [
-        'name',
+        'firstName',
         'email',
       ],
     });
@@ -68,7 +69,7 @@ router.get('/profile', async (req, res, next) => {
 });
 
 // USER CAN UPDATE THEIR PROFILE *TIER 2
-router.put('/account', async (req, res, next) => {
+router.put('/account', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.dataValues.id, {
       attributes: [
@@ -85,7 +86,7 @@ router.put('/account', async (req, res, next) => {
 });
 
 // USER CAN VIEW THEIR PAST ORDERS -> ***need requireToken to work
-router.get('/orders', async (req, res, next) => {
+router.get('/orders', requireToken, async (req, res, next) => {
   try {
     const userOrder = await Order.findAll({
       where: {

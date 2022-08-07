@@ -6,24 +6,24 @@ const {
 // USER VIEW: VIEW ALL PRODUCTS
 router.get('/', async (req, res, next) => {
   try {
-    const allProducts = await Product.findAll();
-    res.json(allProducts);
+    const products = await Product.findAll();
+    res.send(products);
   } catch (err) {
     next(err);
   }
 });
 
-//   ADMIN VIEW: ADD A NEW PRODUCT TO SHOP PAGE
+// ADMIN VIEW: ADD A NEW PRODUCT TO SHOP PAGE
 router.post('/', async (req, res, next) => {
   try {
-    const newProduct = await Product.create(req.body);
-    res.send(newProduct);
+    const product = await Product.create(req.body);
+    res.send(product);
   } catch (error) {
     next(error);
   }
 });
 
-//   ADMIN VIEW: UPDATE A NEW PRODUCT TO SHOP PAGE
+// ADMIN VIEW: UPDATE A NEW PRODUCT TO SHOP PAGE
 router.put('/:id', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
@@ -34,7 +34,7 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
-//   ADMIN VIEW: DELETE A PRODUCT FROM SHOP
+// ADMIN VIEW: DELETE A PRODUCT FROM SHOP
 router.delete('/:id', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
@@ -45,7 +45,7 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-//   USER VIEW: VIEW A SINGLE PRODUCT
+// USER VIEW: VIEW A SINGLE PRODUCT
 router.get('/:id', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
