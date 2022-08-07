@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 // Action Types
-const SET_ORDERS = "SET_ORDERS";
+const SET_ORDERS = 'SET_ORDERS';
 
 // Action Creators
 export const _setOrders = (orders) => ({
@@ -16,7 +16,7 @@ export const fetchOrders = (userId) => {
       const { data } = await axios.get(`/api/users/${userId}/orders`);
       dispatch(_setOrders(data));
     } catch (err) {
-      console.error('wtf');
+      console.error(err);
     }
   };
 };

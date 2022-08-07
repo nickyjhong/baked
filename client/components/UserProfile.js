@@ -8,6 +8,7 @@ export class UserProfile extends Component {
     this.props.getOrders(this.props.match.params.id);
   }
   render() {
+    console.log('this.props:', this.props);
     const { name } = this.props;
     const usersOrders = this.props.allOrders.orders || []
     return (
