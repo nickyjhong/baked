@@ -474,7 +474,6 @@ const seed = async () => {
     await order2.setUser(user1);
     await order3.setUser(user2);
     await order4.setUser(user2);
-    
 
     await order1.addProduct(dessert1);
     await order1.addProduct(dessert2);

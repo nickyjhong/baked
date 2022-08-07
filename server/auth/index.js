@@ -4,6 +4,8 @@ const {
 } = require('../db');
 module.exports = router;
 
+// on Postman, error message in route
+// "WHERE parameter \"email\" has invalid \"undefined\" value"
 router.post('/login', async (req, res, next) => {
   try {
     res.send({ token: await User.authenticate(req.body) });
@@ -14,7 +16,7 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    // prevents sequelize injection
+    // prevents sequelize in
     const { email, name, password } = req.body;
     const user = await User.create({ email, name, password });
     res.send({ token: await user.generateToken() });

@@ -2,8 +2,7 @@ const router = require('express').Router();
 const {
   models: { User, CartItem, Order, Product },
 } = require('../db');
-const { requireToken } = require('./gateKeepingMiddleware');
-module.exports = router;
+const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
 
 router.get('/', requireToken, async (req, res, next) => {
   try {
@@ -113,6 +112,8 @@ router.get('/:id/cart', async (req, res, next) => {
     next(err);
   }
 });
+
+module.exports = router;
 
 // Once user and cart associated by id, come back to write code
 // router.put('/:id/cart', async (req, res, next) => {
