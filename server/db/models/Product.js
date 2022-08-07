@@ -31,7 +31,7 @@ const Product = db.define("product", {
       notEmpty: true,
     },
   },
-  quantity: {
+  inventory: {
     type: Sequelize.INTEGER,
     validate: {
       min: 0,

@@ -10,4 +10,25 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+// SHOWS ONLY ACTIVE ORDER ( AKA CART )
+router.get('/:id/cart', async (req, res, next) => {
+    try {
+      const userOrder = await User.findByPk(req.params.id, {
+        include: [
+          {
+            model: Order,
+            where: {
+              status: 'open',
+            },
+            include: [Product],
+          },
+        ],
+        attributes: ['email'],
+      });
+      res.send(userOrder);
+    } catch (err) {
+      next(err);
+    }
+  });
+
 module.exports = router;

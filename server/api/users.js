@@ -1,23 +1,33 @@
 const router = require('express').Router();
 const {
-  models: { User, CartItem, Order, Product },
+  models: { User, Order, Product },
 } = require('../db');
-module.exports = router;
 
+// const requireToken = async (req, res, next) => {
+//   try {
+//     const token = req.headers.authorization
+//     const user = await User.findByToken(token)
+//     req.user = user
+//     next()
+//   } catch(err) {
+//     next(err)
+//   }
+// }
+
+
+// ADMIN VIEW: RETRIEVE ALL USERS ***requireToken + isAdmin 
 router.get('/', async (req, res, next) => {
   try {
-    const users = await User.findAll({
-      // explicitly select only the name and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
+    const users =  await User.findAll({
       attributes: ['name', 'email'],
     });
-    res.json(users);
+    res.send(users);
   } catch (err) {
     next(err);
   }
 });
 
+// ADMIN VIEW: CREATE NEW USER
 router.post('/', async (req, res, next) => {
   try {
     const newUser = await User.create(req.body);
@@ -28,46 +38,76 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+// ADMIN VIEW: UPDATE USER ***requireToken
+router.put('/:id', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id);
+    await user.update(req.body)
+    res.send(user)
+  } catch (error) {
+    next(error);
+  }
+});
+
+// ADMIN VIEW: DELETE USER
+// router.delete('/:userId', async (req, res, next) => {
+//   try {
+//     const user = await User.findByPk(req.params.id);
+//       await user.destroy();
+//       res.send(user)
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// USER CAN SEE THEIR PROFILE -> NEED ***requireToken TO WORK
+router.get('/profile', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.dataValues.id, {
+      attributes: [
+        'name',
+        'email',
+        'address'
+      ],
+    });
     res.send(user);
   } catch (err) {
     next(err);
   }
 });
 
-// SHOWS ALL ORDERS
-router.get('/:id/orders', async (req, res, next) => {
+// USER CAN UPDATE THEIR PROFILE *TIER 2
+router.put('/account', async (req, res, next) => {
   try {
-    const userOrder = await User.findByPk(req.params.id, {
-      include: [
-        {
-          model: Order,
-          include: [Product],
-        },
+    const user = await User.findByPk(req.user.dataValues.id, {
+      attributes: [
+        'name',
+        'email',
+        'address',
       ],
     });
-    res.send(userOrder);
-  } catch (err) {
-    next(err);
+    await user.update(req.body)
+    res.send(user)
+  } catch (error) {
+    next(error);
   }
 });
 
-// SHOWS ONLY ACTIVE ORDER ( AKA CART )
-router.get('/:id/cart', async (req, res, next) => {
+// USER CAN VIEW THEIR PAST ORDERS -> ***need requireToken to work
+router.get('/orders', async (req, res, next) => {
   try {
-    const userOrder = await User.findByPk(req.params.id, {
-      include: [
+    const userOrder = await Order.findAll({
+
+      where: {
+        userId: req.user.dataValues.id,
+        status: 'closed'
+      },
+          include: [
         {
           model: Order,
-          where: {
-            status: 'open',
-          },
-          include: [Product],
+          include: [Product]
         },
-      ],
-      attributes: ['email'],
+      ]
     });
     res.send(userOrder);
   } catch (err) {
@@ -75,88 +115,5 @@ router.get('/:id/cart', async (req, res, next) => {
   }
 });
 
-// ADD TO CART (ACTIVE ORDER) ROUTE
-router.post('/:id/cart', async (req, res, next) => {
-  try {
-    console.log(req);
-    const userOrder = await Order.findOrCreate({
-      where: { userId: req.user.id, status: 'open' },
-    });
-    console.log(userOrder);
-    res.send(userOrder);
-  } catch (err) {
-    next(err);
-  }
-});
 
-router.get('/:id/orders/:orderId', async (req, res, next) => {
-  try {
-    const userOrder = await User.findByPk(req.params.id, {
-      include: [
-        {
-          model: Order,
-          where: {
-            id: req.params.orderId,
-          },
-        },
-      ],
-      attributes: ['email'],
-    });
-    res.send(userOrder);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// router.get('/:id/cart', async (req, res, next) => {
-//   try {
-//     const userOrder = await User.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: Order,
-//         },
-//       ],
-//       attributes: ['email'],
-//     });
-//     res.send(userOrder);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
-// Once user and cart associated by id, come back to write code
-// router.put('/:id/cart', async (req, res, next) => {
-//   try {
-//     const userOrder = await User.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: Cart,
-//         },
-//       ],
-//       attributes: ['email'],
-//     });
-//     res.send(userOrder);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
-// Update user, do this when we get to tier 2
-// router.put('/:id', async (req, res, next) => {
-//   try {
-//     const user = await User.findByPk(req.params.id);
-//     res.send(user);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-// Create login token
-// router.post('/', async (req, res, next) => {
-//   try {
-//     const token = await User.authenticate(req.body);
-//     res.send(token);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+module.exports = router;

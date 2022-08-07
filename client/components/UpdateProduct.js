@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { createProduct } from "../store/allProducts"
+import { fetchProduct, updateProduct } from "../store/singleProduct"
+import { allProducts, deleteProduct } from "../store/allProducts"
 
-class CreateProduct extends React.Component {
+class UpdateProduct extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -16,28 +17,53 @@ class CreateProduct extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params; 
+    this.props.fetchProduct(id); //  <--
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log('this.props in componentDidUpdate: \n', this.props)
+    if (prevProps.product.id !== this.props.product.id) { //
+      this.setState({
+        name: this.props.product.name || "",
+        imageURL: this.props.product.imageURL || "",
+        price: this.props.product.price || "",
+        description: this.props.product.description || "",
+        inventory: this.props.product.inventory || "",
+        category: this.props.product.category || "",
+      });
+    }
   }
 
   handleChange(event) {
     this.setState({...this.state,
       [event.target.name]: event.target.value,
     });
-    console.log(this.state)
+    console.log('this.state in handleChange: \n', this.state)
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('this.props: \n', this.props);
-    this.props.createProduct(this.state);
+    console.log('this.props in handleSubmit: \n', this.props);
+    this.props.updateProduct({ ...this.props.product, ...this.state });
+  }
+
+  handleDelete() {
+
   }
 
   render() {
     const { name, imageURL, price, description, category, inventory } = this.state;
     const { handleSubmit, handleChange } = this;
+    console.log('this.props in render: \n', this.props);
     return (
       <div className="add-product-form">
         <form className="add-form-input" onSubmit={handleSubmit}>
-          <h1 style={{ textAlign: "center" }}>Add Product</h1>
+          <h1 style={{ textAlign: "center" }}>Update Product</h1>
           <label htmlFor="productName">Name</label>
           <br />
           <input
@@ -129,7 +155,12 @@ class CreateProduct extends React.Component {
           </select>
           <br />
           <br />
-          <button type="submit">Add</button>
+          <button type="submit">Update</button>
+          <br />
+          <button type="button" onClick={() => {
+            this.props.deleteProduct(this.props.match.params.id)
+          }}>Delete</button>
+          <br />
           <button type="button">
             <Link to="/products">Cancel</Link>
           </button>
@@ -139,8 +170,13 @@ class CreateProduct extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+    product: state.singleProduct
+})
 const mapDispatchToProps = (dispatch, { history }) => ({
-  createProduct: (product) => dispatch(createProduct(product, history)),
+  fetchProduct: (id) => dispatch(fetchProduct(id)),
+  updateProduct: (product) => (dispatch(updateProduct(product, history))),
+  deleteProduct: (id) => dispatch(deleteProduct(id, history))
 });
 
-export default connect(null, mapDispatchToProps)(CreateProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateProduct);

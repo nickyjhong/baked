@@ -31,38 +31,58 @@ export const _updateUser = (user) => {
 //   };
 // };
 
-export const fetchUser = (id) => {
+// export const fetchUser = (id) => {
+//   return async (dispatch) => {
+//     try {
+//       const { data } = await axios.get(`/api/users/${id}`);
+//       dispatch(setUser(data));
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
+
+export const fetchUser = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/api/users/${id}`);
-      dispatch(setUser(data));
+      const token = window.localStorage.getItem('token');
+      if (token) {
+        const { data } = await axios.get(`/api/users/profile`, {
+          headers: {
+            authorization: token
+          }
+        })
+        await dispatch(setUser(data))
+      } else {
+        console.log("token does not exist")
+      }
     } catch (err) {
       console.log(err);
-    }
-  };
-};
-
-
-export const updateUser = (id, update) => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.put(`/api/users/${id}`, update)
-      dispatch(_updateUser(data))
-    } catch (err) {
-      console.log(err)
     }
   }
 }
 
+// TIER 2 REQ: NOT CURRENTLY WORKING
+// export const updateUser = (id, update) => {
+//   return async (dispatch) => {
+//     try {
+//       const { data } = await axios.put(`/api/users/${id}`, update)
+//       dispatch(_updateUser(data))
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }
+// }
+
 // Reducer
-const initialState = {};
+const initialState = {}
 
 export default function singleUserReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return action.user;
-    case UPDATE_USER:
-      return action.user;
+    // case UPDATE_USER:
+    //   return action.user;
     default:
       return state;
   }
