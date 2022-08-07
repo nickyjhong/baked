@@ -2,11 +2,11 @@ const router = require('express').Router();
 const {
   models: { User, CartItem, Order, Product },
 } = require('../db');
-const { requireToken } = require('./middleware');
+const { requireToken, isAdmin } = require('./middleware');
 module.exports = router;
 
 // ADMIN VIEW: RETRIEVE ALL USERS ***requireToken + isAdmin 
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the name and email fields - even though

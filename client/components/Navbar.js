@@ -7,20 +7,24 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <nav>
       {isLoggedIn ? (
-        <div>
+        <div className="nav-container">
           {/* The navbar will show these links after you log in */}
-          <Link to="/home"className="navLink">Home</Link>
+          <Link to="/home">
+            <img src="./baked-logo.png" alt="logo" className="navLogo"/>
+          </Link>
           <Link to="/products" className="navLink">Shop</Link>
           <a href="/" onClick={handleClick} className="navLink"> 
             Logout
           </a>
-          <Link to="/profile" className="navLink">My Account</Link>
+          <Link to="/profile" className="navLink">Profile</Link>
           <Link to="/cart" className="navLink">Cart</Link>
         </div>
       ) : (
-        <div>
+        <div className="nav-container">
           {/* The navbar will show these links before you log in */}
-          <Link to="/home" className="navLink">Home</Link>
+          <Link to="/home">
+            <img src="./baked-logo.png" alt="logo" className="navLogo"/>
+          </Link>
           <Link to="/products" className="navLink">Shop</Link>
           <Link to="/login" className="navLink">Login</Link>
           <Link to="/signup" className="navLink">Sign Up</Link>
