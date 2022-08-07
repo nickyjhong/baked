@@ -1,53 +1,46 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { fetchOrder } from "../store/singleOrder";
-import { fetchOrders } from "../store/allOrders";
+import { fetchCart } from "../store/cart";
 
-export class Cart extends Component {
+class Cart extends Component {
+  constructor(){
+    super()
 
+  }
   componentDidMount() {
-    this.props.getOrders(this.props.match.params.id);
+    this.props.fetchCart();
   }
 
   render() {
-    console.log('this.props: \n', this.props);
-    
-    const usersOrders = this.props.allOrders.orders || []
+    return (
+      <div>
+        {this.props.cart !== null && this.props.cart.products
+        ? this.props.cart.products.map((product) => (
+          <div key = {product.id}>
+              <p> -----------------------</p>
+              <p> Product Name: {product.name} </p>
+              <img src=  {product.imageUrl}/> {/* Change to imageURL to see image*/}
+              <p> Price: ${product.price / 100}</p>
 
-      return (
-        <div>
-          {usersOrders.length ? (usersOrders.map(order => {
-            return (
-              order.status === 'open' ? (
-                <div key={order.id}>
-                  <ul>
-                    {order.products.map(product => {
-                      return (
-                        <li key={product.id}>
-                          {product.name}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              ) : (
-                <div></div>
-              )
-            )
-          })): (
-            <div>I'm still loading</div>
-          )}
-        </div>
-      )
-    }
+
+          </div>
+        ))
+      :  <p> I'm still loading </p>}
+
+      </div>
+
+    );
   }
+}
 
-const mapStateToProps = (reduxState) => ({
-  allOrders: reduxState.orders
-})
 
-const mapDispatchToProps = (dispatch) => ({
-  getOrders: (userId) => dispatch(fetchOrders(userId))
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+const mapState = (state) => ({
+  cart: state.cart,
+});
+
+const mapDispatch = (dispatch) => ({
+  fetchCart: () => dispatch(fetchCart()),
+});
+
+export default connect(mapState, mapDispatch)(Cart);

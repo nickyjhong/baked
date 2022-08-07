@@ -1,33 +1,46 @@
-import axios from "axios";
+import axios from 'axios'
 
-// Action Types
-const SET_ORDERS = "SET_ORDERS";
+// ACTION TYPES
+const SET_ORDERS = 'SET_ORDERS'
 
-// Action Creators
+// ACTION CREATORS
 export const _setOrders = (orders) => ({
   type: SET_ORDERS,
-  orders,
+  orders
 });
 
-// Thunk
-export const fetchOrders = (userId) => {
+// THUNKS
+export const fetchOrders = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`/api/users/${userId}/orders`);
-      dispatch(_setOrders(data));
+      const token = window.localStorage.getItem('token');
+      if (token) {
+        const { data } = await axios.get(`/api/users/orders`, {
+          headers: {
+            authorization: token
+          }
+        })
+        await dispatch(_setOrders(data))
+      } else {
+        console.log("Bad token")
+      }
     } catch (err) {
-      console.error('wtf');
+      console.error(`Can't find order history!`);
     }
-  };
-};
-
-// Reducer
-const initialState = [];
-export default function ordersReducer(state = initialState, action) {
-  switch (action.type) {
-    case SET_ORDERS:
-      return action.orders;
-    default:
-      return state;
   }
 }
+
+// REDUCER
+
+const initialState = []
+
+export default function ordersReducer (state = initialState, action) {
+  switch (action.type) {
+    case SET_ORDERS:
+      return action.orders
+    default:
+      return state
+  }
+}
+
+

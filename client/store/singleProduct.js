@@ -1,60 +1,30 @@
-import axios from "axios";
+import axios from 'axios'
 
-// Action type
-const SET_PRODUCT = 'SET_PRODUCT';
-const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+// ACTION TYPES
+const SET_PRODUCT = 'SET_PRODUCT'
 
-// Action creator
-export const setProduct = (product) => {
-  return {
-    type: SET_PRODUCT,
-    product
-  }
+
+// ACTION CREATORS 
+export const _setProduct = (product) => ({
+  type: SET_PRODUCT,
+  product
+});
+
+
+// THUNKS
+export const fetchProduct = (id) => async (dispatch) =>{
+  const {data} = await axios.get(`/api/products/${id}`)
+  dispatch(_setProduct(data));
 }
 
-const _updateProduct = product => {
-  return {
-    type: UPDATE_PRODUCT,
-    product
-  }
-}
+// REDUCER
+const initialState = {}
 
-// Thunk creator
-export const fetchProduct = (id) => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.get(`/api/products/${id}`)
-      dispatch(setProduct(data))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-}
-
-export const updateProduct = (product, history) => {
-  return async (dispatch) => {
-    try {
-      const { data: updated } = await axios.put(`/api/products/${product.id}`, product);
-      dispatch(_updateProduct(updated, product));
-      history.push('/products');
-    } catch (err) {
-      console.log(err)
-    }
-  }
-}
-
-
-// Reducer
-const initialState = {};
-export default function singleProductReducer(state = initialState, action) {
-  switch (action.type) {
-    case SET_PRODUCT:
-      return action.product;
-    case UPDATE_PRODUCT:
-      return { ...action.product, product: action.product };
+export default function singleProductReducer (state = initialState, action) {
+  switch(action.type){
+    case SET_PRODUCT: 
+      return action.product
     default:
-      return state;
+      return state
   }
 }
-
-// increase/decrease

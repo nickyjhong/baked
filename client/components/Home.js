@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 export const Home = (props) => {
-  const { name } = props;
-  return <div>home page: hello, {name}</div>;
+  const { firstName } = props;
+  return <div>home page: hello, {firstName}</div>;
 };
 
 const mapState = (state) => {
   return {
-    name: state.auth.name,
+    firstName: state.auth.firstName,
   };
 };
 
