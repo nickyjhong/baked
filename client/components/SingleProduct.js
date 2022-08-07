@@ -9,7 +9,7 @@ class SingleProduct extends React.Component {
   }
 
   render() {
-    const { name, imageURL, price, description, category } = this.props.product
+    const { name, imageURL, price, description, category, inventory } = this.props.product
     console.log('PROPS',this.props)
     return (
       <div className="s-product-container">
@@ -25,7 +25,7 @@ class SingleProduct extends React.Component {
             <p className="s-product-detail name">{name}</p>
             <p className="s-product-detail price">${price / 100}</p>
             <p className="s-product-detail description">{description}</p>
-            {/* <p className="s-product-detail description">In Stock: {quantity}</p> */}
+            {/* <p className="s-product-detail description">In Stock: {inventory}</p> */}
             <button>Add To Cart</button>
             <p className="s-product-detail category">Tags: {category}</p>
           </div>

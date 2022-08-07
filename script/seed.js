@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Product, Cart, Order },
+  models: { User, Product, CartItem, Order },
 } = require('../server/db');
 
 /**
@@ -10,34 +10,46 @@ const {
  *      match the models, and populates the database.
  */
 
-const customers = [
+// nicky - active, closed, admin
+// cherry - active, closed, admin
+// amy - no orders, admin
+// chris - active, closed, customer
+// custy - active, closed, customer
+const activeUsers = [
   {
     email: 'nicky@gmail.com',
     password: '123',
     name: 'Nicky',
     address: '4 Coding Blvd',
-    userType: 'admin',
+    isAdmin: true,
   },
   {
     email: 'cherry@gmail.com',
     password: '123',
     name: 'Cherry',
     address: '3 Coding Blvd',
-    userType: 'admin',
+    isAdmin: true,
   },
   {
     email: 'amy@gmail.com',
     password: '123',
     name: 'Amy',
     address: '2 Coding Blvd',
-    userType: 'admin',
+    isAdmin: true,
   },
   {
     email: 'chris@gmail.com',
     password: '123',
     name: 'Chris',
     address: '1 Coding Blvd',
-    userType: 'admin',
+    isAdmin: false,
+  },
+  {
+    email: 'customer@gmail.com',
+    password: '123',
+    name: 'Custy',
+    address: 'Customer Town',
+    isAdmin: false,
   },
 ];
 
@@ -446,8 +458,8 @@ const seed = async () => {
     await db.sync({ force: true });
 
     await Promise.all(
-      customers.map((customer) => {
-        return User.create(customer);
+      activeUsers.map((user) => {
+        return User.create(user);
       })
     );
     await Promise.all(
@@ -458,22 +470,37 @@ const seed = async () => {
 
     let user1 = await User.findByPk(1, { include: [{ model: Order }] });
     let user2 = await User.findByPk(2, { include: [{ model: Order }] });
+    let user4 = await User.findByPk(4, { include: [{ model: Order }] });
+    let user5 = await User.findByPk(5, { include: [{ model: Order }] });
 
     const dessert1 = await Product.findByPk(1);
     const dessert2 = await Product.findByPk(2);
     const dessert3 = await Product.findByPk(3);
     const dessert4 = await Product.findByPk(4);
     const dessert5 = await Product.findByPk(5);
+    const dessert6 = await Product.findByPk(6);
+    const dessert7 = await Product.findByPk(7);
+    const dessert8 = await Product.findByPk(8);
+    const dessert9 = await Product.findByPk(9);
 
     const order1 = await Order.create({ status: 'open' });
     const order2 = await Order.create({ status: 'closed' });
     const order3 = await Order.create({ status: 'open' });
     const order4 = await Order.create({ status: 'closed' });
+    const order5 = await Order.create({ status: 'open' });
+    const order6 = await Order.create({ status: 'closed' });
+    const order7 = await Order.create({ status: 'open' });
+    const order8 = await Order.create({ status: 'closed' });
 
     await order1.setUser(user1);
     await order2.setUser(user1);
     await order3.setUser(user2);
     await order4.setUser(user2);
+
+    await order5.setUser(user4);
+    await order6.setUser(user4);
+    await order7.setUser(user5);
+    await order8.setUser(user5);
 
     await order1.addProduct(dessert1);
     await order1.addProduct(dessert2);
@@ -489,8 +516,22 @@ const seed = async () => {
     await order4.addProduct(dessert5);
     await order4.addProduct(dessert4);
 
+    await order5.addProduct(dessert6);
+    await order5.addProduct(dessert7);
+
+    await order6.addProduct(dessert7);
+    await order6.addProduct(dessert8);
+
+    await order7.addProduct(dessert9);
+    await order7.addProduct(dessert8);
+
+    await order8.addProduct(dessert7);
+    await order8.addProduct(dessert6);
+
     user1 = await User.findByPk(1, { include: { model: Order } });
     user2 = await User.findByPk(2, { include: { model: Order } });
+    user4 = await User.findByPk(4, { include: { model: Order } });
+    user5 = await User.findByPk(5, { include: { model: Order } });
 
     // Associate cart with user
   } catch (err) {

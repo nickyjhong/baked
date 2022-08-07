@@ -12,7 +12,7 @@ class UpdateProduct extends React.Component {
       imageURL: "",
       price: 0,
       description: "",
-      quantity: 0,
+      inventory: 0,
       category: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -33,7 +33,7 @@ class UpdateProduct extends React.Component {
         imageURL: this.props.product.imageURL || "",
         price: this.props.product.price || "",
         description: this.props.product.description || "",
-        quantity: this.props.product.quantity || "",
+        inventory: this.props.product.inventory || "",
         category: this.props.product.category || "",
       });
     }
@@ -57,7 +57,7 @@ class UpdateProduct extends React.Component {
   }
 
   render() {
-    const { name, imageURL, price, description, category, quantity } = this.state;
+    const { name, imageURL, price, description, category, inventory } = this.state;
     const { handleSubmit, handleChange } = this;
     console.log('this.props in render: \n', this.props);
     return (
@@ -133,12 +133,12 @@ class UpdateProduct extends React.Component {
           />
           <br />
           <br />
-          <label htmlFor="productQuantity">Quantity</label>
+          <label htmlFor="productInventory">Inventory</label>
           <br />
           <input
-            name="quantity"
+            name="inventory"
             onChange={handleChange}
-            value={quantity}
+            value={inventory}
             min="0"
             max="100"
           />

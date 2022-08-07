@@ -4,7 +4,7 @@ const {
 } = require('../db');
 const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
 
-router.get('/', requireToken, async (req, res, next) => {
+router.get('/', requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the name and email fields - even though
