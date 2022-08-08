@@ -1,11 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import { fetchUser } from '../store/singleUser'
-import OrderHistory from './OrderHistory'
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchUser } from '../store/singleUser';
+import OrderHistory from './OrderHistory';
 
 export class UserProfile extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   componentDidMount() {
@@ -13,7 +13,7 @@ export class UserProfile extends React.Component {
   }
 
   render() {
-    console.log('PROPS', this.props)
+    console.log('PROPS', this.props);
     return (
       <div>
         <h4>Welcome {this.props.firstName}!</h4>
@@ -22,7 +22,7 @@ export class UserProfile extends React.Component {
           <OrderHistory />
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -35,4 +35,4 @@ const mapDispatchToProps = (dispatch) => ({
   getUser: () => dispatch(fetchUser()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

@@ -59,3 +59,10 @@ const mapDispatch = dispatch => {
 
 export default connect(mapState, mapDispatch)(Navbar)
 
+// Footer
+// © 2022 GitHub, Inc.
+// Footer navigation
+// Terms
+// Privacy
+// Security
+// Status
