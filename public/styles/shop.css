@@ -134,7 +134,7 @@ p {
   }
 
   .category-search {
-    height: .02rem;
+    height: 1rem;
     width: 8em;
     border-radius: 5px;
 }
