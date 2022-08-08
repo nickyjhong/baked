@@ -30,6 +30,7 @@ class Cart extends Component {
   }
 }
 
+
 const mapState = (state) => ({
   cart: state.cart,
 });
