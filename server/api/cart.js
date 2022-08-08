@@ -51,16 +51,20 @@ router.post('/', requireToken, async (req, res, next) => {
       }
     })
 
+    // let newPrice = product.price * quantity
+
     if (!item) {
       await CartItem.create({
         orderId: order.id,
         productId: req.body.productId,
         quantity: 1,
-        unitPrice: product.price
+        unitPrice: product.price,
+        totalPrice: unitPrice
       })
     } else {
       item.update({
-        quantity: 2
+        quantity: 2,
+        // totalPrice: newPrice
       })
     }
     res.send(order);
