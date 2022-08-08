@@ -1,0 +1,14 @@
+.nav-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.navLogo {
+  width: 25vh;
+}
+
+.navLink {
+  text-decoration: none;
+  color: inherit;
+}

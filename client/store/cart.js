@@ -1,57 +1,43 @@
 import axios from 'axios';
-import 
 
-// Action types
-// const GET_CART = 'GET_CART';
-const ADD_TO_CART = 'ADD_TO_CART';
-const DELETE_FROM_CART = 'DELETE_FROM_CART';
+// ACTION TYPES
+const SET_CART = 'SET_CART';
 
-// Action creators
-// export const _getCart = (cart) => ({
-//   type: GET_CART,
-//   cart,
-// });
-
-export const _addToCart = (cartItem) => ({
-  type: ADD_TO_CART,
-  cartItem,
+// ACTION CREATORS
+export const _setCart = (cart) => ({
+  type: SET_CART,
+  cart,
 });
 
-export const _deleteFromCart = (cartItem) => ({
-  type: DELETE_FROM_CART,
-  cartItem,
-});
-
-// Thunk
-// export const fetchCart = (userId) => {
-//   return async (dispatch) => {
-//     try {
-//       const { data: cart } = await axios.get(`/api/users/${userId}/cart`);
-//       dispatch(_getCart(cart));
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-// };
-
-export const addToCart = (userId, quantity) => {
+// THUNKS
+export const fetchCart = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`/api/users/${userId}/cart`, {
-        userId: userId,
-        quantity: quantity,
-      });
-      dispatch();
+      const token = window.localStorage.getItem('token');
+
+      if (token) {
+        const { data } = await axios.get('/api/cart', {
+          headers: {
+            authorization: token,
+          },
+        });
+        await dispatch(_setCart(data));
+      } else {
+        const cart = JSON.parse(window.localStorage.getItem('cart'));
+        await dispatch(_setCart(cart));
+      }
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
 };
 
-const initialState = [];
+// REDUCER
+const initialState = {};
+
 export default function cartReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_CART:
+    case SET_CART:
       return action.cart;
     default:
       return state;

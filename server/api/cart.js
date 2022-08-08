@@ -1,34 +1,35 @@
 const router = require('express').Router();
-const { models: { User } } = require('../db');
-
-router.get('/', async (req, res, next) => {
-    try {
-        const user = await User.findByToken(req.headers.authorization);
-        res.send(await user.getCart());
-    } catch (err) {
-        next(err)
-    }
-});
-
-// SHOWS ONLY ACTIVE ORDER ( AKA CART )
-router.get('/:id/cart', async (req, res, next) => {
-    try {
-      const userOrder = await User.findByPk(req.params.id, {
-        include: [
-          {
-            model: Order,
-            where: {
-              status: 'open',
-            },
-            include: [Product],
-          },
-        ],
-        attributes: ['email'],
-      });
-      res.send(userOrder);
-    } catch (err) {
-      next(err);
-    }
-  });
-
+const {
+  models: { User, CartItem, Order, Product },
+} = require('../db');
 module.exports = router;
+const { requireToken } = require('./middleware');
+
+router.get('/', requireToken, async (req, res, next) => {
+  try {
+    let order = await Order.findOne({
+      where: {
+        userId: req.user.dataValues.id,
+        status: 'open',
+      },
+    });
+    if (!order) {
+      order = await Order.create({
+        status: 'open',
+        userId: req.user.dataValues.id,
+      });
+    }
+
+    res.send(
+      await Order.findOne({
+        where: {
+          id: order.id,
+        },
+        include: [Product],
+        order: [[Product, 'id', 'desc']], // adding order by so the result will not jump around
+      })
+    );
+  } catch (ex) {
+    next(ex);
+  }
+});
