@@ -60,3 +60,27 @@ router.post('/', requireToken, async (req, res, next) => {
     next(err);
   }
 })
+
+router.put('/increase', requireToken, async (req, res, next) => {
+  try {
+    let order = await Order.findOne({
+      where: {
+        userId: req.user.dataValues.id,
+        status: 'open',
+      },
+      include: [Product],
+    });
+
+    const cartItem = CartItem.findOne({
+      where: {
+        orderId: order.id,
+        quantity: cartItem.quantity
+      }
+    });
+    cartItem.quantity++;
+    await cartItem.save();
+    res.send(cartItem)
+  } catch (err) {
+    next(err)
+  }
+})
