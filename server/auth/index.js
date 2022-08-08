@@ -16,7 +16,7 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    // prevents sequelize in
+    // prevents sequelize injection
     const { email, name, password } = req.body;
     const user = await User.create({ email, name, password });
     res.send({ token: await user.generateToken() });
