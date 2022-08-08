@@ -17,6 +17,30 @@ router.get('/', requireToken, async (req, res, next) => {
       include: [Product],
     });
 
+    // if (!order) {
+    //   order = await Order.create({
+    //     status: 'open',
+    //     userId: req.user.dataValues.id,
+    //   });
+    // }
+
+    res.send(order);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/', requireToken, async (req, res, send) => {
+  try {
+    let order = await Order.findOne({
+      where: {
+        userId: req.user.dataValues.id,
+        status: 'open',
+      },
+      include: [Product, CartItem],
+    });
+    console.log(req.body);
+    console.log(order);
     if (!order) {
       order = await Order.create({
         status: 'open',
@@ -25,7 +49,7 @@ router.get('/', requireToken, async (req, res, next) => {
     }
 
     res.send(order);
-  } catch (ex) {
-    next(ex);
+  } catch (err) {
+    next(err);
   }
-});
+})

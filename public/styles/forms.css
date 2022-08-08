@@ -1,9 +1,14 @@
-/* .form-container {
+
+/* ALL COMMENTED-OUT STYLING IS FOR THE PREVIOUS LOGIN FORM. 
+THE PREVIOUS LOGIN FORM IS STILL NESTED IN THE AUTHFORM.JS COMPONENT,
+AND IS COMMENTED-OUT. */
+
+ .form-container {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
-form {
+/* form {
 	margin:10% auto 0 auto;
 	padding:30px;
 	width:400px;
@@ -30,9 +35,8 @@ input {
 
 input:focus {
 	border-color:cornflowerblue;
-} */
+} */ 
 
-@import url('https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css');
 
 .login {
     display: flex;
@@ -47,7 +51,7 @@ input:focus {
     align-items: center;
     flex-direction: column;
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: #fff;
 }
 
@@ -60,7 +64,7 @@ input:focus {
 
 .login input {
     width: 260px;
-    border-radius: 4px;
+    border-radius: 10px;
     margin: 10px auto;
     padding: 11px 15px;
     background-color: rgb(245, 245, 245);
@@ -68,7 +72,7 @@ input:focus {
     border: 1px solid rgb(0, 0, 0, 0);
     font-size: 15px;
     color: rgb(30, 30, 30);
-    transition: .3s;
+    transition: .2s;
 }
 .login input::placeholder {
     color: rgb(200, 200, 200);
@@ -78,15 +82,20 @@ input:focus {
 }
 .login input:focus {
     background-color: #fff;
-    border: 1px solid rgb(87, 126, 219);
+    border: 1px solid #d49090;
     box-shadow: 0 0 4px 2px rgb(50, 50, 50, .1);
 }
+
 .login input:valid {
     border: 1px solid rgb(220, 220, 220);
 }
 
+/* .login input:invalid {
+    border: 1px solid red;
+} */
+
 .login button {
-    border-radius: 4px;
+    border-radius: 10px;
     background-color: #d49090;
     height: 45px;
     padding: 12px;
@@ -97,7 +106,7 @@ input:focus {
     border: none;
     cursor: pointer;
     margin: 20px auto;
-    transition: .3s;
+    transition: .2s;
 }
 .login button:hover {
     background-color: #ef757a;
