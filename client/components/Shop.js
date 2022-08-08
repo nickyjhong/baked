@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProducts } from '../store/allProducts';
+import { fetchProducts} from "../store/allProducts";
 
 export class Shop extends Component {
   constructor() {
@@ -30,15 +30,12 @@ export class Shop extends Component {
     const productFilter = products.filter((product) => {
       if (this.state.filtered === 'All') return product;
       if (this.state.filtered === 'Cakes') return product.category === 'cake';
-      if (this.state.filtered === 'Cookies')
-        return product.category === 'cookie';
-      if (this.state.filtered === 'Cupcakes')
-        return product.category === 'cupcake';
+      if (this.state.filtered === 'Cookies') return product.category === 'cookie';
+      if (this.state.filtered === 'Cupcakes') return product.category === 'cupcake';
       if (this.state.filtered === 'Mini') return product.category === 'mini';
       if (this.state.filtered === 'Other') return product.category === 'other';
     });
 
-    console.log('FILTER', this.state.filtered);
     return (
       <section className="grid-section">
         Baked Goods
@@ -47,48 +44,12 @@ export class Shop extends Component {
             <input className="category-search" placeholder="Search"></input>
             <p className="grid-section-left-category-bold">Categories</p>
             <ul>
-              <li
-                onClick={() => {
-                  this.handleFilterClick('All');
-                }}
-              >
-                All
-              </li>
-              <li
-                onClick={() => {
-                  this.handleFilterClick('Cakes');
-                }}
-              >
-                Cakes
-              </li>
-              <li
-                onClick={() => {
-                  this.handleFilterClick('Cookies');
-                }}
-              >
-                Cookies
-              </li>
-              <li
-                onClick={() => {
-                  this.handleFilterClick('Cupcakes');
-                }}
-              >
-                Cupcakes
-              </li>
-              <li
-                onClick={() => {
-                  this.handleFilterClick('Mini');
-                }}
-              >
-                Mini
-              </li>
-              <li
-                onClick={() => {
-                  this.handleFilterClick('Other');
-                }}
-              >
-                Other
-              </li>
+              <li onClick={() => {this.handleFilterClick('All')}} key="cat-all">All</li>
+              <li onClick={() => {this.handleFilterClick('Cakes')}} key="cat-cakes">Cakes</li>
+              <li onClick={() => {this.handleFilterClick('Cookies')}} key="cat-cookies">Cookies</li>
+              <li onClick={() => {this.handleFilterClick('Cupcakes')}} key="cat-cupcakes">Cupcakes</li>
+              <li onClick={() => {this.handleFilterClick('Mini')}} key="cat-mini"> Mini</li>
+              <li onClick={() => {this.handleFilterClick('Other')}} key="cat-other">Other</li>
             </ul>
           </div>
           <div className="grid-section-right">
@@ -104,6 +65,7 @@ export class Shop extends Component {
                     <div className="cookie-description">
                       <h3 className="grid-item-text">{product.name}</h3>
                       <p className="grid-item-text">${product.price / 100}</p>
+                      {/* <button className='add-to-cart'>Add To Cart</button> */}
                     </div>
                   </div>
                 </Link>

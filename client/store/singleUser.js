@@ -1,89 +1,53 @@
-import axios from "axios";
+import axios from 'axios'
 
-// Action types
+// ACTION TYPES
+const SET_USER = 'SET_USER'
 const UPDATE_USER = 'UPDATE_USER'
-const SET_USER = 'SET_USER';
 
-// Action creators
+// ACTION CREATORS
+export const _setUser = (user) => ({
+  type: SET_USER,
+  user
+});
 
-export const setUser = (user) => {
-  return {
-    type: SET_USER,
-    user,
-  };
-};
+export const _updateUser = (user) => ({
+  type: UPDATE_USER,
+  user
+});
 
-export const _updateUser = (user) => {
-  return {
-    type: UPDATE_USER,
-    user
-  }
-}
-
-// Thunks
-// export const createUser = (user, history) => {
-//   return async (dispatch) => {
-//     const { data: token } = await axios.post('/api/users', user);
-//     window.localStorage.setItem('token', token);
-//     dispatch(_createUser(user));
-//     dispatch(me())
-//     history.push('/');
-//   };
-// };
-
-// export const fetchUser = (id) => {
-//   return async (dispatch) => {
-//     try {
-//       const { data } = await axios.get(`/api/users/${id}`);
-//       dispatch(setUser(data));
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-// };
-
+// THUNKS
 export const fetchUser = () => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem('token');
       if (token) {
-        const { data } = await axios.get(`/api/users/profile`, {
+        const { data } = await axios.get('/api/users/profile', {
           headers: {
             authorization: token
           }
         })
-        await dispatch(setUser(data))
+        await dispatch(_setUser(data))
       } else {
-        console.log("token does not exist")
+        console.log("Bad token")
       }
     } catch (err) {
-      console.log(err);
+      console.error(`Can't find user!`);
     }
   }
 }
 
-// TIER 2 REQ: NOT CURRENTLY WORKING
-// export const updateUser = (id, update) => {
-//   return async (dispatch) => {
-//     try {
-//       const { data } = await axios.put(`/api/users/${id}`, update)
-//       dispatch(_updateUser(data))
-//     } catch (err) {
-//       console.log(err)
-//     }
-//   }
-// }
+// REDUCER
+const initialState = []
 
-// Reducer
-const initialState = {}
-
-export default function singleUserReducer(state = initialState, action) {
+export default function singleUserReducer (state = initialState, action) {
   switch (action.type) {
     case SET_USER:
-      return action.user;
-    // case UPDATE_USER:
-    //   return action.user;
+      return action.user
+    case UPDATE_USER:
+      return action.user
     default:
-      return state;
+      return state
   }
 }
+
+
