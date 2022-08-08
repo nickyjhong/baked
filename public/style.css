@@ -4,6 +4,7 @@
 @import './styles/singleProduct.css';
 @import './styles/navbar.css';
 @import './styles/cart.css';
+@import './styles/order.css';
 
 html {
   font-family: "Roboto", Helvetica, sans-serif;

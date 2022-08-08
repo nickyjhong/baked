@@ -20,6 +20,12 @@ class Cart extends Component {
               <p> Product Name: {product.name} </p>
               <img src={product.imageUrl} />{' '}
               {/* Change to imageURL to see image*/}
+        {this.props.cart !== null && this.props.cart.products
+        ? this.props.cart.products.map((product) => (
+          <div key={product.id} className="cart-container">
+              <p> -----------------------</p> {/* To differentiate order until we have css for it*/}
+              <p> Baked Good: {product.name} </p>
+              <img src={product.imageUrl}/> {/* Change to imageURL to see image*/}
               <p> Price: ${product.price / 100}</p>
             </div>
           ))

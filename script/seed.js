@@ -496,6 +496,7 @@ const seed = async () => {
     const order6 = await Order.create({ status: 'closed' });
     const order7 = await Order.create({ status: 'open' });
     const order8 = await Order.create({ status: 'closed' });
+    const order9 = await Order.create({ status: 'closed' });
 
     await order1.setUser(user1);
     await order2.setUser(user1);
@@ -506,6 +507,7 @@ const seed = async () => {
     await order6.setUser(user4);
     await order7.setUser(user5);
     await order8.setUser(user5);
+    await order9.setUser(user1);
 
     await order1.addProduct(dessert1);
     await order1.addProduct(dessert2);
@@ -532,6 +534,9 @@ const seed = async () => {
 
     await order8.addProduct(dessert7);
     await order8.addProduct(dessert6);
+
+    await order9.addProduct(dessert7)
+    await order9.addProduct(dessert4)
 
     user1 = await User.findByPk(1, { include: { model: Order } });
     user2 = await User.findByPk(2, { include: { model: Order } });

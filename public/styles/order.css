@@ -1,0 +1,18 @@
+.order-container {
+  margin: 30px;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 .5rem 1rem .5rem #E3E3E3;
+}
+
+.order-img {
+  width: 12vh;
+}
+
+.order-item-container {
+  display: flex;
+
+}
