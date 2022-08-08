@@ -5,7 +5,7 @@ const {
 const { requireToken, isAdmin } = require('./middleware');
 module.exports = router;
 
-// ADMIN VIEW: RETRIEVE ALL USERS ***requireToken + isAdmin 
+// ADMIN VIEW: RETRIEVE ALL USERS ***requireToken + isAdmin
 router.get('/', requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
@@ -35,8 +35,8 @@ router.post('/', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id);
-    await user.update(req.body)
-    res.send(user)
+    await user.update(req.body);
+    res.send(user);
   } catch (error) {
     next(error);
   }
@@ -46,8 +46,8 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id);
-      await user.destroy();
-      res.send(user)
+    await user.destroy();
+    res.send(user);
   } catch (err) {
     next(err);
   }
@@ -57,10 +57,7 @@ router.delete('/:id', async (req, res, next) => {
 router.get('/profile', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.dataValues.id, {
-      attributes: [
-        'firstName',
-        'email',
-      ],
+      attributes: ['firstName', 'email'],
     });
     res.send(user);
   } catch (err) {
@@ -72,14 +69,10 @@ router.get('/profile', requireToken, async (req, res, next) => {
 router.put('/account', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.dataValues.id, {
-      attributes: [
-        'firstName',
-        'lastName',
-        'address',
-      ],
+      attributes: ['firstName', 'lastName', 'address'],
     });
-    await user.update(req.body)
-    res.send(user)
+    await user.update(req.body);
+    res.send(user);
   } catch (error) {
     next(error);
   }
@@ -91,15 +84,14 @@ router.get('/orders', requireToken, async (req, res, next) => {
     const userOrder = await Order.findAll({
       where: {
         userId: req.user.dataValues.id,
-        status: 'closed'
+        status: 'closed',
       },
-        include: [
-          {
-            model: Product,
-          },
-        ]
-      }
-    );
+      include: [
+        {
+          model: Product,
+        },
+      ],
+    });
     res.send(userOrder);
   } catch (err) {
     next(err);

@@ -1,12 +1,12 @@
-import axios from 'axios'
+import axios from 'axios';
 
 // ACTION TYPES
-const SET_ORDERS = 'SET_ORDERS'
+const SET_ORDERS = 'SET_ORDERS';
 
 // ACTION CREATORS
 export const _setOrders = (orders) => ({
   type: SET_ORDERS,
-  orders
+  orders,
 });
 
 // THUNKS
@@ -17,30 +17,28 @@ export const fetchOrders = () => {
       if (token) {
         const { data } = await axios.get(`/api/users/orders`, {
           headers: {
-            authorization: token
-          }
-        })
-        await dispatch(_setOrders(data))
+            authorization: token,
+          },
+        });
+        await dispatch(_setOrders(data));
       } else {
-        console.log("Bad token")
+        console.log('Bad token');
       }
     } catch (err) {
       console.error(`Can't find order history!`);
     }
-  }
-}
+  };
+};
 
 // REDUCER
 
-const initialState = []
+const initialState = [];
 
-export default function ordersReducer (state = initialState, action) {
+export default function ordersReducer(state = initialState, action) {
   switch (action.type) {
     case SET_ORDERS:
-      return action.orders
+      return action.orders;
     default:
-      return state
+      return state;
   }
 }
-
-

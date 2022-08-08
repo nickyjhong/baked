@@ -1,27 +1,27 @@
-const router = require('express').Router()
+const router = require('express').Router();
 const {
   models: { User, CartItem, Order, Product },
 } = require('../db');
-module.exports = router
+module.exports = router;
 const { requireToken } = require('./middleware');
 
 // SEE CART
 
-router.get("/", requireToken, async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
   try {
     let order = await Order.findOne({
       where: {
         userId: req.user.dataValues.id,
-        status: 'open'
+        status: 'open',
       },
-      include: [Product]
-    })
-    
+      include: [Product],
+    });
+
     if (!order) {
       order = await Order.create({
         status: 'open',
-        userId: req.user.dataValues.id
-      })
+        userId: req.user.dataValues.id,
+      });
     }
 
     res.send(order);

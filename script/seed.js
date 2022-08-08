@@ -10,7 +10,6 @@ const {
  *      match the models, and populates the database.
  */
 
-
 // nicky - active, closed, admin
 // cherry - active, closed, admin
 // amy - no orders, admin
@@ -55,8 +54,8 @@ const activeUsers = [
     firstName: 'Custy',
     lastName: 'Test',
     address: 'Customer Town',
-    isAdmin: false
-  }
+    isAdmin: false,
+  },
 ];
 
 const products = [
@@ -479,7 +478,6 @@ const seed = async () => {
     let user4 = await User.findByPk(4, { include: [{ model: Order }] });
     let user5 = await User.findByPk(5, { include: [{ model: Order }] });
 
-
     const dessert1 = await Product.findByPk(1);
     const dessert2 = await Product.findByPk(2);
     const dessert3 = await Product.findByPk(3);
@@ -489,7 +487,6 @@ const seed = async () => {
     const dessert7 = await Product.findByPk(7);
     const dessert8 = await Product.findByPk(8);
     const dessert9 = await Product.findByPk(9);
-
 
     const order1 = await Order.create({ status: 'open' });
     const order2 = await Order.create({ status: 'closed' });
@@ -505,6 +502,7 @@ const seed = async () => {
     await order2.setUser(user1);
     await order3.setUser(user2);
     await order4.setUser(user2);
+
     await order5.setUser(user4);
     await order6.setUser(user4);
     await order7.setUser(user5);
@@ -525,17 +523,17 @@ const seed = async () => {
     await order4.addProduct(dessert5);
     await order4.addProduct(dessert4);
 
-    await order5.addProduct(dessert6)
-    await order5.addProduct(dessert7)
+    await order5.addProduct(dessert6);
+    await order5.addProduct(dessert7);
 
-    await order6.addProduct(dessert7)
-    await order6.addProduct(dessert8)
+    await order6.addProduct(dessert7);
+    await order6.addProduct(dessert8);
 
-    await order7.addProduct(dessert9)
-    await order7.addProduct(dessert8)
+    await order7.addProduct(dessert9);
+    await order7.addProduct(dessert8);
 
-    await order8.addProduct(dessert7)
-    await order8.addProduct(dessert6)
+    await order8.addProduct(dessert7);
+    await order8.addProduct(dessert6);
 
     await order9.addProduct(dessert7)
     await order9.addProduct(dessert4)
