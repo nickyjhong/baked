@@ -39,6 +39,7 @@
   li:hover {
     color: #d49090;
     transition-duration: .2s;
+    cursor: pointer;
   }
 
   /* .grid-section-right {
