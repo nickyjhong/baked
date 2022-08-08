@@ -44,12 +44,12 @@ export class Shop extends Component {
             <input className="category-search" placeholder="Search"></input>
             <p className="grid-section-left-category-bold">Categories</p>
             <ul>
-              <li onClick={() => {this.handleFilterClick('All')}} key="cat-all">All</li>
-              <li onClick={() => {this.handleFilterClick('Cakes')}} key="cat-cakes">Cakes</li>
-              <li onClick={() => {this.handleFilterClick('Cookies')}} key="cat-cookies">Cookies</li>
-              <li onClick={() => {this.handleFilterClick('Cupcakes')}} key="cat-cupcakes">Cupcakes</li>
-              <li onClick={() => {this.handleFilterClick('Mini')}} key="cat-mini"> Mini</li>
-              <li onClick={() => {this.handleFilterClick('Other')}} key="cat-other">Other</li>
+              <li onClick={() => {this.handleFilterClick('All')}} key="cat-all shop-cat">All</li>
+              <li onClick={() => {this.handleFilterClick('Cakes')}} key="cat-cakes shop-cat">Cakes</li>
+              <li onClick={() => {this.handleFilterClick('Cookies')}} key="cat-cookies shop-cat">Cookies</li>
+              <li onClick={() => {this.handleFilterClick('Cupcakes')}} key="cat-cupcakes shop-cat">Cupcakes</li>
+              <li onClick={() => {this.handleFilterClick('Mini')}} key="cat-mini shop-cat"> Mini</li>
+              <li onClick={() => {this.handleFilterClick('Other')}} key="cat-other shop-cat">Other</li>
             </ul>
           </div>
           <div className="grid-section-right">
