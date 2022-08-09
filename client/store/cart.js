@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // ACTION TYPES
 const SET_CART = 'SET_CART';
-const UPDATE_CART = 'UPDATE_CART'
+const UPDATE_CART = 'UPDATE_CART';
+const DELETE_FROM_CART = 'DELETE_FROM_CART';
 
 // ACTION CREATORS
 export const _setCart = (cart) => ({
@@ -10,10 +11,11 @@ export const _setCart = (cart) => ({
   cart,
 });
 
-export const _updateCart = (cart) =>({
+export const _updateCart = (cart) => ({
   type: UPDATE_CART,
   cart,
-})
+});
+
 // THUNKS
 export const fetchCart = () => {
   return async (dispatch) => {
@@ -40,25 +42,56 @@ export const fetchCart = () => {
 export const addToCart = (product) => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem('token')
+      const token = window.localStorage.getItem('token');
       if (token) {
-        const { data } = await axios.post('/api/cart', {
-          productId: product.id
-        }, {
-          headers: {
-            authorization: token
+        const { data } = await axios.post(
+          '/api/cart',
+          {
+            productId: product.id,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
           }
-        })
-        dispatch(_updateCart(data))
-      } 
+        );
+        dispatch(_updateCart(data));
+      }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
-}
+  };
+};
+
+export const deleteFromCart = (productId) => {
+  return async (dispatch) => {
+    try {
+      const token = window.localStorage.getItem('token');
+      if (token) {
+        const { data } = await axios.delete(`/api/cart/${productId}`, {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch(_updateCart(data));
+      } else {
+        const cart = JSON.parse(window.localStorage.getItem('cart'));
+        console.log(cart);
+        const remainingProducts = cart.products.filter(
+          (product) => product.cartItems.productId !== productId
+        );
+        const newCart = { ...cart, products: remainingProducts };
+        window.localStorage.setItem('cart', JSON.stringify(newCart));
+        dispatch(_updateCart(newCart));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 
 // REDUCER
-const initialState = {};
+const initialState = [];
 
 export default function cartReducer(state = initialState, action) {
   switch (action.type) {

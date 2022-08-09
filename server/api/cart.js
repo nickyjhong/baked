@@ -47,9 +47,9 @@ router.post('/', requireToken, async (req, res, next) => {
     let item = await CartItem.findOne({
       where: {
         orderId: order.id,
-        productId: req.body.productId
-      }
-    })
+        productId: req.body.productId,
+      },
+    });
 
     // let newPrice = product.price * quantity
 
@@ -57,6 +57,11 @@ router.post('/', requireToken, async (req, res, next) => {
       await CartItem.create({
         orderId: order.id,
         productId: req.body.productId,
+      });
+    } else {
+      product.update({
+        quantity: 2,
+      });
         quantity: 1,
         unitPrice: product.price,
         totalPrice: unitPrice
@@ -71,4 +76,36 @@ router.post('/', requireToken, async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-})
+});
+
+router.delete('/:productId', requireToken, async (req, res, next) => {
+  try {
+    let orderIdObj = await Order.findOne({
+      where: {
+        userId: req.user.dataValues.id,
+        status: 'open',
+      },
+    });
+
+    if (orderIdObj) {
+      await CartItem.destroy({
+        where: {
+          productId: req.params.productId,
+          orderId: orderIdObj.id,
+        },
+      });
+    }
+    // regardless of delete result, return current cart products
+    res.send(
+      await Order.findOne({
+        where: {
+          userId: req.user.dataValues.id,
+          status: 'open',
+        },
+        include: [Product],
+      })
+    );
+  } catch (err) {
+    next(err);
+  }
+});
