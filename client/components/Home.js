@@ -3,7 +3,15 @@ import { connect } from 'react-redux';
 
 export const Home = (props) => {
   const { firstName } = props;
-  return <div>home page: hello, {firstName}</div>;
+  return (
+  <div>
+    <div className="welcome">
+      Hello {firstName}
+    </div>
+  <div className='home-images'>
+    <img src="" />
+  </div>
+  </div>);
 };
 
 const mapState = (state) => {
