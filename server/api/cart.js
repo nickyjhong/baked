@@ -38,22 +38,14 @@ router.post('/', requireToken, async (req, res, next) => {
       });
     }
 
-    let product = await Product.findOne({
-      where: {
-        id: req.body.productId
-      }
-    })
-
-    let item = await CartItem.findOne({
+    let product = await CartItem.findOne({
       where: {
         orderId: order.id,
         productId: req.body.productId,
       },
     });
 
-    // let newPrice = product.price * quantity
-
-    if (!item) {
+    if (!product) {
       await CartItem.create({
         orderId: order.id,
         productId: req.body.productId,
@@ -62,15 +54,6 @@ router.post('/', requireToken, async (req, res, next) => {
       product.update({
         quantity: 2,
       });
-        quantity: 1,
-        unitPrice: product.price,
-        totalPrice: unitPrice
-      })
-    } else {
-      item.update({
-        quantity: 2,
-        // totalPrice: newPrice
-      })
     }
     res.send(order);
   } catch (err) {

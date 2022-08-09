@@ -13,9 +13,6 @@ class CreateProduct extends React.Component {
       description: '',
       inventory: 0,
       category: '',
-      description: "",
-      // inventory: 0,
-      category: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
