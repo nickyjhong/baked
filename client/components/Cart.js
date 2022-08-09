@@ -37,12 +37,12 @@ class Cart extends Component {
               {/* Change to imageURL to see image*/}
               <div className='subtotal-inline-block'>1</div>
               <div className='subtotal-inline-block'>$ {product.price / 100}</div>
-              {/* <button
+              <button
                 type="button"
                 onClick={() => this.handleDelete(product.id)}
               >
                 Delete from Cart
-              </button> */}
+              </button>
             </div>
           ))
         ) : (

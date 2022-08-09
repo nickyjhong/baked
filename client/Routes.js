@@ -11,6 +11,7 @@ import OrderHistory from './components/OrderHistory';
 import UserProfile from './components/UserProfile';
 import CreateProduct from './components/CreateProduct';
 import CreateUser from './components/CreateUser';
+import NotFoundPage from './components/NotFoundPage';
 
 class Routes extends Component {
   componentDidMount() {
@@ -33,6 +34,7 @@ class Routes extends Component {
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/profile" component={UserProfile} />
                 <Route path="/users/orders" component={OrderHistory} />
+                <Route path="*" component={NotFoundPage} status={404} />
               </Switch>
             )  : (
               <Switch> {/* Routes if logged in but not admin */}
@@ -42,6 +44,7 @@ class Routes extends Component {
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/profile" component={UserProfile} />
                 <Route path="/users/orders" component={OrderHistory} />
+                <Route path="*" component={NotFoundPage} status={404} />
               </Switch>
             )}
           </div>
@@ -53,6 +56,7 @@ class Routes extends Component {
             <Route exact path="/products" component={Shop} />
             <Route exact path="/products/:id" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
+            <Route path="*" component={NotFoundPage} status={404} />
           </Switch>
         )}
       </div>
