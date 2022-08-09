@@ -12,7 +12,6 @@ class Cart extends Component {
   constructor() {
     super();
     this.handleDelete = this.handleDelete.bind(this);
-    this.subtotal = this.subtotal.bind(this);
   }
 
   componentDidMount() {
@@ -22,12 +21,6 @@ class Cart extends Component {
   handleDelete(productId) {
     this.props.deleteFromCart(productId);
     alert('deleted from cart ' + productId);
-  }
-
-  subtotal() {
-    this.props.cart.products.map(
-      (product) => product.price * product.cartItem.quantity
-    );
   }
 
   render() {
