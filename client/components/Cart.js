@@ -62,7 +62,7 @@ class Cart extends Component {
                     {/* Change to imageURL to see image*/}
                     <div className='quantity-section'>
 
-                    <button className='increment-btn' onClick={() => this.props.updateCart(product, 1)}>
+                    <button className='increment-btn' onClick={() => this.props.updateCart(product,  - 1)}>
                       -
                     </button>
                     <div
@@ -70,7 +70,7 @@ class Cart extends Component {
                     >
                       {product.cartItem.quantity}
                     </div>
-                    <button className='increment-btn' onClick={() => this.props.updateCart(product, -1)}>
+                    <button className='increment-btn' onClick={() => this.props.updateCart(product, 1)}>
                       +
                     </button>
                     </div>
