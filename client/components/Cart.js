@@ -68,20 +68,20 @@ class Cart extends Component {
                     <div className="subtotal-inline-block">{product.name}</div>
                     <img src={product.imageUrl} />{' '}
                     {/* Change to imageURL to see image*/}
-                    <button onClick={() => this.props.updateCart(product, 1)}>
-                      {' '}
-                      +{' '}
+                    <div className='quantity-section'>
+
+                    <button className='increment-btn' onClick={() => this.props.updateCart(product, 1)}>
+                      -
                     </button>
                     <div
                       className="subtotal-inline-block"
-                      style={{ marginRight: '5rem' }}
                     >
                       {product.cartItem.quantity}
                     </div>
-                    <button onClick={() => this.props.updateCart(product, -1)}>
-                      {' '}
-                      -{' '}
+                    <button className='increment-btn' onClick={() => this.props.updateCart(product, -1)}>
+                      +
                     </button>
+                    </div>
                     <div
                       className="subtotal-inline-block"
                       style={{ marginRight: '1rem' }}
