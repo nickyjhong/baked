@@ -25,19 +25,23 @@ class Routes extends Component {
         {isLoggedIn ? (
           <div>
             {isAdmin ? (
-              <Switch> {/* Routes if logged in and admin */}
+              <Switch>
+                {' '}
+                {/* Routes if logged in and admin */}
                 <Route exact path="/" component={Home} />
-                <Route exact path="/products" component={Shop} />            
-                <Route path ='/products/add' component={CreateProduct} />
+                <Route exact path="/products" component={Shop} />
+                <Route path="/products/add" component={CreateProduct} />
                 <Route path="/products/:id" component={SingleProduct} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/profile" component={UserProfile} />
                 <Route path="/users/orders" component={OrderHistory} />
               </Switch>
-            )  : (
-              <Switch> {/* Routes if logged in but not admin */}
+            ) : (
+              <Switch>
+                {' '}
+                {/* Routes if logged in but not admin */}
                 <Route exact path="/" component={Home} />
-                <Route exact path="/products" component={Shop} />            
+                <Route exact path="/products" component={Shop} />
                 <Route exact path="/products/:id" component={SingleProduct} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/profile" component={UserProfile} />
@@ -46,7 +50,9 @@ class Routes extends Component {
             )}
           </div>
         ) : (
-          <Switch> {/* Routes if not logged in */}
+          <Switch>
+            {' '}
+            {/* Routes if not logged in */}
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={CreateUser} />
@@ -68,7 +74,7 @@ const mapState = (state) => {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
     isLoggedIn: !!state.auth.id,
-    isAdmin: !!state.auth.isAdmin
+    isAdmin: !!state.auth.isAdmin,
   };
 };
 

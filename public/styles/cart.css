@@ -4,6 +4,14 @@
 }
 
 .cart-container {
+<<<<<<< HEAD
+  margin-left: 2rem;;
+}
+
+.cart-image {
+  height: 10.5rem;
+  width: 10rem;
+=======
   display: grid;
   grid-template-columns: 3fr 1fr;
 }
@@ -41,4 +49,5 @@
 
 .checkout-card-inline-block {
     display: inline-block;
+>>>>>>> 0f7c14766f9032b670e2ffee289d7542938051a3
 }

@@ -13,7 +13,7 @@ export class OrderHistory extends React.Component {
     const orders = this.props.orders
     return (
       <div>
-        <h3>Order History</h3>
+        <section className="grid-section">Order History</section>
           {orders && orders.length !== 0 ? (
             <div className="all-order-container">
               {orders.map((order => (
