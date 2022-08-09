@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/allProducts';
+import { addToCart } from '../store/cart';
 
 export class Shop extends Component {
   constructor() {
@@ -10,6 +11,7 @@ export class Shop extends Component {
       filtered: 'All',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +25,11 @@ export class Shop extends Component {
   handleFilterClick(categoryName) {
     this.setState({ filtered: categoryName });
   }
+  handleAdd() {
+    this.props.addToCart(this.props.product)
+    alert('item added to cart')
+  }
+
 
   render() {
     const { products } = this.props;
@@ -101,6 +108,7 @@ export class Shop extends Component {
             {productFilter.map((product) => {
               const displayPrice = parseFloat(product.price / 100).toFixed(2) 
               return (
+                <div>
                 <Link to={`/products/${product.id}`} key={product.id}>
                   <div className="grid-item">
                     <img
@@ -111,11 +119,13 @@ export class Shop extends Component {
                     <div className="cookie-description">
                       <h3 className="grid-item-text">{product.name}</h3>
                       <p className="grid-item-text">${displayPrice}</p>
-                      <button className='add-to-cart'>View More</button>
-                      <button className='add-to-cart'>Add To Cart</button>
+                      <button className='view-more-btn'>View More</button>
+
                     </div>
                   </div>
                 </Link>
+                      <button className='add-to-cart' onClick={() => this.handleAdd()}>Add To Cart</button>
+                </div>
               );
             })}
           </div>
@@ -125,12 +135,14 @@ export class Shop extends Component {
   }
 }
 
-const mapStateToProps = (reduxState) => ({
-  products: reduxState.products,
+const mapStateToProps = (state) => ({
+  products: state.products,
+  product: state.singleProduct,
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   getProducts: () => dispatch(fetchProducts()),
+  addToCart: (product) => dispatch(addToCart(product))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop);
