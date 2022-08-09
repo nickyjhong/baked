@@ -9,7 +9,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       {isLoggedIn ? (
         <div className="nav-container">
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">
+          <Link to="/">
             <img src="/baked-logo.png" alt="logo" className="navLogo" />
           </Link>
           <div className="nav-links">
@@ -30,7 +30,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       ) : (
         <div className="nav-container">
           {/* The navbar will show these links before you log in */}
-          <Link to="/home">
+          <Link to="/">
             <img src="/baked-logo.png" alt="logo" className="navLogo" />
           </Link>
           <div className="nav-links">
