@@ -31,14 +31,6 @@ const Product = db.define("product", {
       notEmpty: true,
     },
   },
-  // inventory: {
-  //   type: Sequelize.INTEGER,
-  //   validate: {
-  //     min: 0,
-  //     max: 100,
-  //   },
-  //   defaultValue: 50,
-  // },
   category: {
     type: Sequelize.ENUM('cake', 'cookie', 'cupcake', 'mini', 'other'),
   },
