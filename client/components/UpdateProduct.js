@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchProduct, updateProduct } from "../store/singleProduct"
-import { allProducts, deleteProduct } from "../store/allProducts"
+import { deleteProduct } from "../store/allProducts"
 
 class UpdateProduct extends React.Component {
   constructor() {
@@ -12,12 +12,10 @@ class UpdateProduct extends React.Component {
       imageURL: "",
       price: 0,
       description: "",
-      inventory: 0,
       category: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +31,6 @@ class UpdateProduct extends React.Component {
         imageURL: this.props.product.imageURL || "",
         price: this.props.product.price || "",
         description: this.props.product.description || "",
-        inventory: this.props.product.inventory || "",
         category: this.props.product.category || "",
       });
     }
@@ -53,7 +50,7 @@ class UpdateProduct extends React.Component {
   }
 
   render() {
-    const { name, imageURL, price, description, category, inventory } = this.state;
+    const { name, imageURL, price, description, category } = this.state;
     const { handleSubmit, handleChange } = this;
     console.log('this.props in render: \n', this.props);
     return (
@@ -126,17 +123,6 @@ class UpdateProduct extends React.Component {
               )
             }
             onInput={(e) => e.target.setCustomValidity("")}
-          />
-          <br />
-          <br />
-          <label htmlFor="productInventory">Inventory</label>
-          <br />
-          <input
-            name="inventory"
-            onChange={handleChange}
-            value={inventory}
-            min="0"
-            max="100"
           />
           <br />
           <br />

@@ -5,7 +5,9 @@ import { fetchUsers } from '../store/allUsers'
 export const Admin = (props) => {
   console.log(props.getAllUsers)
   return (
-    <div>Admin</div>
+    <div>
+      
+    </div>
   )
 }
 

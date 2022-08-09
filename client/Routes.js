@@ -6,11 +6,13 @@ import Home from './components/Home';
 import { me } from './store';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
+import Admin from './components/Admin';
 import SingleProduct from './components/SingleProduct';
 import OrderHistory from './components/OrderHistory';
 import UserProfile from './components/UserProfile';
 import CreateProduct from './components/CreateProduct';
 import CreateUser from './components/CreateUser';
+import UpdateProduct from './components/UpdateProduct';
 import NotFoundPage from './components/NotFoundPage';
 
 class Routes extends Component {
@@ -27,11 +29,12 @@ class Routes extends Component {
           <div>
             {isAdmin ? (
               <Switch>
-                {' '}
                 {/* Routes if logged in and admin */}
                 <Route exact path="/" component={Home} />
+                <Route exact path="/admin" component={Admin} />
                 <Route exact path="/products" component={Shop} />
                 <Route path="/products/add" component={CreateProduct} />
+                <Route exact path="/products/:id/update" component={UpdateProduct} />
                 <Route path="/products/:id" component={SingleProduct} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/profile" component={UserProfile} />
@@ -40,7 +43,6 @@ class Routes extends Component {
               </Switch>
             ) : (
               <Switch>
-                {' '}
                 {/* Routes if logged in but not admin */}
                 <Route exact path="/" component={Home} />
                 <Route exact path="/products" component={Shop} />
@@ -54,7 +56,6 @@ class Routes extends Component {
           </div>
         ) : (
           <Switch>
-            {' '}
             {/* Routes if not logged in */}
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
