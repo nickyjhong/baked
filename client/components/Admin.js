@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchUsers } from '../store/allUsers'
 
-export const Admin = (props) => {
-  console.log(props.getAllUsers)
+export const Admin = () => {
   return (
     <div>
       <button>

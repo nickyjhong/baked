@@ -4,9 +4,10 @@ import { fetchUsers } from '../store/allUsers'
 
 export class AdminUsers extends Component {
   render() {
+    console.log(this.props.getAllUsers)
     return (
       <div>
-        
+        Users
       </div>
     )
   }
