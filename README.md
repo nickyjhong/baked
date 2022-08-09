@@ -30,6 +30,7 @@ Technologies Used Include:
 - HTML
 - CSS
 - React
+- Redux
 - Node.js
 - Express
 - Sequelize

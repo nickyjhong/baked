@@ -6,10 +6,11 @@ import Home from './components/Home';
 import { me } from './store';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
-import CreateUser from './components/CreateUser';
 import SingleProduct from './components/SingleProduct';
 import OrderHistory from './components/OrderHistory';
 import UserProfile from './components/UserProfile';
+import CreateProduct from './components/CreateProduct'
+import CreateUser from './components/CreateUser'
 
 /**
  * COMPONENT
@@ -28,10 +29,12 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
-            <Route exact path="/products" component={Shop} />
+            <Route exact path="/products" component={Shop} />            
+            <Route exact path ='/products/add' component={CreateProduct} />
             <Route exact path="/products/:id" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/profile" component={UserProfile} />
+
             <Route path="/users/orders" component={OrderHistory} />
           </Switch>
         ) : (

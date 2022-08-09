@@ -6,7 +6,7 @@ const Order = db.define('order', {
     type: Sequelize.ENUM('open', 'closed'),
     defaultValue: 'open',
   },
-  totalPrice: {
+  orderPrice: {
     type: Sequelize.INTEGER,
     defaultValue: 0,
   },

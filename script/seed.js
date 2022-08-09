@@ -15,48 +15,50 @@ const {
 // amy - no orders, admin
 // chris - active, closed, customer
 // custy - active, closed, customer
-const activeUsers = [
-  {
-    email: 'nicky@gmail.com',
-    password: '123',
-    firstName: 'Nicky',
-    lastName: 'Test',
-    address: '4 Coding Blvd',
-    isAdmin: true,
-  },
-  {
-    email: 'cherry@gmail.com',
-    password: '123',
-    firstName: 'Cherry',
-    lastName: 'Test',
-    address: '3 Coding Blvd',
-    isAdmin: true,
-  },
-  {
-    email: 'amy@gmail.com',
-    password: '123',
-    firstName: 'Amy',
-    lastName: 'Test',
-    address: '2 Coding Blvd',
-    isAdmin: true,
-  },
-  {
-    email: 'chris@gmail.com',
-    password: '123',
-    firstName: 'Chris',
-    lastName: 'Test',
-    address: '1 Coding Blvd',
-    isAdmin: false,
-  },
-  {
-    email: 'customer@gmail.com',
-    password: '123',
-    firstName: 'Custy',
-    lastName: 'Test',
-    address: 'Customer Town',
-    isAdmin: false,
-  },
-];
+// const activeUsers = [
+//   {
+//     email: 'nicky@gmail.com',
+//     password: '123',
+//     firstName: 'Nicky',
+//     lastName: 'Test',
+//     address: '4 Coding Blvd',
+//     isAdmin: true,
+//   },
+//   {
+//     email: 'cherry@gmail.com',
+//     password: '123',
+//     firstName: 'Cherry',
+//     lastName: 'Test',
+//     address: '3 Coding Blvd',
+//     isAdmin: true,
+//   },
+//   {
+//     email: 'amy@gmail.com',
+//     password: '123',
+//     firstName: 'Amy',
+//     lastName: 'Test',
+//     address: '2 Coding Blvd',
+//     isAdmin: true,
+//   },
+//   {
+//     email: 'chris@gmail.com',
+//     password: '123',
+//     firstName: 'Chris',
+//     lastName: 'Test',
+//     address: '1 Coding Blvd',
+//     isAdmin: false,
+//   },
+//   {
+//     email: 'customer@gmail.com',
+//     password: '123',
+//     firstName: 'Custy',
+//     lastName: 'Test',
+//     address: 'Customer Town',
+//     isAdmin: false,
+//   },
+// ];
+
+
 
 const products = [
   {
@@ -458,25 +460,61 @@ const products = [
   },
 ];
 
+// const users = [
+//   {
+//     email: 'admin@gmail.com',
+//     password: '123',
+//     firstName: 'Admin',
+//     lastName: 'WXTH',
+//     address: 'Fullstack HQ',
+//     isAdmin: true
+//   }, {
+//     email: 'customer@gmail.com',
+//     password: '123',
+//     firstName: 'Custy',
+//     lastName: 'Test',
+//     address: 'Customer Town',
+//     isAdmin: false,
+//   }
+// ]
+
 const seed = async () => {
   try {
     await db.sync({ force: true });
 
-    await Promise.all(
-      activeUsers.map((user) => {
-        return User.create(user);
-      })
-    );
+    // await Promise.all(
+    //   users.map((user) => {
+    //     return User.create(user);
+    //   })
+    // );
     await Promise.all(
       products.map((product) => {
         return Product.create(product);
       })
     );
 
-    let user1 = await User.findByPk(1, { include: [{ model: Order }] });
-    let user2 = await User.findByPk(2, { include: [{ model: Order }] });
-    let user4 = await User.findByPk(4, { include: [{ model: Order }] });
-    let user5 = await User.findByPk(5, { include: [{ model: Order }] });
+    // let user1 = await User.findByPk(1, { include: [{ model: Order }] });
+    // let user2 = await User.findByPk(2, { include: [{ model: Order }] });
+    // let user4 = await User.findByPk(4, { include: [{ model: Order }] });
+    // let user5 = await User.findByPk(5, { include: [{ model: Order }] });
+
+    let admin = await User.create({
+      email: 'admin@gmail.com',
+      password: '123',
+      firstName: 'Admin',
+      lastName: 'WXTH',
+      address: 'Fullstack HQ',
+      isAdmin: true
+    })
+
+    let custy = await User.create({
+      email: 'customer@gmail.com',
+      password: '123',
+      firstName: 'Custy',
+      lastName: 'Test',
+      address: 'Customer Town',
+      isAdmin: false,
+    })
 
     const dessert1 = await Product.findByPk(1);
     const dessert2 = await Product.findByPk(2);
@@ -490,35 +528,32 @@ const seed = async () => {
 
     const order1 = await Order.create({ status: 'open' });
     const order2 = await Order.create({ status: 'closed' });
-    const order3 = await Order.create({ status: 'open' });
-    const order4 = await Order.create({ status: 'closed' });
-    const order5 = await Order.create({ status: 'open' });
+    const order3 = await Order.create({ status: 'closed' });
+    const order4 = await Order.create({ status: 'open' });
+    const order5 = await Order.create({ status: 'closed' });
     const order6 = await Order.create({ status: 'closed' });
-    const order7 = await Order.create({ status: 'open' });
-    const order8 = await Order.create({ status: 'closed' });
-    const order9 = await Order.create({ status: 'closed' });
+    const order7 = await Order.create({ status: 'closed' });
 
-    await order1.setUser(user1);
-    await order2.setUser(user1);
-    await order3.setUser(user2);
-    await order4.setUser(user2);
 
-    await order5.setUser(user4);
-    await order6.setUser(user4);
-    await order7.setUser(user5);
-    await order8.setUser(user5);
-    await order9.setUser(user1);
+    await order1.setUser(admin);
+    await order2.setUser(admin);
+    await order3.setUser(admin);
+
+    await order4.setUser(custy);
+    await order5.setUser(custy);
+    await order6.setUser(custy);
+    await order7.setUser(custy);
 
     await order1.addProduct(dessert1);
     await order1.addProduct(dessert2);
     await order1.addProduct(dessert3);
 
-    await order2.addProduct(dessert1);
-    await order2.addProduct(dessert2);
+    await order2.addProduct(dessert4);
+    await order2.addProduct(dessert5);
 
-    await order3.addProduct(dessert4);
-    await order3.addProduct(dessert5);
-    await order3.addProduct(dessert1);
+    await order3.addProduct(dessert6);
+    await order3.addProduct(dessert7);
+    await order3.addProduct(dessert8);
 
     await order4.addProduct(dessert5);
     await order4.addProduct(dessert4);
@@ -532,16 +567,10 @@ const seed = async () => {
     await order7.addProduct(dessert9);
     await order7.addProduct(dessert8);
 
-    await order8.addProduct(dessert7);
-    await order8.addProduct(dessert6);
-
-    await order9.addProduct(dessert7)
-    await order9.addProduct(dessert4)
-
-    user1 = await User.findByPk(1, { include: { model: Order } });
-    user2 = await User.findByPk(2, { include: { model: Order } });
-    user4 = await User.findByPk(4, { include: { model: Order } });
-    user5 = await User.findByPk(5, { include: { model: Order } });
+    // user1 = await User.findByPk(1, { include: { model: Order } });
+    // user2 = await User.findByPk(2, { include: { model: Order } });
+    // user4 = await User.findByPk(4, { include: { model: Order } });
+    // user5 = await User.findByPk(5, { include: { model: Order } });
 
     // Associate cart with user
   } catch (err) {

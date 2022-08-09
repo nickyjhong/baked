@@ -38,22 +38,42 @@ router.post('/', requireToken, async (req, res, next) => {
       });
     }
 
-    let product = await CartItem.findOne({
+    let product = await Product.findOne({
+      where: {
+        id: req.body.productId
+      }
+    })
+
+    let item = await CartItem.findOne({
       where: {
         orderId: order.id,
         productId: req.body.productId,
       },
     });
 
-    if (!product) {
+    // let newPrice = product.price * quantity
+
+    if (!item) {
       await CartItem.create({
         orderId: order.id,
         productId: req.body.productId,
+<<<<<<< HEAD
       });
     } else {
       product.update({
         quantity: 2,
       });
+=======
+        quantity: 1,
+        unitPrice: product.price,
+        totalPrice: unitPrice
+      })
+    } else {
+      item.update({
+        quantity: 2,
+        // totalPrice: newPrice
+      })
+>>>>>>> 361c1a79452819d4475778dd7d4940f859ea078e
     }
     res.send(order);
   } catch (err) {

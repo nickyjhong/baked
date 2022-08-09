@@ -10,9 +10,15 @@ class CreateProduct extends React.Component {
       name: '',
       imageURL: '',
       price: 0,
+<<<<<<< HEAD
       description: '',
       inventory: 0,
       category: '',
+=======
+      description: "",
+      // inventory: 0,
+      category: "",
+>>>>>>> 361c1a79452819d4475778dd7d4940f859ea078e
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -105,7 +111,7 @@ class CreateProduct extends React.Component {
           />
           <br />
           <br />
-          <label htmlFor="productInventory">Inventory</label>
+          {/* <label htmlFor="productInventory">Inventory</label>
           <br />
           <input
             name="inventory"
@@ -115,7 +121,7 @@ class CreateProduct extends React.Component {
             max="100"
           />
           <br />
-          <br />
+          <br /> */}
           <label htmlFor="productName">Category</label>
           <select onChange={handleChange} name="category">
             <option value={category}></option>
