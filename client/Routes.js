@@ -6,43 +6,63 @@ import Home from './components/Home';
 import { me } from './store';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
-import CreateUser from './components/CreateUser';
 import SingleProduct from './components/SingleProduct';
 import OrderHistory from './components/OrderHistory';
 import UserProfile from './components/UserProfile';
+import CreateProduct from './components/CreateProduct';
+import CreateUser from './components/CreateUser';
+import NotFoundPage from './components/NotFoundPage';
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
   }
 
   render() {
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, isAdmin } = this.props;
 
     return (
       <div>
         {isLoggedIn ? (
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/products" component={Shop} />
-            <Route exact path="/products/:id" component={SingleProduct} />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/profile" component={UserProfile} />
-            <Route path="/users/orders" component={OrderHistory} />
-          </Switch>
+          <div>
+            {isAdmin ? (
+              <Switch>
+                {' '}
+                {/* Routes if logged in and admin */}
+                <Route exact path="/" component={Home} />
+                <Route exact path="/products" component={Shop} />
+                <Route path="/products/add" component={CreateProduct} />
+                <Route path="/products/:id" component={SingleProduct} />
+                <Route exact path="/cart" component={Cart} />
+                <Route exact path="/profile" component={UserProfile} />
+                <Route path="/users/orders" component={OrderHistory} />
+                <Route path="*" component={NotFoundPage} status={404} />
+              </Switch>
+            ) : (
+              <Switch>
+                {' '}
+                {/* Routes if logged in but not admin */}
+                <Route exact path="/" component={Home} />
+                <Route exact path="/products" component={Shop} />
+                <Route exact path="/products/:id" component={SingleProduct} />
+                <Route exact path="/cart" component={Cart} />
+                <Route exact path="/profile" component={UserProfile} />
+                <Route path="/users/orders" component={OrderHistory} />
+                <Route path="*" component={NotFoundPage} status={404} />
+              </Switch>
+            )}
+          </div>
         ) : (
           <Switch>
+            {' '}
+            {/* Routes if not logged in */}
             <Route exact path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={CreateUser} />
             <Route exact path="/products" component={Shop} />
             <Route exact path="/products/:id" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
+            <Route path="*" component={NotFoundPage} status={404} />
           </Switch>
         )}
       </div>
@@ -58,6 +78,7 @@ const mapState = (state) => {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
     isLoggedIn: !!state.auth.id,
+    isAdmin: !!state.auth.isAdmin,
   };
 };
 

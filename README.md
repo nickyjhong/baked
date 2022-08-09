@@ -1,4 +1,4 @@
-# Welcome to baked by Fullstack!
+# Welcome to Baked By Fullstack!
 
 In this Github repo is our codebase for our baked goods, including cakes and cookies! Feel free to browse and enjoy the sweets!
 
@@ -30,6 +30,7 @@ Technologies Used Include:
 - HTML
 - CSS
 - React
+- Redux
 - Node.js
 - Express
 - Sequelize

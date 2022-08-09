@@ -1,43 +1,41 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { createProduct } from "../store/allProducts"
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { createProduct } from '../store/allProducts';
 
 class CreateProduct extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      imageURL: "",
+      name: '',
+      imageURL: '',
       price: 0,
-      description: "",
+      description: '',
       inventory: 0,
-      category: "",
+      category: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({...this.state,
-      [event.target.name]: event.target.value,
-    });
-    console.log(this.state)
+    this.setState({ ...this.state, [event.target.name]: event.target.value });
+    console.log(this.state);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('this.props: \n', this.props);
     this.props.createProduct(this.state);
   }
 
   render() {
-    const { name, imageURL, price, description, category, inventory } = this.state;
+    const { name, imageURL, price, description, category, inventory } =
+      this.state;
     const { handleSubmit, handleChange } = this;
     return (
       <div className="add-product-form">
         <form className="add-form-input" onSubmit={handleSubmit}>
-          <h1 style={{ textAlign: "center" }}>Add Product</h1>
+          <h1 style={{ textAlign: 'center' }}>Add Product</h1>
           <label htmlFor="productName">Name</label>
           <br />
           <input
@@ -47,11 +45,11 @@ class CreateProduct extends React.Component {
             required
             onInvalid={(e) =>
               e.target.setCustomValidity(
-                "Product name is a required field",
-                alert("Go back and add a product name")
+                'Product name is a required field',
+                alert('Go back and add a product name')
               )
             }
-            onInput={(e) => e.target.setCustomValidity("")}
+            onInput={(e) => e.target.setCustomValidity('')}
           />
           <br />
           <br />
@@ -65,11 +63,11 @@ class CreateProduct extends React.Component {
             required
             onInvalid={(e) =>
               e.target.setCustomValidity(
-                "Product picture is a required field",
-                alert("Go back and add a product picture")
+                'Product picture is a required field',
+                alert('Go back and add a product picture')
               )
             }
-            onInput={(e) => e.target.setCustomValidity("")}
+            onInput={(e) => e.target.setCustomValidity('')}
           />
           <br />
           <br />
@@ -82,11 +80,11 @@ class CreateProduct extends React.Component {
             required
             onInvalid={(e) =>
               e.target.setCustomValidity(
-                "Product price is a required field",
-                alert("How do you plan to sell a product without a price?")
+                'Product price is a required field',
+                alert('How do you plan to sell a product without a price?')
               )
             }
-            onInput={(e) => e.target.setCustomValidity("")}
+            onInput={(e) => e.target.setCustomValidity('')}
           />
           <br />
           <br />
@@ -99,15 +97,15 @@ class CreateProduct extends React.Component {
             required
             onInvalid={(e) =>
               e.target.setCustomValidity(
-                "Product description is a required field",
-                alert("Go back and add a product description")
+                'Product description is a required field',
+                alert('Go back and add a product description')
               )
             }
-            onInput={(e) => e.target.setCustomValidity("")}
+            onInput={(e) => e.target.setCustomValidity('')}
           />
           <br />
           <br />
-          <label htmlFor="productInventory">Inventory</label>
+          {/* <label htmlFor="productInventory">Inventory</label>
           <br />
           <input
             name="inventory"
@@ -117,9 +115,9 @@ class CreateProduct extends React.Component {
             max="100"
           />
           <br />
-          <br />
+          <br /> */}
           <label htmlFor="productName">Category</label>
-          <select onChange={handleChange} name='category'>
+          <select onChange={handleChange} name="category">
             <option value={category}></option>
             <option value="cake">cake</option>
             <option value="cookie">cookie</option>

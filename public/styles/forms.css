@@ -111,6 +111,7 @@ input:focus {
 .login button:hover {
     background-color: #ef757a;
 }
+
 .login button i {
     font-size: 16px;
 }

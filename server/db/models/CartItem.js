@@ -6,14 +6,8 @@ const CartItem = db.define('cartItem', {
     type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 1,
-    allowNull: false,
   },
   unitPrice: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    defaultValue: 0,
-  },
-  totalPrice: {
     type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 0,
