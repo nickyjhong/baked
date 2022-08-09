@@ -3,18 +3,31 @@ import { connect } from 'react-redux'
 import { fetchUsers } from '../store/allUsers'
 
 export class AdminUsers extends Component {
-  render() {
-    console.log(this.props.getAllUsers)
-    return (
-      <div>
-        Users
-      </div>
-    )
+
+  async componentDidMount() {
+    await this.props.getAllUsers();
   }
-}
+
+    render() {
+      const users = this.props.users
+      return (
+        <div>
+          <h2>Users:</h2>
+          {users.map((user => (
+            <div>
+              <p>First name: {user.firstName}</p>
+              <p>Last name: {user.lastName} </p>
+              <p>Email: {user.email} </p>
+              <hr />
+            </div>
+          )))}
+        </div>
+      )
+    }
+  }
 
 const mapStateToProps = (state) => ({
-  state: state.allUsers,
+  users: state.users,
 })
 
 const mapDispatchToProps = (dispatch) => ({
