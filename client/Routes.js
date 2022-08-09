@@ -74,7 +74,7 @@ class Routes extends Component {
             <Route exact path="/products/:id" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
             <Route path="/checkout" component={Checkout} />
-            <Route path="/success" component={ChecOrderSuccesskout} />
+            <Route path="/success" component={OrderSuccess} />
             <Route path="*" component={NotFoundPage} status={404} />
           </Switch>
         )}
