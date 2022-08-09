@@ -34,12 +34,12 @@ class SingleProduct extends Component {
                 <img src={product.imageURL} className="s-product-img" />
               </div>
               <div className="s-product-main-description">
-                <p className="s-product-detail name">{product.name}</p>
-                <p className="s-product-detail price">${parseFloat(product.price / 100).toFixed(2)}</p>
-                <p className="s-product-detail description">{product.description}</p>
+                {/* <p className="s-product-detail-name">{product.name}</p> */}
+                <p className="s-product-detail-price">${parseFloat(product.price / 100).toFixed(2)}</p>
+                <p className="s-product-detail-description">{product.description}</p>
                 {/* <p className="s-product-detail description">In Stock: {inventory}</p> */}
 
-                <button className="button" onClick={() => this.handleAdd()}>
+                <button className="add-to-cart-btn" onClick={() => this.handleAdd()}>
                   Add to Cart
                 </button>
                 <p className="s-product-detail category">Tags: {product.category}</p>
