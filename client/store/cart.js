@@ -95,7 +95,7 @@ export const deleteFromCart = (productId) => {
   };
 };
 
-export const updateQuantity = (quantityChanged) => {
+export const updateQuantity = (product, quantityChanged) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem('token');

@@ -35,6 +35,21 @@ class Cart extends Component {
               <img src={product.imageUrl} />{' '}
               {/* Change to imageURL to see image*/}
               <p> Price: ${product.price / 100}</p>
+              <p> Quantity: {product.cartItem.quantity}</p>
+              <button
+                onClick={(() => this.props.updateQuantity(product.cartItem), 1)}
+              >
+                {' '}
+                +{' '}
+              </button>
+              <button
+                onClick={
+                  (() => this.props.updateQuantity(product.cartItem), -1)
+                }
+              >
+                {' '}
+                -{' '}
+              </button>
               <button
                 type="button"
                 onClick={() => this.handleDelete(product.id)}
@@ -58,7 +73,8 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => ({
   fetchCart: () => dispatch(fetchCart()),
   deleteFromCart: (productId) => dispatch(deleteFromCart(productId)),
-  updateCart: (quantityChanged) => dispatch(updateQuantity(quantityChanged)),
+  updateCart: (product, quantityChanged) =>
+    dispatch(updateQuantity(product, quantityChanged)),
 });
 
 export default connect(mapState, mapDispatch)(Cart);
