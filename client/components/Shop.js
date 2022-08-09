@@ -111,7 +111,8 @@ export class Shop extends Component {
                     <div className="cookie-description">
                       <h3 className="grid-item-text">{product.name}</h3>
                       <p className="grid-item-text">${displayPrice}</p>
-                      {/* <button className='add-to-cart'>Add To Cart</button> */}
+                      <button className='add-to-cart'>View More</button>
+                      <button className='add-to-cart'>Add To Cart</button>
                     </div>
                   </div>
                 </Link>
