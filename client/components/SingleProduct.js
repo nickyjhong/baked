@@ -51,7 +51,6 @@ class SingleProduct extends Component {
             <h1>This product does not exist!</h1>
           </div>
         )}
-        
       </div>
     );
   }

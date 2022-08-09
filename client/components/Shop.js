@@ -11,7 +11,6 @@ export class Shop extends Component {
       filtered: 'All',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
   }
 
   componentDidMount() {
@@ -25,15 +24,9 @@ export class Shop extends Component {
   handleFilterClick(categoryName) {
     this.setState({ filtered: categoryName });
   }
-  handleAdd() {
-    this.props.addToCart(this.props.product)
-    alert('item added to cart')
-  }
-
 
   render() {
     const { products } = this.props;
-
     const productFilter = products.filter((product) => {
       if (this.state.filtered === 'All') return product;
       if (this.state.filtered === 'Cakes') return product.category === 'cake';
@@ -108,23 +101,22 @@ export class Shop extends Component {
             {productFilter.map((product) => {
               const displayPrice = parseFloat(product.price / 100).toFixed(2) 
               return (
-                <div>
-                <Link to={`/products/${product.id}`} key={product.id}>
-                  <div className="grid-item">
+                <div className="grid-item" key={product.id}>
+                  <Link to={`/products/${product.id}`} >
                     <img
                       className="shop-image"
                       src={product.imageURL}
                       alt={`Image of ${product.name}`}
                     />
-                    <div className="cookie-description">
-                      <h3 className="grid-item-text">{product.name}</h3>
-                      <p className="grid-item-text">${displayPrice}</p>
-                      <button className='view-more-btn'>View More</button>
-
+                  </Link>
+                  <div className="cookie-description">
+                    <h3 className="grid-item-text">{product.name}</h3>
+                    <p className="grid-item-text">${displayPrice}</p>
+                    <div className="shop-btn-container">
+                      <button className='view-more-btn shop-btn'>View More</button>
+                      <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); alert('added to cart') }}>Add To Cart</button>
                     </div>
                   </div>
-                </Link>
-                      <button className='add-to-cart' onClick={() => this.handleAdd()}>Add To Cart</button>
                 </div>
               );
             })}
@@ -137,7 +129,6 @@ export class Shop extends Component {
 
 const mapStateToProps = (state) => ({
   products: state.products,
-  product: state.singleProduct,
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({

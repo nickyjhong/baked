@@ -51,9 +51,7 @@ router.post('/', requireToken, async (req, res, next) => {
         productId: req.body.productId,
       });
     } else {
-      product.update({
-        quantity: 2,
-      });
+      
     }
     res.send(order);
   } catch (err) {
