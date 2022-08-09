@@ -10,6 +10,8 @@ import CreateUser from './components/CreateUser';
 import SingleProduct from './components/SingleProduct';
 import OrderHistory from './components/OrderHistory';
 import UserProfile from './components/UserProfile';
+import Checkout from './components/Checkout';
+import OrderSuccess from './components/OrderSuccess';
 
 /**
  * COMPONENT
@@ -33,6 +35,8 @@ class Routes extends Component {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/profile" component={UserProfile} />
             <Route path="/users/orders" component={OrderHistory} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/success" component={OrderSuccess} />
           </Switch>
         ) : (
           <Switch>
