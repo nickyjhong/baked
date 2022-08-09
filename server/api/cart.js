@@ -93,6 +93,52 @@ router.delete('/:productId', requireToken, async (req, res, next) => {
   }
 });
 
+// router.put('/', requireToken, async (req, res, next) => {
+//   try {
+//     let order = await Order.findOne({
+//       where: {
+//         userId: req.user.dataValues.id,
+//         status: 'open',
+//       },
+//     });
+
+//     if (!order) {
+//       order = await Order.create({
+//         status: 'open',
+//         userId: req.user.dataValues.id,
+//       });
+//     }
+
+//     let cartItem = await CartItem.findOne({
+//       where: {
+//         orderId: order.id,
+//         productId: req.body.productId,
+//       },
+//     });
+
+//     const updatedQuantity = cartItem.quantity + req.body.quantityChange;
+//     const updatedTotalCost = cartItem.unitPrice * updatedQuantity;
+
+//     if (updatedQuantity <= 0) return;
+
+//     await cartItem.update({
+//       quantity: updatedQuantity,
+//       totalPrice: updatedTotalCost,
+//     });
+
+//     res.send(
+//       await Order.findOne({
+//         where: {
+//           id: order.id,
+//         },
+//         include: [Product],
+//       })
+//     );
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 router.put('/', requireToken, async (req, res, next) => {
   try {
     let order = await Order.findOne({
@@ -109,21 +155,19 @@ router.put('/', requireToken, async (req, res, next) => {
       });
     }
 
-    let cartItem = await CartItem.findOne({
+    let product = await CartItem.findOne({
       where: {
         orderId: order.id,
         productId: req.body.productId,
       },
     });
 
-    const updatedQuantity = cartItem.quantity + req.body.quantityChange;
-    const updatedTotalCost = cartItem.unitPrice * updatedQuantity;
+    const newQuantity = product.quantity + req.body.newQuantity;
 
-    if (updatedQuantity <= 0) return;
+    if (newQuantity <= 0) return;
 
-    await cartItem.update({
-      quantity: updatedQuantity,
-      totalPrice: updatedTotalCost,
+    await product.update({
+      quantity: newQuantity,
     });
 
     res.send(

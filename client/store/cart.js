@@ -3,7 +3,6 @@ import axios from 'axios';
 // ACTION TYPES
 const SET_CART = 'SET_CART';
 const UPDATE_CART = 'UPDATE_CART';
-const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
 
 // ACTION CREATORS
 export const _setCart = (cart) => ({
@@ -13,11 +12,6 @@ export const _setCart = (cart) => ({
 
 export const _updateCart = (cart) => ({
   type: UPDATE_CART,
-  cart,
-});
-
-export const _increaseQuantity = (cart) => ({
-  type: UPDATE_QUANTITY,
   cart,
 });
 
@@ -95,7 +89,48 @@ export const deleteFromCart = (productId) => {
   };
 };
 
-export const updateQuantity = (product, quantityChanged) => {
+// export const updateQuantity = (product, quantityChange) => {
+//   return async (dispatch) => {
+//     try {
+//       const token = window.localStorage.getItem('token');
+//       if (token) {
+//         const { data } = await axios.put(
+//           '/api/cart',
+//           {
+//             productId: product.id,
+//             quantity: quantityChange,
+//           },
+//           {
+//             headers: {
+//               authorization: token,
+//             },
+//           }
+//         );
+//         console.log(data);
+//         dispatch(_updateCart(data));
+//       } else {
+//         const cart = JSON.parse(window.localStorage.getItem('cart'));
+//         for (let i = 0; i < cart.products.length; i++) {
+//           if (cart.products[i].cartItem.productId === productId) {
+//             if (cart.products[i].cartItem.quantity + quantityChange <= 0)
+//               return;
+//             cart.products[i].cartItem.quantity =
+//               cart.products[i].cartItem.quantity + quantityChange;
+//             cart.products[i].cartItem.unitPrice =
+//               cart.products[i].cartItem.unitPrice +
+//               quantityChanged * cart.products[i].price;
+//           }
+//         }
+//         window.localStorage.setItem('cart', JSON.stringify(cart));
+//         dispatch(_updateCart(cart));
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
+
+export const updateQuantity = (product, newQuantity) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem('token');
@@ -104,7 +139,7 @@ export const updateQuantity = (product, quantityChanged) => {
           '/api/cart',
           {
             productId: product.id,
-            quantity: quantityChanged,
+            newQuantity,
           },
           {
             headers: {
@@ -117,14 +152,9 @@ export const updateQuantity = (product, quantityChanged) => {
       } else {
         const cart = JSON.parse(window.localStorage.getItem('cart'));
         for (let i = 0; i < cart.products.length; i++) {
-          if (cart.products[i].cartItem.productId === productId) {
-            if (cart.products[i].cartItem.quantity + quantityChanged <= 0)
-              return;
-            cart.products[i].cartItem.quantity =
-              cart.products[i].cartItem.quantity + quantityChanged;
-            cart.products[i].cartItem.unitPrice =
-              cart.products[i].cartItem.unitPrice +
-              quantityChanged * cart.products[i].price;
+          if (cart.products[i].cartItems.productId === product.productId) {
+            cart.products[i].cartItems.quantity =
+              cart.products[i].cartItems.quantity + newQuantity;
           }
         }
         window.localStorage.setItem('cart', JSON.stringify(cart));
