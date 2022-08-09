@@ -162,7 +162,7 @@ class Cart extends Component {
               </div>
               <div className="checkout-card-row">
                 <Link to="/checkout">
-                  <button className="checkout-btn">Checkout</button>
+                  <button className="checkout-btn">Proceed To Checkout</button>
                 </Link>
               </div>
             </div>

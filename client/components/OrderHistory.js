@@ -12,7 +12,7 @@ export class OrderHistory extends React.Component {
   render() {
     const orders = this.props.orders
     return (
-      <div>
+      <div className="order-section">
         <h3 style={{marginLeft: '2rem'}}>Order History</h3>
           {orders && orders.length !== 0 ? (
             <div className="all-order-container">
@@ -21,8 +21,8 @@ export class OrderHistory extends React.Component {
                   <h4 style={{marginLeft: '2rem'}}>Order number: {order.id}</h4>
                   <div className="order-item-container">
                     <div></div>
-                    <div>Name</div>
-                    <div>Price</div>
+                    <div style={{fontWeight: 'bold'}}>Name</div>
+                    <div style={{fontWeight: 'bold'}}>Price</div>
                   </div>
                   {order.products.map(item => {
                     return (
@@ -34,7 +34,7 @@ export class OrderHistory extends React.Component {
                         </Link>
 
                         </div>
-                        <span>$ {item.price / 100}</span>
+                        <span style={{fontSize: '.8rem'}}>$ {item.price / 100}</span>
                       </div>
                     )
                   })}
