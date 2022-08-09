@@ -17,7 +17,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
                 <Link to="/admin" className="navLink">
                   Admin
                 </Link>
-                <Link to="/products" className="navLink">
+                <Link to="/admin/products" className="navLink">
                   Shop
                 </Link>
                 <a href="/" onClick={handleClick} className="navLink">
