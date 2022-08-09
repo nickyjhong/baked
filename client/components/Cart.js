@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteFromCart, fetchCart, _updateCart } from '../store/cart';
+import { Link } from 'react-router-dom';
 
 class Cart extends Component {
   constructor() {
@@ -20,6 +21,8 @@ class Cart extends Component {
   render() {
     console.log('props', this.props.cart);
     return (
+      <div>
+        <h2 style={{textAlign: 'center'}}>Shopping Cart</h2>
       <div className='cart-container'>
         <div className='cart-section-left'>
           <div className='shopping-cart-left-container'>
@@ -27,6 +30,7 @@ class Cart extends Component {
               <div className="subtotal-inline-block" style={{fontWeight: 'bold'}}>Product</div>
               <div className="subtotal-inline-block" style={{fontWeight: 'bold'}}>Quantity</div>
               <div className="subtotal-inline-block" style={{fontWeight: 'bold'}}>Price</div>
+              <div className="subtotal-inline-block"></div>
           </div>
 
         {this.props.cart !== null && this.props.cart.products ? (
@@ -35,14 +39,15 @@ class Cart extends Component {
               <div className='subtotal-inline-block'>{product.name}</div>
               <img src={product.imageUrl} />{' '}
               {/* Change to imageURL to see image*/}
-              <div className='subtotal-inline-block'>1</div>
-              <div className='subtotal-inline-block'>$ {product.price / 100}</div>
-              {/* <button
+              <div className='subtotal-inline-block' style={{marginRight: '5rem'}}>1</div>
+              <div className='subtotal-inline-block' style={{marginRight: '1rem'}}>$ {product.price / 100}</div>
+              <button
                 type="button"
+                className='delete-btn'
                 onClick={() => this.handleDelete(product.id)}
               >
-                Delete from Cart
-              </button> */}
+                delete
+              </button>
             </div>
           ))
         ) : (
@@ -67,11 +72,14 @@ class Cart extends Component {
               <div className='subtotal-inline-block'>#REF</div>
             </div>
             <div className='checkout-card-row'>
-              <button></button>
+              <Link to='/checkout'>
+              <button className='checkout-btn'>Checkout</button>
+              </Link>
             </div>
           </div>
         </div>
 
+      </div>
       </div>
     );
   }
