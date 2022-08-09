@@ -2,3 +2,12 @@
   font-size: 1rem;
   text-align: center;
 }
+
+.cart-container {
+  margin-left: 2rem;;
+}
+
+.cart-image {
+  height: 10.5rem;
+  width: 10rem;
+}

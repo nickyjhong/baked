@@ -22,7 +22,7 @@ class UpdateProduct extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params; 
-    this.props.fetchProduct(id); //  <--
+    this.props.fetchProduct(id);
   }
 
   componentDidUpdate(prevProps) {
@@ -50,10 +50,6 @@ class UpdateProduct extends React.Component {
     event.preventDefault();
     console.log('this.props in handleSubmit: \n', this.props);
     this.props.updateProduct({ ...this.props.product, ...this.state });
-  }
-
-  handleDelete() {
-
   }
 
   render() {

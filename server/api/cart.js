@@ -61,7 +61,7 @@ router.post('/', requireToken, async (req, res, next) => {
   }
 })
 
-router.put('/increase', requireToken, async (req, res, next) => {
+router.put('/', requireToken, async (req, res, next) => {
   try {
     let order = await Order.findOne({
       where: {
@@ -71,15 +71,22 @@ router.put('/increase', requireToken, async (req, res, next) => {
       include: [Product],
     });
 
-    const cartItem = CartItem.findOne({
+    let cartItem = CartItem.findOne({
       where: {
         orderId: order.id,
-        quantity: cartItem.quantity
+        productId: req.body.productId,
+        // quantity: cartItem.quantity
       }
     });
-    cartItem.quantity++;
-    await cartItem.save();
-    res.send(cartItem)
+    // cartItem.quantity++;
+    // await cartItem.save();
+    // res.send(cartItem)
+
+    let newQuantity = cartItem.quantity + req.body.quantity;
+    await cartItem.update({
+      quantity: newQuantity
+    })
+    res.send(cartItem);
   } catch (err) {
     next(err)
   }

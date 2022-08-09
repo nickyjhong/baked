@@ -71,7 +71,7 @@ export const addToCart = (product) => {
 export const increaseQuantity = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/api/cart/increase`)
+      const { data } = await axios.put(`/api/cart`)
       dispatch(_updatedQuantity(data))
     } catch (err) {
       console.log(err)
@@ -82,7 +82,7 @@ export const increaseQuantity = () => {
 export const decreaseQuantity = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/api/cart/decrease`)
+      const { data } = await axios.put(`/api/cart`)
       dispatch(_updatedQuantity(data))
     } catch (err) {
       console.log(err)
