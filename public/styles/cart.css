@@ -83,3 +83,30 @@
   font-size: 1rem;
   text-align: center;
 }
+
+.quantity-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 3rem;
+}
+
+.increment-btn {
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #d49090;
+  height: 15px;
+  /* padding: 12px; */
+  /* width: 260px; */
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  transition: .2s;
+}
+.increment-btn:hover {
+  color: #ef757a;
+}
