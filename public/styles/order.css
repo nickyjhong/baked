@@ -6,13 +6,25 @@
   flex-direction: column;
   justify-content: flex-start;
   box-shadow: 0 .5rem 1rem .5rem #E3E3E3;
+  background-color: #fdefe1 ;
 }
 
 .order-img {
   width: 12vh;
+  height: 14vh;
+  border-radius: 10px;
 }
 
 .order-item-container {
   display: flex;
+  justify-content: space-between;
+  margin: 1rem 3rem;
+
+  background-color: #fdefe1 ;
+  /* color: black;
+  width: 18rem;
+  height: 20rem; */
+
+  border-radius: 10px;
 
 }
