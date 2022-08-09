@@ -78,7 +78,7 @@
   font-size: .6em;
   color: black;
   width: 10rem;
-  height: 16rem;
+  height: 18rem;
   border-radius: 10px;
   box-shadow: 0 0px 0px  rgba(0, 0, 0, 0.2), 0 2px 7px 0 rgba(0, 0, 0, 0.19);
   transition-duration: .5s;
@@ -99,7 +99,32 @@
   }
 
   .add-to-cart {
-    background-color: #d49090;
+      border-radius: 10px;
+      background-color: #d49090;
+      height: 1rem;
+      /* padding: 12px;
+      padding-bottom: 10px; */
+      width: 7rem;
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-left: 1.5rem;
+      margin-top: 1rem;
+      transition: .2s;
+      text-align: center;
+  }
+
+.add-to-cart-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  .add-to-cart:hover {
+      background-color: #ef757a;
+  }
+    /* background-color: #d49090;
   backface-visibility: hidden;
   border-radius: 10px;
   border-style: none;
@@ -112,7 +137,7 @@
   height: 1rem;
   width: 7rem;
   letter-spacing: normal;
-  /* line-height: 1.5; */
+  line-height: 1.5;
   outline: none;
   overflow: hidden;
   padding: 14px 30px;
@@ -121,7 +146,7 @@
   transition: all .3s;
   margin-left: 2rem;
   margin-right: 2rem;
-  text-align: center;
+  text-align: center; */
 }
 
 p {
