@@ -99,6 +99,7 @@ export class Shop extends Component {
           </div>
           <div className="grid-section-right">
             {productFilter.map((product) => {
+              const displayPrice = parseFloat(product.price / 100).toFixed(2) 
               return (
                 <Link to={`/products/${product.id}`} key={product.id}>
                   <div className="grid-item">
@@ -109,7 +110,7 @@ export class Shop extends Component {
                     />
                     <div className="cookie-description">
                       <h3 className="grid-item-text">{product.name}</h3>
-                      <p className="grid-item-text">${product.price / 100}</p>
+                      <p className="grid-item-text">${displayPrice}</p>
                       {/* <button className='add-to-cart'>Add To Cart</button> */}
                     </div>
                   </div>

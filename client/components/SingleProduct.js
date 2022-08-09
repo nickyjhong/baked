@@ -18,8 +18,8 @@ class SingleProduct extends Component {
   }
 
   render() {
-    const {product} = this.props
     const { id, name, imageURL, price, description, category } = this.props.product;
+    const displayPrice = parseFloat(price / 100).toFixed(2) 
     return (
       <div>
         {id ? (
@@ -34,7 +34,7 @@ class SingleProduct extends Component {
               </div>
               <div className="s-product-main-description">
                 <p className="s-product-detail name">{name}</p>
-                <p className="s-product-detail price">${price / 100}</p>
+                <p className="s-product-detail price">${displayPrice}</p>
                 <p className="s-product-detail description">{description}</p>
                 {/* <p className="s-product-detail description">In Stock: {inventory}</p> */}
 
