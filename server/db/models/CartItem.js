@@ -13,7 +13,7 @@ const CartItem = db.define('cartItem', {
     allowNull: false,
     defaultValue: 0,
   },
-  totalPrice: {
+  totalPrice: { // quantity * unitPrice
     type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 0,

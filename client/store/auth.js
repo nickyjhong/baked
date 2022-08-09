@@ -35,7 +35,15 @@ export const authenticate = (email, password, method) => async (dispatch) => {
     dispatch(me());
     history.push('/');
   } catch (authError) {
-    return dispatch(setAuth({ error: authError }));
+    if (
+      authError.response &&
+      authError.response.data &&
+      authError.response.data.message
+    ) {
+      return dispatch(setAuth({ error: authError.response.data.message }));
+    } else {
+      return dispatch(setAuth({ error: 'An error has occurred' }));
+    }
   }
 };
 

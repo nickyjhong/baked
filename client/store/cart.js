@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
 // ACTION TYPES
-const SET_CART = "SET_CART";
-const UPDATE_CART = "UPDATE_CART";
-const UPDATED_QUANTITY = "UPDATED_QUANTITY"
+const SET_CART = 'SET_CART';
+const UPDATE_CART = 'UPDATE_CART';
+const DELETE_FROM_CART = 'DELETE_FROM_CART';
 
 // ACTION CREATORS
 export const _setCart = (cart) => ({
@@ -16,26 +16,21 @@ export const _updateCart = (cart) => ({
   cart,
 });
 
-export const _updatedQuantity = (cartItem) => ({
-  type: UPDATED_QUANTITY,
-  cartItem
-})
-
 // THUNKS
 export const fetchCart = () => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem("token");
+      const token = window.localStorage.getItem('token');
 
       if (token) {
-        const { data } = await axios.get("/api/cart", {
+        const { data } = await axios.get('/api/cart', {
           headers: {
             authorization: token,
           },
         });
         await dispatch(_setCart(data));
       } else {
-        const cart = JSON.parse(window.localStorage.getItem("cart"));
+        const cart = JSON.parse(window.localStorage.getItem('cart'));
         await dispatch(_setCart(cart));
       }
     } catch (err) {
@@ -47,10 +42,10 @@ export const fetchCart = () => {
 export const addToCart = (product) => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem("token");
+      const token = window.localStorage.getItem('token');
       if (token) {
         const { data } = await axios.post(
-          "/api/cart",
+          '/api/cart',
           {
             productId: product.id,
           },
@@ -68,30 +63,35 @@ export const addToCart = (product) => {
   };
 };
 
-export const increaseQuantity = () => {
+export const deleteFromCart = (productId) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/api/cart`)
-      dispatch(_updatedQuantity(data))
+      const token = window.localStorage.getItem('token');
+      if (token) {
+        const { data } = await axios.delete(`/api/cart/${productId}`, {
+          headers: {
+            authorization: token,
+          },
+        });
+        dispatch(_updateCart(data));
+      } else {
+        const cart = JSON.parse(window.localStorage.getItem('cart'));
+        console.log(cart);
+        const remainingProducts = cart.products.filter(
+          (product) => product.cartItems.productId !== productId
+        );
+        const newCart = { ...cart, products: remainingProducts };
+        window.localStorage.setItem('cart', JSON.stringify(newCart));
+        dispatch(_updateCart(newCart));
+      }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
-}
-
-export const decreaseQuantity = () => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.put(`/api/cart`)
-      dispatch(_updatedQuantity(data))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-}
+  };
+};
 
 // REDUCER
-const initialState = {};
+const initialState = [];
 
 export default function cartReducer(state = initialState, action) {
   switch (action.type) {
@@ -99,8 +99,6 @@ export default function cartReducer(state = initialState, action) {
       return action.cart;
     case UPDATE_CART:
       return action.cart;
-    case UPDATED_QUANTITY:
-      return action.cartItem; //
     default:
       return state;
   }

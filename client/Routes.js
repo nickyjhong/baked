@@ -6,14 +6,11 @@ import Home from './components/Home';
 import { me } from './store';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
-import CreateUser from './components/CreateUser';
 import SingleProduct from './components/SingleProduct';
 import OrderHistory from './components/OrderHistory';
 import UserProfile from './components/UserProfile';
-import Checkout from './components/Checkout';
-import OrderSuccess from './components/OrderSuccess';
-import Contact from './components/Contact'
-import About from './components/About'
+import CreateProduct from './components/CreateProduct';
+import CreateUser from './components/CreateUser';
 
 /**
  * COMPONENT
@@ -33,14 +30,12 @@ class Routes extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/products" component={Shop} />
+            <Route exact path="/products/add" component={CreateProduct} />
             <Route exact path="/products/:id" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/profile" component={UserProfile} />
+
             <Route path="/users/orders" component={OrderHistory} />
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/success" component={OrderSuccess} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/about" component={About} />
           </Switch>
         ) : (
           <Switch>
@@ -49,8 +44,6 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={CreateUser} />
             <Route exact path="/products" component={Shop} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/about" component={About} />
             <Route exact path="/products/:id" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
           </Switch>
