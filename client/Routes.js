@@ -15,6 +15,9 @@ import CreateUser from './components/CreateUser';
 import UpdateProduct from './components/UpdateProduct';
 import NotFoundPage from './components/NotFoundPage';
 import Checkout from './components/Checkout';
+import OrderSuccess from './components/OrderSuccess';
+import AdminUsers from './components/AdminUsers';
+import AdminShop from './components/AdminShop';
 
 class Routes extends Component {
   componentDidMount() {
@@ -33,17 +36,17 @@ class Routes extends Component {
                 {/* Routes if logged in and admin */}
                 <Route exact path="/" component={Home} />
                 <Route exact path="/admin" component={Admin} />
+                <Route exact path="/admin/users" component={AdminUsers} />
+                <Route exact path="/admin/shop" component={AdminShop} />
                 <Route exact path="/products" component={Shop} />
                 <Route path="/products/add" component={CreateProduct} />
-                <Route
-                  exact
-                  path="/products/:id/update"
-                  component={UpdateProduct}
-                />
+                <Route exact path="/products/:id/update" component={UpdateProduct} />
                 <Route path="/products/:id" component={SingleProduct} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/profile" component={UserProfile} />
                 <Route path="/users/orders" component={OrderHistory} />
+                <Route path="/checkout" component={Checkout} />
+                <Route path="/success" component={OrderSuccess} />
                 <Route path="*" component={NotFoundPage} status={404} />
               </Switch>
             ) : (
@@ -56,6 +59,7 @@ class Routes extends Component {
                 <Route exact path="/profile" component={UserProfile} />
                 <Route path="/users/orders" component={OrderHistory} />
                 <Route path="/checkout" component={Checkout} />
+                <Route path="/success" component={OrderSuccess} />
                 <Route path="*" component={NotFoundPage} status={404} />
               </Switch>
             )}
@@ -69,6 +73,8 @@ class Routes extends Component {
             <Route exact path="/products" component={Shop} />
             <Route exact path="/products/:id" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/success" component={ChecOrderSuccesskout} />
             <Route path="*" component={NotFoundPage} status={404} />
           </Switch>
         )}

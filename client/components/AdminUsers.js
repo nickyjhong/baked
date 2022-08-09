@@ -1,19 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUsers } from '../store/allUsers'
 
-export const Admin = (props) => {
-  console.log(props.getAllUsers)
-  return (
-    <div>
-      <button>
-        See all users
-      </button>
-      <button>
-        Edit a product
-      </button>
-    </div>
-  )
+export class AllUsers extends Component {
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => ({
@@ -25,4 +21,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin)
-
