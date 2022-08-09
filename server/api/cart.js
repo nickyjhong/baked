@@ -59,48 +59,15 @@ router.post('/', requireToken, async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-<<<<<<< HEAD
-})
-
-router.put('/', requireToken, async (req, res, next) => {
-  try {
-    let order = await Order.findOne({
-=======
 });
 
 router.delete('/:productId', requireToken, async (req, res, next) => {
   try {
     let orderIdObj = await Order.findOne({
->>>>>>> bf12459e137419741abf5ac0ab094ae8025fd043
       where: {
         userId: req.user.dataValues.id,
         status: 'open',
       },
-<<<<<<< HEAD
-      include: [Product],
-    });
-
-    let cartItem = CartItem.findOne({
-      where: {
-        orderId: order.id,
-        productId: req.body.productId,
-        // quantity: cartItem.quantity
-      }
-    });
-    // cartItem.quantity++;
-    // await cartItem.save();
-    // res.send(cartItem)
-
-    let newQuantity = cartItem.quantity + req.body.quantity;
-    await cartItem.update({
-      quantity: newQuantity
-    })
-    res.send(cartItem);
-  } catch (err) {
-    next(err)
-  }
-})
-=======
     });
 
     if (orderIdObj) {
@@ -125,4 +92,49 @@ router.delete('/:productId', requireToken, async (req, res, next) => {
     next(err);
   }
 });
->>>>>>> bf12459e137419741abf5ac0ab094ae8025fd043
+
+router.put('/', requireToken, async (req, res, next) => {
+  try {
+    let order = await Order.findOne({
+      where: {
+        userId: req.user.dataValues.id,
+        status: 'open',
+      },
+    });
+
+    if (!order) {
+      order = await Order.create({
+        status: 'open',
+        userId: req.user.dataValues.id,
+      });
+    }
+
+    let cartItem = await CartItem.findOne({
+      where: {
+        orderId: order.id,
+        productId: req.body.productId,
+      },
+    });
+
+    const updatedQuantity = cartItem.quantity + req.body.quantityChange;
+    const updatedTotalCost = cartItem.unitPrice * updatedQuantity;
+
+    if (updatedQuantity <= 0) return;
+
+    await cartItem.update({
+      quantity: updatedQuantity,
+      totalPrice: updatedTotalCost,
+    });
+
+    res.send(
+      await Order.findOne({
+        where: {
+          id: order.id,
+        },
+        include: [Product],
+      })
+    );
+  } catch (err) {
+    next(err);
+  }
+});

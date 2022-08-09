@@ -3,7 +3,7 @@ import axios from 'axios';
 // ACTION TYPES
 const SET_CART = 'SET_CART';
 const UPDATE_CART = 'UPDATE_CART';
-const DELETE_FROM_CART = 'DELETE_FROM_CART';
+const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
 
 // ACTION CREATORS
 export const _setCart = (cart) => ({
@@ -13,6 +13,11 @@ export const _setCart = (cart) => ({
 
 export const _updateCart = (cart) => ({
   type: UPDATE_CART,
+  cart,
+});
+
+export const _increaseQuantity = (cart) => ({
+  type: UPDATE_QUANTITY,
   cart,
 });
 
@@ -83,6 +88,47 @@ export const deleteFromCart = (productId) => {
         const newCart = { ...cart, products: remainingProducts };
         window.localStorage.setItem('cart', JSON.stringify(newCart));
         dispatch(_updateCart(newCart));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const updateQuantity = (quantityChanged) => {
+  return async (dispatch) => {
+    try {
+      const token = window.localStorage.getItem('token');
+      if (token) {
+        const { data } = await axios.put(
+          '/api/cart',
+          {
+            productId: product.id,
+            quantity: quantityChanged,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        console.log(data);
+        dispatch(_updateCart(data));
+      } else {
+        const cart = JSON.parse(window.localStorage.getItem('cart'));
+        for (let i = 0; i < cart.products.length; i++) {
+          if (cart.products[i].cartItem.productId === productId) {
+            if (cart.products[i].cartItem.quantity + quantityChanged <= 0)
+              return;
+            cart.products[i].cartItem.quantity =
+              cart.products[i].cartItem.quantity + quantityChanged;
+            cart.products[i].cartItem.unitPrice =
+              cart.products[i].cartItem.unitPrice +
+              quantityChanged * cart.products[i].price;
+          }
+        }
+        window.localStorage.setItem('cart', JSON.stringify(cart));
+        dispatch(_updateCart(cart));
       }
     } catch (err) {
       console.log(err);
