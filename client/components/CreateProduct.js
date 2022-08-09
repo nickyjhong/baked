@@ -10,15 +10,9 @@ class CreateProduct extends React.Component {
       name: '',
       imageURL: '',
       price: 0,
-<<<<<<< HEAD
       description: '',
       inventory: 0,
       category: '',
-=======
-      description: "",
-      // inventory: 0,
-      category: "",
->>>>>>> 361c1a79452819d4475778dd7d4940f859ea078e
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
