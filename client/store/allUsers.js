@@ -35,8 +35,17 @@ export const createUser = (user, history) => {
 export const fetchUsers = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get('/api/users');
-      dispatch(_setUsers(data));
+      const token = window.localStorage.getItem('token');
+      if (token) {
+        const { data } = await axios.get('/api/users', {
+          headers: {
+            authorization: token,
+          },
+        });
+        await dispatch(_setUsers(data));
+      } else {
+        console.log('Bad token 2')
+      }
     } catch (err) {
       console.log(err);
     }
