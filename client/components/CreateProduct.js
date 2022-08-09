@@ -11,7 +11,7 @@ class CreateProduct extends React.Component {
       imageURL: "",
       price: 0,
       description: "",
-      inventory: 0,
+      // inventory: 0,
       category: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -107,7 +107,7 @@ class CreateProduct extends React.Component {
           />
           <br />
           <br />
-          <label htmlFor="productInventory">Inventory</label>
+          {/* <label htmlFor="productInventory">Inventory</label>
           <br />
           <input
             name="inventory"
@@ -117,7 +117,7 @@ class CreateProduct extends React.Component {
             max="100"
           />
           <br />
-          <br />
+          <br /> */}
           <label htmlFor="productName">Category</label>
           <select onChange={handleChange} name='category'>
             <option value={category}></option>
