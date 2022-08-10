@@ -7,7 +7,7 @@ export class Contact extends React.Component {
       <div>
         <section className="grid-section">Contact</section>
         <article className="contact">
-          <p className="contact-">
+          <p className="contact-desc">
             Obviously, Baked By Fullstack isn't a real bakery and unfortunately,
             we don't sell any of the products we have listed.
           </p>
@@ -26,7 +26,7 @@ export class Contact extends React.Component {
             ></img>
             <h4 className="team-member-name">Nicole Hong</h4>
             <Link
-              to={{ pathname: '' }}
+              to={{ pathname: 'https://github.com/nickyjhong' }}
               target="_blank"
               className="team-member-link"
             >
@@ -107,7 +107,7 @@ export class Contact extends React.Component {
             ></img>
             <h4 className="team-member-name">Chris Tomshack</h4>
             <Link
-              to={{ pathname: '' }}
+              to={{ pathname: 'https://github.com/Ctomshack' }}
               target="_blank"
               className="team-member-link"
             >
@@ -126,29 +126,6 @@ export class Contact extends React.Component {
             <br />
             <br />
           </div>
-          {/* <h3 className="contact-desc">Special Thanks To:</h3>
-          <div className="team-member">
-            <img src="" className="team-member-image"></img>
-            <h4 className="team-member-name"></h4>
-            <Link
-              to={{ pathname: "https://github.com/" }}
-              target="_blank"
-              className="team-member-link"
-            >
-              Github
-            </Link>
-            <br />
-            <Link
-              to={{
-                pathname: "https://www.linkedin.com/in/",
-              }}
-              target="_blank"
-              className="team-member-link"
-            >
-              LinkedIn
-            </Link>
-            <p></p>
-          </div> */}
         </article>
         <br />
         <br />
