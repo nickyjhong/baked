@@ -10,7 +10,6 @@ export class OrderHistory extends React.Component {
 
   render() {
     const orders = this.props.orders;
-    console.log(orders);
     return (
       <div className="order-section">
         <h3 style={{ marginLeft: '2rem' }}>Order History</h3>

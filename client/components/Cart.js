@@ -18,6 +18,12 @@ class Cart extends Component {
     this.props.fetchCart();
   }
 
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.cart !== prevProps.cart) {
+  //     this.props.fetchCart()
+  //   }
+  // }
+
   handleDelete(productId) {
     this.props.deleteFromCart(productId);
     alert('deleted from cart ' + productId);

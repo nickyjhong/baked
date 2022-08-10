@@ -14,8 +14,10 @@ router.get('/', requireToken, async (req, res, next) => {
         status: 'open',
       },
       include: [Product],
+      order: [[Product, 'id', 'DESC']]
     });
     res.send(order);
+    
   } catch (err) {
     next(err);
   }
@@ -56,7 +58,16 @@ router.post('/', requireToken, async (req, res, next) => {
         quantity: newQuantity
       })
     }
-    res.send(order);
+    // res.send(order);
+    res.send(
+      await Order.findOne({
+        where: {
+          id: order.id,
+        },
+        include: [Product],
+        order: [[Product, 'id', 'DESC']]
+      })
+    );
   } catch (err) {
     next(err);
   }
@@ -101,6 +112,7 @@ router.put('/', requireToken, async (req, res, next) => {
         userId: req.user.dataValues.id,
         status: 'open',
       },
+      // include: [Product]
     });
 
     if (!order) {
@@ -119,11 +131,14 @@ router.put('/', requireToken, async (req, res, next) => {
 
     const newQuantity = product.quantity + req.body.newQuantity;
 
-    if (newQuantity <= 0) return;
+    if (newQuantity <= 0) {
+      await product.destroy()
+    } else {
+      await product.update({
+        quantity: newQuantity,
+      });
+    }
 
-    await product.update({
-      quantity: newQuantity,
-    });
 
     res.send(
       await Order.findOne({
@@ -131,8 +146,13 @@ router.put('/', requireToken, async (req, res, next) => {
           id: order.id,
         },
         include: [Product],
+        order: [[Product, 'id', 'DESC']]
       })
     );
+
+    // res.send(order)
+
+
   } catch (err) {
     next(err);
   }
