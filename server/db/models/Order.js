@@ -6,10 +6,6 @@ const Order = db.define('order', {
     type: Sequelize.ENUM('open', 'closed'),
     defaultValue: 'open',
   },
-  orderPrice: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0,
-  },
 });
 
 module.exports = Order;

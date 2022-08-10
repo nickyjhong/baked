@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
-const db = require("../db");
+const Sequelize = require('sequelize');
+const db = require('../db');
 
-const Product = db.define("product", {
+const Product = db.define('product', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -11,11 +11,7 @@ const Product = db.define("product", {
   },
   imageURL: {
     type: Sequelize.TEXT,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-    defaultValue: 'https://www.electricmirror.com/wp-content/uploads/2022/05/image-coming-soon-300x300.jpg',
+    defaultValue: 'https://img.freepik.com/premium-vector/cartoon-illustration-cupcake-with-question-mark-cute-design_152558-23988.jpg',
   },
   price: {
     type: Sequelize.FLOAT,
@@ -37,8 +33,8 @@ const Product = db.define("product", {
 });
 
 Product.beforeSave((product) => {
-  product.price *= 100
-})
+  product.price *= 100;
+});
 
 module.exports = Product;
 

@@ -1,22 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Checkout extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      phoneNumber: "",
-      email: "",
-      street: "",
-      apartment: "",
-      city: "",
-      state: "",
-      zip: "",
-      nameOnCard: "",
-      cardNumber: "",
-      secureCode: "",
-      expiration: "",
+      name: '',
+      phoneNumber: '',
+      email: '',
+      street: '',
+      apartment: '',
+      city: '',
+      state: '',
+      zip: '',
+      nameOnCard: '',
+      cardNumber: '',
+      secureCode: '',
+      expiration: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,10 +49,17 @@ class Checkout extends React.Component {
     return (
       <div>
         <div>
-          <form onSubmit={handleSubmit}>
-            <h3>Shipping Information</h3>
-            <label>Full Name</label>
+
+        <h2 style={{ textAlign: 'center' }}>Checkout</h2>
+        </div>
+        <div>
+          <h3 style={{ marginLeft: '2rem', fontWeight: 'lighter' }}>
+            Shipping Information
+          </h3>
+          <form className="billing-details-container" onSubmit={handleSubmit}>
             <input
+              className="shipping-info-field"
+              placeholder="Full name"
               type="name"
               name="name"
               onChange={handleChange}
@@ -60,17 +67,16 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "Full name is a required field",
-                  alert("Go back and add a name for your order")
+                  'Full name is a required field',
+                  alert('Go back and add a name for your order')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
 
-            <label>Phone Number</label>
             <input
+              className="shipping-info-field"
+              placeholder="Phone number"
               type="text"
               name="phoneNumber"
               onChange={handleChange}
@@ -78,17 +84,16 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "Phone number is a required field",
-                  alert("Go back and add a phone number for your order")
+                  'Phone number is a required field',
+                  alert('Go back and add a phone number for your order')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
 
-            <label>Email Address</label>
             <input
+              className="shipping-info-field"
+              placeholder="Email"
               type="email"
               name="email"
               onChange={handleChange}
@@ -96,17 +101,15 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "Email is a required field",
-                  alert("Go back and add a valid email")
+                  'Email is a required field',
+                  alert('Go back and add a valid email')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
 
-            <label>Address</label>
             <input
+              className="shipping-info-field"
               type="text"
               name="street"
               onChange={handleChange}
@@ -115,26 +118,25 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "Address is a required field",
-                  alert("How else will we know where to ship your order to?")
+                  'Address is a required field',
+                  alert('How else will we know where to ship your order to?')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <div>
+
             <input
+              className="shipping-info-field"
               type="text"
               name="apartment"
               onChange={handleChange}
               placeholder="Apartment, suite, unit, building, floor, etc."
               value={apartment}
-              />
-            </div>
-            <br />
-            <br />
+            />
 
-            <label>City</label>
             <input
+              className="shipping-info-field"
+              placeholder="City"
               type="text"
               name="city"
               onChange={handleChange}
@@ -142,17 +144,16 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "City is a required field",
-                  alert("We need a city to know where to ship your order to")
+                  'City is a required field',
+                  alert('We need a city to know where to ship your order to')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
 
-            <label>State</label>
             <input
+              className="shipping-info-field"
+              placeholder="State"
               type="text"
               name="state"
               onChange={handleChange}
@@ -160,17 +161,16 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "State is a required field",
-                  alert("We need a state to konw where to ship your order to")
+                  'State is a required field',
+                  alert('We need a state to know where to ship your order to')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
 
-            <label>ZIP Code</label>
             <input
+              className="shipping-info-field"
+              placeholder="Zip code"
               type="text"
               name="zip"
               onChange={handleChange}
@@ -178,24 +178,25 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "ZIP Code is a required field",
+                  'ZIP Code is a required field',
                   alert(
-                    "We need a zip code to know where to ship your order to"
+                    'We need a zip code to know where to ship your order to'
                   )
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
           </form>
         </div>
-        <hr />
-        <div>
-          <form onSubmit={handleSubmit}>
-            <h3>Billing Information</h3>
-            <label>Name On Card</label>
+
+        <div style={{ marginTop: '4rem' }}>
+          <h3 style={{ marginLeft: '2rem', fontWeight: 'lighter' }}>
+            Billing Information
+          </h3>
+          <form className="billing-details-container" onSubmit={handleSubmit}>
             <input
+              className="shipping-info-field"
+              placeholder="Name on card"
               type="text"
               name="nameOnCard"
               onChange={handleChange}
@@ -203,17 +204,16 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "A name on card is a required field",
-                  alert("We need a name from the card so we know who to charge")
+                  'A name on card is a required field',
+                  alert('We need a name from the card so we know who to charge')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
 
-            <label>Card Number</label>
             <input
+              className="shipping-info-field"
+              placeholder="Card number"
               type="text"
               name="cardNumber"
               onChange={handleChange}
@@ -221,17 +221,16 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "is a required field",
-                  alert("Go back and add a ")
+                  'is a required field',
+                  alert('Go back and add a ')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
 
-            <label>Expiration Date</label>
             <input
+              className="shipping-info-field"
+              placeholder="Expiration date"
               type="text"
               name="expiration"
               onChange={handleChange}
@@ -239,19 +238,19 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "Expiration Date is a required field",
+                  'Expiration Date is a required field',
                   alert(
-                    "We need to make sure we can charge you by seeing if your card is expired or not"
+                    'We need to make sure we can charge you by seeing if your card is expired or not'
                   )
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
             <br />
-            <br />
 
-            <label>Secure Code</label>
             <input
+              className="shipping-info-field"
+              placeholder="Security code"
               type="text"
               name="secureCode"
               onChange={handleChange}
@@ -259,19 +258,16 @@ class Checkout extends React.Component {
               required
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "Secure Code is a required field",
-                  alert("It is the last three digits on the back of your card")
+                  'Secure Code is a required field',
+                  alert('It is the last three digits on the back of your card')
                 )
               }
-              onInput={(e) => e.target.setCustomValidity("")}
+              onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
-            <br />
-            <br />
           </form>
         </div>
-        <button type="button">
-          <Link to="/success">Place Order</Link>
+        <button className="complete-checkout-btn" type="button">
+          <Link to="/orderSuccess">Place Order</Link>
         </button>
       </div>
     );

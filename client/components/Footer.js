@@ -1,14 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import About from './About';
 
 const Footer = () => (
   <footer>
-  <div className="footer-links">
-        <Link to={{ pathname: "https://github.com/2206-fsa-gs-team-gemini/baked" }} target="_blank" className="footer-link">Github</Link>
-        <Link to='/about' className="footer-link">About</Link>
-        <Link to='/contact'className="footer-link">Contact</Link>
-  </div>
-  </footer>
-)
 
-export default Footer 
+    <div className='footer-container'>
+  <ul className='footer-list'>
+    <li>
+      <p>👋</p>
+    </li>
+    <li><a className='footer-link' href="https://github.com/2206-fsa-gs-team-gemini/baked">Github</a></li>
+    <li><a className='footer-link' href="#">About The Team</a></li>
+    <li><a className='footer-link' href="#">Contact Us</a></li>
+    <li><a className='footer-link' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">View More</a></li>
+  </ul>
+</div>
+
+  </footer>
+);
+
+export default Footer;

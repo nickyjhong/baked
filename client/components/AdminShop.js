@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/allProducts';
 import { addToCart } from '../store/cart';
 
-export class Shop extends Component {
+export class AdminShop extends Component {
   constructor() {
     super();
     this.state = {
@@ -113,8 +113,8 @@ export class Shop extends Component {
                     <h3 className="grid-item-text">{product.name}</h3>
                     <p className="grid-item-text">${displayPrice}</p>
                     <div className="shop-btn-container">
-                      <Link to={`/products/${product.id}`}>
-                        <button className='view-more-btn shop-btn'>View More</button>
+                      <Link to={`/products/${product.id}/update`}>
+                        <button className='view-more-btn shop-btn'>Edit Product</button>
                       </Link>
                       <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); alert('added to cart') }}>Add To Cart</button>
                     </div>
@@ -138,4 +138,4 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   addToCart: (product) => dispatch(addToCart(product))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Shop);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminShop);

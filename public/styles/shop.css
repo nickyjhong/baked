@@ -40,6 +40,7 @@
     color: #d49090;
     transition-duration: .2s;
     cursor: pointer;
+    /* background-color: rgb(245, 245, 245); */
   }
 
   /* .grid-section-right {
@@ -78,7 +79,7 @@
   font-size: .6em;
   color: black;
   width: 10rem;
-  height: 16rem;
+  height: 18rem;
   border-radius: 10px;
   box-shadow: 0 0px 0px  rgba(0, 0, 0, 0.2), 0 2px 7px 0 rgba(0, 0, 0, 0.19);
   transition-duration: .5s;
@@ -98,8 +99,58 @@
     transition-duration: .5s;
   }
 
+  .shop-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .add-to-cart {
-    background-color: #d49090;
+      border-radius: 5px;
+      background-color: #d49090;
+      height: 1rem;
+
+      width: 7rem;
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      /* margin-left: 1.5rem;
+      margin-top: 1rem; */
+      transition: .2s;
+      text-align: center;
+  }
+
+  .shop-btn {
+    margin: .5rem;
+  }
+  .add-to-cart:hover {
+      background-color: #ef757a;
+  }
+
+  .view-more-btn {
+    border-radius: 5px;
+    background-color: #fff;
+    color: #d49090;
+    height: 1rem;
+    width: 7rem;
+    font-size: 14px;
+    /* font-weight: bold; */
+    border: none;
+    cursor: pointer;
+    /* margin-left: 1.5rem;
+    margin-top: 1rem; */
+    transition: .2s;
+    text-align: center;
+}
+
+.view-more-btn:hover {
+    /* background-color: #ef757a; */
+    border: 1px solid #ef757a;
+    color: #ef757a;
+}
+    /* background-color: #d49090;
   backface-visibility: hidden;
   border-radius: 10px;
   border-style: none;
@@ -112,7 +163,7 @@
   height: 1rem;
   width: 7rem;
   letter-spacing: normal;
-  /* line-height: 1.5; */
+  line-height: 1.5;
   outline: none;
   overflow: hidden;
   padding: 14px 30px;
@@ -121,8 +172,8 @@
   transition: all .3s;
   margin-left: 2rem;
   margin-right: 2rem;
-  text-align: center;
-}
+  text-align: center; */
+/* } */
 
 p {
     padding-left: .5rem;
@@ -135,9 +186,27 @@ p {
   }
 
   .category-search {
-    height: 1rem;
+    height: .5rem;
     width: 8em;
     border-radius: 5px;
+    padding: 11px 15px;
+  background-color: rgb(245, 245, 245);
+  outline: none;
+  border: 1px solid rgb(0, 0, 0, 0);
+  font-size: 15px;
+  color: rgb(30, 30, 30);
+  transition: .2s;
+}
+.category-search::placeholder {
+  color: rgb(200, 200, 200);
+}
+.category-search:hover {
+  background-color: #F1EFF1;
+}
+.category-search:focus {
+  background-color: #fff;
+  /* border: 1px solid #d49090; */
+  box-shadow: 0 0 4px 2px rgb(50, 50, 50, .1);
 }
 
   /* END OF GRID STYLING */

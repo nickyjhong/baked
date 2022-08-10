@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { TOKEN } from './auth';
+
+const GUEST_CART = 'cart';
 
 // ACTION TYPES
 const SET_CART = 'SET_CART';
@@ -19,7 +22,7 @@ export const _updateCart = (cart) => ({
 export const fetchCart = () => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem('token');
+      const token = window.localStorage.getItem(TOKEN);
 
       if (token) {
         const { data } = await axios.get('/api/cart', {
@@ -29,8 +32,16 @@ export const fetchCart = () => {
         });
         await dispatch(_setCart(data));
       } else {
-        const cart = JSON.parse(window.localStorage.getItem('cart'));
-        await dispatch(_setCart(cart));
+        // GUEST
+        const cart = JSON.parse(window.localStorage.getItem(GUEST_CART));
+        let newCart;
+        if (!cart) {
+          newCart = { products: [] };
+          window.localStorage.setItem(GUEST_CART, JSON.stringify(newCart));
+        } else {
+          newCart = { ...cart };
+        }
+        await dispatch(_setCart(newCart));
       }
     } catch (err) {
       console.log(err);
@@ -41,7 +52,7 @@ export const fetchCart = () => {
 export const addToCart = (product) => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem('token');
+      const token = window.localStorage.getItem(TOKEN);
       if (token) {
         const { data } = await axios.post(
           '/api/cart',
@@ -55,6 +66,47 @@ export const addToCart = (product) => {
           }
         );
         dispatch(_updateCart(data));
+      } else {
+        // GUEST
+
+        console.info(product);
+        // Retrieve current cart (key in object)
+        const cart = JSON.parse(window.localStorage.getItem(GUEST_CART));
+        let newCart = { ...cart };
+
+        const isCartNotEmpty =
+          cart && cart.products && cart.products.length > 0;
+
+        const productIndexInCart = isCartNotEmpty
+          ? cart.products.findIndex(({ id }) => id == product.id)
+          : -1;
+
+        // Check if product already exists in cart
+        if (
+          productIndexInCart >= 0 &&
+          newCart.products[productIndexInCart].cartItem &&
+          newCart.products[productIndexInCart].cartItem.quantity
+        ) {
+          // Update quantity
+          newCart.products[productIndexInCart].cartItem.quantity =
+            newCart.products[productIndexInCart].cartItem.quantity + 1;
+        } else {
+          const newProductInCart = {
+            ...product,
+            cartItem: { quantity: 1, productId: product.id },
+          };
+          if (!isCartNotEmpty) {
+            newCart.products = [newProductInCart];
+          } else {
+            newCart.products = [...newCart.products, newProductInCart];
+          }
+        }
+
+        // update locally stored cart
+        window.localStorage.setItem(GUEST_CART, JSON.stringify(newCart));
+
+        // Add product to localstorage cart if it does not already exist
+        dispatch(_updateCart(newCart));
       }
     } catch (err) {
       console.log(err);
@@ -65,7 +117,7 @@ export const addToCart = (product) => {
 export const deleteFromCart = (productId) => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem('token');
+      const token = window.localStorage.getItem(TOKEN);
       if (token) {
         const { data } = await axios.delete(`/api/cart/${productId}`, {
           headers: {
@@ -74,13 +126,15 @@ export const deleteFromCart = (productId) => {
         });
         dispatch(_updateCart(data));
       } else {
-        const cart = JSON.parse(window.localStorage.getItem('cart'));
-        console.log(cart);
+        // GUEST
+        const cart = JSON.parse(window.localStorage.getItem(GUEST_CART));
+
         const remainingProducts = cart.products.filter(
-          (product) => product.cartItems.productId !== productId
+          (product) => product.cartItem.productId !== productId
         );
+
         const newCart = { ...cart, products: remainingProducts };
-        window.localStorage.setItem('cart', JSON.stringify(newCart));
+        window.localStorage.setItem(GUEST_CART, JSON.stringify(newCart));
         dispatch(_updateCart(newCart));
       }
     } catch (err) {
@@ -89,51 +143,10 @@ export const deleteFromCart = (productId) => {
   };
 };
 
-// export const updateQuantity = (product, quantityChange) => {
-//   return async (dispatch) => {
-//     try {
-//       const token = window.localStorage.getItem('token');
-//       if (token) {
-//         const { data } = await axios.put(
-//           '/api/cart',
-//           {
-//             productId: product.id,
-//             quantity: quantityChange,
-//           },
-//           {
-//             headers: {
-//               authorization: token,
-//             },
-//           }
-//         );
-//         console.log(data);
-//         dispatch(_updateCart(data));
-//       } else {
-//         const cart = JSON.parse(window.localStorage.getItem('cart'));
-//         for (let i = 0; i < cart.products.length; i++) {
-//           if (cart.products[i].cartItem.productId === productId) {
-//             if (cart.products[i].cartItem.quantity + quantityChange <= 0)
-//               return;
-//             cart.products[i].cartItem.quantity =
-//               cart.products[i].cartItem.quantity + quantityChange;
-//             cart.products[i].cartItem.unitPrice =
-//               cart.products[i].cartItem.unitPrice +
-//               quantityChanged * cart.products[i].price;
-//           }
-//         }
-//         window.localStorage.setItem('cart', JSON.stringify(cart));
-//         dispatch(_updateCart(cart));
-//       }
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-// };
-
 export const updateQuantity = (product, newQuantity) => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem('token');
+      const token = window.localStorage.getItem(TOKEN);
       if (token) {
         const { data } = await axios.put(
           '/api/cart',
@@ -147,18 +160,67 @@ export const updateQuantity = (product, newQuantity) => {
             },
           }
         );
-        console.log(data);
         dispatch(_updateCart(data));
       } else {
-        const cart = JSON.parse(window.localStorage.getItem('cart'));
+        // GUEST
+        const cart = JSON.parse(window.localStorage.getItem(GUEST_CART));
+
         for (let i = 0; i < cart.products.length; i++) {
-          if (cart.products[i].cartItems.productId === product.productId) {
-            cart.products[i].cartItems.quantity =
-              cart.products[i].cartItems.quantity + newQuantity;
+          console.log('product cart', cart);
+
+          if (cart.products[i].cartItem.productId === product.id) {
+            cart.products[i].cartItem.quantity =
+              cart.products[i].cartItem.quantity + newQuantity;
           }
         }
-        window.localStorage.setItem('cart', JSON.stringify(cart));
+
+        window.localStorage.setItem(GUEST_CART, JSON.stringify(cart));
         dispatch(_updateCart(cart));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+// AFTER CHECKOUT
+export const emptyCart = (cart) => {
+  return async (dispatch) => {
+    try {
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        if (cart.id) {
+          const { data } = await axios.put(`/api/cart/orderSuccess`, cart, {
+            headers: {
+              authorization: token,
+            },
+          });
+          dispatch(_updateCart(data));
+        } else {
+          // GUEST
+          window.localStorage.setItem(
+            GUEST_CART,
+            JSON.stringify({ products: [] })
+          );
+          const { data } = await axios.put(`/api/cart/orderSuccess`, cart, {
+            headers: {
+              authorization: token,
+            },
+          });
+          dispatch(_updateCart(data));
+        }
+      } else {
+        // GUEST
+        window.localStorage.setItem(
+          GUEST_CART,
+          JSON.stringify({ products: [] })
+        );
+        const { data } = await axios.put(`/api/cart/orderSuccess`, cart, {
+          headers: {
+            authorization: 'guest',
+          },
+        });
+        dispatch(_updateCart(data));
       }
     } catch (err) {
       console.log(err);
