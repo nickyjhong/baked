@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NotFoundPage = () => {
   return (
     <div>
-      <h1 className="title">Uh Oh! This page doesn't exist... Click here to head back home INSERT BUTTON </h1>
-      {/* <img src="https://pbs.twimg.com/media/ENjWjHEW4AAeSXD.png" /> */}
+      <img src="https://www.boredpanda.com/blog/wp-content/uploads/2019/09/food-realistic-cakes-luke-vincentini-fb2.png" style={{ textAlign: 'center' }} />
+      <p style={{ textAlign: 'center' }}>We ran out of eggs and haven't been able to make a recipe for that yet 😨</p>
+      <p style={{ textAlign: 'center' }}>Why don't you give <Link to='/products'>these other treats</Link> a chance?</p>
+      <br /><br /><br /><br /><br /><br />
     </div>
   );
 };

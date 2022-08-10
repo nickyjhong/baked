@@ -48,7 +48,9 @@ class SingleProduct extends Component {
           </div>
         ) : (
           <div>
-            <h1>This product does not exist!</h1>
+            {/* <img src={'https://images.unsplash.com/photo-1617108862436-b4678494f439?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'} /> */}
+            <p style={{ textAlign: 'center' }}>We're not done baking that yet</p>
+            <p style={{ textAlign: 'center' }}>Check back soon!</p>
           </div>
         )}
       </div>
