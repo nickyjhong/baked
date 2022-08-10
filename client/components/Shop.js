@@ -113,7 +113,9 @@ export class Shop extends Component {
                     <h3 className="grid-item-text">{product.name}</h3>
                     <p className="grid-item-text">${displayPrice}</p>
                     <div className="shop-btn-container">
-                      <button className='view-more-btn shop-btn'>View More</button>
+                      <Link to={`/products/${product.id}`}>
+                        <button className='view-more-btn shop-btn'>View More</button>
+                      </Link>
                       <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); alert('added to cart') }}>Add To Cart</button>
                     </div>
                   </div>

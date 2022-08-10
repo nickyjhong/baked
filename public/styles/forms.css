@@ -38,7 +38,7 @@ input:focus {
 } */ 
 
 
-.login {
+.login, .signup {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +46,7 @@ input:focus {
     width: 100%;
 }
 
-.login > div {
+.login > div, .signup > div {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -55,14 +55,14 @@ input:focus {
     background-color: #fff;
 }
 
-.login .title {
+.login .title , .signup .title{
     color: rgb(30, 30, 30);
     font-size: 18px;
     font-weight: bold;
     margin: 30px auto 20px;
 }
 
-.login input {
+.login input, .signup input {
     width: 260px;
     border-radius: 10px;
     margin: 10px auto;
@@ -74,19 +74,19 @@ input:focus {
     color: rgb(30, 30, 30);
     transition: .2s;
 }
-.login input::placeholder {
+.login input::placeholder, .signup input::placeholder {
     color: rgb(200, 200, 200);
 }
-.login input:hover {
+.login input:hover, .signup input:hover {
     background-color: #F1EFF1;
 }
-.login input:focus {
+.login input:focus, .signup input:focus  {
     background-color: #fff;
     border: 1px solid #d49090;
     box-shadow: 0 0 4px 2px rgb(50, 50, 50, .1);
 }
 
-.login input:valid {
+.login input:valid, .signup input:valid {
     border: 1px solid rgb(220, 220, 220);
 }
 
@@ -94,7 +94,7 @@ input:focus {
     border: 1px solid red;
 } */
 
-.login button {
+.login button, .signup button {
     border-radius: 10px;
     background-color: #d49090;
     height: 45px;
@@ -108,7 +108,7 @@ input:focus {
     margin: 20px auto;
     transition: .2s;
 }
-.login button:hover {
+.login button:hover, .signup button:hover {
     background-color: #ef757a;
 }
 
@@ -116,12 +116,12 @@ input:focus {
     font-size: 16px;
 }
 
-.login .buttonShadow {
+.login .buttonShadow, .signup .buttonShadow {
     background-color: #fff;
     color: rgb(100, 100, 100);
     box-shadow: 0 0 4px 2px rgb(50, 50, 50, .1);
 }
-.login .buttonShadow:hover {
+.login .buttonShadow:hover, .signup .buttonShadow:hover  {
     background-color: rgb(50, 50, 50, .2);
 }
 
@@ -135,4 +135,8 @@ input:focus {
     font-size: 15px;
     margin: 40px auto 0;
     color: rgb(20, 20, 20);
+}
+
+.input-container {
+    margin: 0;
 }
