@@ -18,12 +18,6 @@ class Cart extends Component {
     this.props.fetchCart();
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.cart !== prevProps.cart) {
-  //     this.props.fetchCart()
-  //   }
-  // }
-
   handleDelete(productId) {
     this.props.deleteFromCart(productId);
     alert('deleted from cart ' + productId);
@@ -172,15 +166,15 @@ class Cart extends Component {
   }
 }
 
-const mapState = (state) => ({
+const mapStateToProps = (state) => ({
   cart: state.cart,
 });
 
-const mapDispatch = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchCart: () => dispatch(fetchCart()),
   deleteFromCart: (productId) => dispatch(deleteFromCart(productId)),
   updateCart: (product, newQuantity) =>
     dispatch(updateQuantity(product, newQuantity)),
 });
 
-export default connect(mapState, mapDispatch)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

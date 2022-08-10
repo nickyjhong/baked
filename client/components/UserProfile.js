@@ -15,7 +15,7 @@ export class UserProfile extends React.Component {
   render() {
     return (
       <div>
-        <h2 style={{textAlign: 'center'}}>Welcome {this.props.firstName}!</h2>
+        <h2 style={{ textAlign: 'center' }}>Welcome {this.props.firstName}!</h2>
 
         <div className="profile-order-container">
           <OrderHistory />
