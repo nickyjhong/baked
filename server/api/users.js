@@ -9,16 +9,16 @@ module.exports = router;
 router.get('/', requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
-      // explicitly select only the name and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      attributes: ['firstName', 'lastName', 'email'],
+      where: {
+        isAdmin: false
+      }
     });
     res.send(users);
   } catch (err) {
     next(err);
   }
 });
+
 
 // ADMIN VIEW: CREATE NEW USER
 router.post('/', async (req, res, next) => {

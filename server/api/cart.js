@@ -91,52 +91,6 @@ router.delete('/:productId', requireToken, async (req, res, next) => {
   }
 });
 
-// router.put('/', requireToken, async (req, res, next) => {
-//   try {
-//     let order = await Order.findOne({
-//       where: {
-//         userId: req.user.dataValues.id,
-//         status: 'open',
-//       },
-//     });
-
-//     if (!order) {
-//       order = await Order.create({
-//         status: 'open',
-//         userId: req.user.dataValues.id,
-//       });
-//     }
-
-//     let cartItem = await CartItem.findOne({
-//       where: {
-//         orderId: order.id,
-//         productId: req.body.productId,
-//       },
-//     });
-
-//     const updatedQuantity = cartItem.quantity + req.body.quantityChange;
-//     const updatedTotalCost = cartItem.unitPrice * updatedQuantity;
-
-//     if (updatedQuantity <= 0) return;
-
-//     await cartItem.update({
-//       quantity: updatedQuantity,
-//       totalPrice: updatedTotalCost,
-//     });
-
-//     res.send(
-//       await Order.findOne({
-//         where: {
-//           id: order.id,
-//         },
-//         include: [Product],
-//       })
-//     );
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 router.put('/', requireToken, async (req, res, next) => {
   try {
     let order = await Order.findOne({
@@ -176,6 +130,78 @@ router.put('/', requireToken, async (req, res, next) => {
         include: [Product],
       })
     );
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/orderSuccess', async (req, res, next) => {
+  try {
+    if (req.headers.authorization !== 'guest') {
+      if (req.body.id) {
+        let order = await Order.findOne({
+          where: {
+            id: req.body.id,
+            status: 'open',
+          },
+        });
+
+        order.update({
+          status: 'closed',
+        });
+
+        res.send(
+          await Order.findOne({
+            where: {
+              id: order.id,
+            },
+            include: [Product],
+          })
+        );
+      } else {
+        const user = await User.findByToken(req.headers.authorization);
+        let order = await Order.create({
+          status: 'closed',
+          userId: user.id,
+        });
+        for (let i = 0; i < req.body.products.length; i++) {
+          await CartItem.create({
+            orderId: order.id,
+            productId: req.body.products[i].cartItems.productId,
+            quantity: req.body.products[i].cartItems.quantity,
+            unitPrice: req.body.products[i].cartItems.unitPrice,
+          });
+        }
+        res.send(
+          await Order.findOne({
+            where: {
+              id: order.id,
+            },
+            include: [Product],
+          })
+        );
+      }
+    } else {
+      let guestOrder = await Order.create({
+        status: 'closed',
+      });
+      for (let i = 0; i < req.body.products.length; i++) {
+        await OrderItems.create({
+          orderId: guestOrder.id,
+          productId: req.body.products[i].orderItems.productId,
+          quantity: req.body.products[i].orderItems.quantity,
+          unitPrice: req.body.products[i].orderItems.unitPrice,
+        });
+      }
+      res.send(
+        await Order.findOne({
+          where: {
+            id: guestOrder.id,
+          },
+          include: [Product],
+        })
+      );
+    }
   } catch (err) {
     next(err);
   }

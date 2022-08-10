@@ -52,26 +52,28 @@ class Cart extends Component {
                 </div>
                 <div className="subtotal-inline-block"></div>
               </div>
-
               {this.props.cart !== null && this.props.cart.products ? (
                 this.props.cart.products.map((product) => (
                   <div key={product.id} className="checkout-card-row">
                     <div className="subtotal-inline-block">{product.name}</div>
                     <img src={product.imageUrl} />{' '}
                     {/* Change to imageURL to see image*/}
-                    <div className='quantity-section'>
-
-                    <button className='increment-btn' onClick={() => this.props.updateCart(product,  - 1)}>
-                      -
-                    </button>
-                    <div
-                      className="subtotal-inline-block"
-                    >
-                      {product.cartItem.quantity}
-                    </div>
-                    <button className='increment-btn' onClick={() => this.props.updateCart(product, 1)}>
-                      +
-                    </button>
+                    <div className="quantity-section">
+                      <button
+                        className="increment-btn"
+                        onClick={() => this.props.updateCart(product, -1)}
+                      >
+                        -
+                      </button>
+                      <div className="subtotal-inline-block">
+                        {product.cartItem.quantity}
+                      </div>
+                      <button
+                        className="increment-btn"
+                        onClick={() => this.props.updateCart(product, 1)}
+                      >
+                        +
+                      </button>
                     </div>
                     <div
                       className="subtotal-inline-block"
@@ -120,7 +122,7 @@ class Cart extends Component {
                           return prev + calculatedPrice;
                         }, 0)
                       ).toFixed(2)}`
-                    : 'still loading'}
+                    : '$ 0'}
                 </div>
               </div>
               <div className="checkout-card-row">
@@ -148,7 +150,7 @@ class Cart extends Component {
                           return prev + calculatedPrice;
                         }, 0) + 2.99
                       ).toFixed(2)}`
-                    : 'Loading'}
+                    : '$ 2.99'}
                 </div>
               </div>
               <div className="checkout-card-row">

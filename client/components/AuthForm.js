@@ -31,23 +31,6 @@ const AuthForm = (props) => {
             </Link>
           </div>
         </div>
-        {/* <div className="form-container">
-          <div className="input-container">
-            <label htmlFor="email">
-              <p>Email</p>
-            </label>
-            <input name="email" type="text" />
-          </div>
-          <div className="input-container">
-            <label htmlFor="password">
-              <p>Password</p>
-            </label>
-            <input name="password" type="password" />
-          </div>
-          <div>
-            <button type="submit">{displayName}</button>
-          </div>
-        </div> */}
         {error && <div> {error} </div>}
       </form>
     </div>

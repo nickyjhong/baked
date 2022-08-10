@@ -1,24 +1,36 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { fetchUsers } from '../store/allUsers'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../store/allUsers';
 
 export class AdminUsers extends Component {
+  async componentDidMount() {
+    await this.props.getAllUsers();
+  }
+
   render() {
-    console.log(this.props.getAllUsers)
+    const users = this.props.users;
     return (
       <div>
-        Users
+        <h2>Users:</h2>
+        {users.map((user) => (
+          <div key={user.id}>
+            <p>First name: {user.firstName}</p>
+            <p>Last name: {user.lastName} </p>
+            <p>Email: {user.email} </p>
+            <hr />
+          </div>
+        ))}
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
-  state: state.allUsers,
-})
+  users: state.users,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getAllUsers: () => dispatch(fetchUsers()),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminUsers)
+export default connect(mapStateToProps, mapDispatchToProps)(AdminUsers);
