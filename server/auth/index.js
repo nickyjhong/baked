@@ -4,8 +4,6 @@ const {
 } = require('../db');
 module.exports = router;
 
-// on Postman, error message in route
-// "WHERE parameter \"email\" has invalid \"undefined\" value"
 router.post('/login', async (req, res, next) => {
   try {
     res.send({ token: await User.authenticate(req.body) });
