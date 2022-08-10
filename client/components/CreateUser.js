@@ -85,7 +85,7 @@ export class CreateUser extends React.Component {
                 </label>
               </div>
               <div>
-                <button className="button submit-btn" type="submit">
+                <button className="button submit-btn buttonShadow" type="submit">
                   Submit
                 </button>
               </div>
