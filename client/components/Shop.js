@@ -103,7 +103,7 @@ export class Shop extends Component {
               </li>
             </ul>
           </div>
-          
+
           <div className="grid-section-right">
             {productFilter.map((product) => (
               product.name.toLowerCase().includes(this.state.term.toLowerCase()) ? (
@@ -127,7 +127,7 @@ export class Shop extends Component {
                 </div>
               </div>
                 ) : (
-                  <div></div>
+                  ""
                 )
               ))
             }
