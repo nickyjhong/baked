@@ -22,8 +22,9 @@ body {
 }
 
 #app, .div-container {
-  height: 78vh;
+  height: 100vh;
 }
+
 a {
   text-decoration: none;
 }

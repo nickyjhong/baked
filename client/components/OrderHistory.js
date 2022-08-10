@@ -48,7 +48,7 @@ export class OrderHistory extends React.Component {
             ))}
           </div>
         ) : (
-          <div>No recent orders found</div>
+          <div className="div-container">No recent orders found</div>
         )}
       </div>
     );

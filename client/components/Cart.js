@@ -28,7 +28,7 @@ class Cart extends Component {
     return (
       <div>
         <h2 style={{ textAlign: 'center' }}>Shopping Cart</h2>
-        <div className="cart-container">
+        <div className="cart-container div-container">
           <div className="cart-section-left">
             <div className="shopping-cart-left-container">
               <div className="checkout-card-row">
