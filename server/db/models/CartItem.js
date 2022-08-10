@@ -6,6 +6,9 @@ const CartItem = db.define('cartItem', {
     type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 1,
+    validate: {
+      min: 1
+    }
   },
   unitPrice: {
     type: Sequelize.INTEGER,

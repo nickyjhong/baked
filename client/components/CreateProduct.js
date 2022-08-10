@@ -8,10 +8,8 @@ class CreateProduct extends React.Component {
     super();
     this.state = {
       name: '',
-      imageURL: '',
       price: 0,
       description: '',
-      inventory: 0,
       category: '',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -29,108 +27,101 @@ class CreateProduct extends React.Component {
   }
 
   render() {
-    const { name, imageURL, price, description, category, inventory } =
-      this.state;
+    const { name, price, description, category } = this.state;
     const { handleSubmit, handleChange } = this;
     return (
       <div className="add-product-form">
         <form className="add-form-input" onSubmit={handleSubmit}>
-          <h1 style={{ textAlign: 'center' }}>Add Product</h1>
-          <label htmlFor="productName">Name</label>
-          <br />
-          <input
-            name="name"
-            onChange={handleChange}
-            value={name}
-            required
-            onInvalid={(e) =>
-              e.target.setCustomValidity(
-                'Product name is a required field',
-                alert('Go back and add a product name')
-              )
-            }
-            onInput={(e) => e.target.setCustomValidity('')}
-          />
-          <br />
-          <br />
+          <div className="form update">
+            <h1 style={{ textAlign: 'center' }}>Add Product</h1>
 
-          <label htmlFor="productimageURL">Picture</label>
-          <br />
-          <input
-            name="imageURL"
-            onChange={handleChange}
-            value={imageURL}
-            required
-            onInvalid={(e) =>
-              e.target.setCustomValidity(
-                'Product picture is a required field',
-                alert('Go back and add a product picture')
-              )
-            }
-            onInput={(e) => e.target.setCustomValidity('')}
-          />
-          <br />
-          <br />
-          <label htmlFor="productPrice">Price</label>
-          <br />
-          <input
-            name="price"
-            onChange={handleChange}
-            value={price}
-            required
-            onInvalid={(e) =>
-              e.target.setCustomValidity(
-                'Product price is a required field',
-                alert('How do you plan to sell a product without a price?')
-              )
-            }
-            onInput={(e) => e.target.setCustomValidity('')}
-          />
-          <br />
-          <br />
-          <label htmlFor="productDescription">Description</label>
-          <br />
-          <input
-            name="description"
-            onChange={handleChange}
-            value={description}
-            required
-            onInvalid={(e) =>
-              e.target.setCustomValidity(
-                'Product description is a required field',
-                alert('Go back and add a product description')
-              )
-            }
-            onInput={(e) => e.target.setCustomValidity('')}
-          />
-          <br />
-          <br />
-          {/* <label htmlFor="productInventory">Inventory</label>
-          <br />
-          <input
-            name="inventory"
-            onChange={handleChange}
-            value={inventory}
-            min="0"
-            max="100"
-          />
-          <br />
-          <br /> */}
-          <label htmlFor="productName">Category</label>
-          <select onChange={handleChange} name="category">
-            <option value={category}></option>
-            <option value="cake">cake</option>
-            <option value="cookie">cookie</option>
-            <option value="cupcake">cupcake</option>
-            <option value="mini">mini</option>
-            <option value="other">other</option>
-          </select>
-          <br />
-          <br />
-          <button type="submit">Add</button>
-          <button type="button">
-            <Link to="/products">Cancel</Link>
-          </button>
+            <div className="product-info-div">
+              <div className="product-info-name">
+                <span htmlFor="productName">Product Name</span>
+              </div>
+              <div className="product-info-input">
+                <input
+                  name="name"
+                  className="product-info-input"
+                  onChange={handleChange}
+                  value={name}
+                  required
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Product name is a required field",
+                      alert("Go back and add a product name")
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
+                />
+              </div>
+            </div>
+
+            <div className="product-info-div">
+              <div className="product-info-name">
+                <span htmlFor="productPrice">Price</span>
+              </div>
+              <div className="product-info-input">
+                <input
+                  name="price"
+                  onChange={handleChange}
+                  value={price}
+                  required
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Product price is a required field",
+                      alert("How do you plan to sell a product without a price?")
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
+                />
+              </div>
+            </div>
+
+            <div className="product-info-div">
+              <div className="product-info-name">
+                <span htmlFor="productDescription">Description</span>
+              </div>
+              <div className="product-info-input product-description-input">
+                <textarea
+                  name="description"
+                  onChange={handleChange}
+                  value={description}
+                  required
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Product description is a required field",
+                      alert("Go back and add a product description")
+                    )
+                  }
+                  onInput={(e) => e.target.setCustomValidity("")}
+                />
+              </div>
+            </div>
+
+            <div className="product-info-div">
+              <div className="product-info-name">
+                <span htmlFor="productCategory">Category</span>
+              </div>
+              <div className="cat-cont">
+                <select onChange={handleChange} name='category' className="category-list">
+                  <option value={category}></option>
+                  <option value="cake">cake</option>
+                  <option value="cookie">cookie</option>
+                  <option value="cupcake">cupcake</option>
+                  <option value="mini">mini</option>
+                  <option value="other">other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="update-btns create-btns">
+            <button type="submit">Add</button>
+            <button type="button" className="buttonShadow">
+              <Link to={"/admin"}>Cancel</Link>
+            </button>
+          </div>
         </form>
       </div>
     );

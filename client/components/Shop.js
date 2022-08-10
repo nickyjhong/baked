@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/allProducts';
+import { addToCart } from '../store/cart';
 
 export class Shop extends Component {
   constructor() {
@@ -26,7 +27,6 @@ export class Shop extends Component {
 
   render() {
     const { products } = this.props;
-
     const productFilter = products.filter((product) => {
       if (this.state.filtered === 'All') return product;
       if (this.state.filtered === 'Cakes') return product.category === 'cake';
@@ -101,21 +101,25 @@ export class Shop extends Component {
             {productFilter.map((product) => {
               const displayPrice = parseFloat(product.price / 100).toFixed(2) 
               return (
-                <Link to={`/products/${product.id}`} key={product.id}>
-                  <div className="grid-item">
+                <div className="grid-item" key={product.id}>
+                  <Link to={`/products/${product.id}`} >
                     <img
                       className="shop-image"
                       src={product.imageURL}
                       alt={`Image of ${product.name}`}
                     />
-                    <div className="cookie-description">
-                      <h3 className="grid-item-text">{product.name}</h3>
-                      <p className="grid-item-text">${displayPrice}</p>
-                      <button className='view-more-btn'>View More</button>
-                      <button className='add-to-cart'>Add To Cart</button>
+                  </Link>
+                  <div className="cookie-description">
+                    <h3 className="grid-item-text">{product.name}</h3>
+                    <p className="grid-item-text">${displayPrice}</p>
+                    <div className="shop-btn-container">
+                      <Link to={`/products/${product.id}`}>
+                        <button className='view-more-btn shop-btn'>View More</button>
+                      </Link>
+                      <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); alert('added to cart') }}>Add To Cart</button>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>
@@ -125,12 +129,13 @@ export class Shop extends Component {
   }
 }
 
-const mapStateToProps = (reduxState) => ({
-  products: reduxState.products,
+const mapStateToProps = (state) => ({
+  products: state.products,
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   getProducts: () => dispatch(fetchProducts()),
+  addToCart: (product) => dispatch(addToCart(product))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop);

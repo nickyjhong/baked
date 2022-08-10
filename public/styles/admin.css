@@ -1,0 +1,22 @@
+.admin-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.admin-btn {
+    border-radius: 10px;
+    background-color: #d49090;
+    height: 45px;
+    padding: 12px;
+    width: 260px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 20px auto;
+    transition: .2s;
+}  
+

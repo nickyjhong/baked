@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import About from './About';
 
 const Footer = () => (
   <footer>
+
     <div className='footer-container'>
   <ul className='footer-list'>
     <li>
@@ -14,7 +16,8 @@ const Footer = () => (
     <li><a className='footer-link' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">View More</a></li>
   </ul>
 </div>
-  </footer>
-)
 
-export default Footer 
+  </footer>
+);
+
+export default Footer;

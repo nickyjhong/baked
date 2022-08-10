@@ -22,7 +22,7 @@ class SingleProduct extends Component {
     // const { id, name, imageURL, price, description, category } = this.props.product;
     // const displayPrice = parseFloat(product.price / 100).toFixed(2) 
     return (
-      <div>
+      <div className="div-container">
         {product && product.id ? (
           <div>
             <section className="s-product-name">
@@ -51,7 +51,6 @@ class SingleProduct extends Component {
             <h1>This product does not exist!</h1>
           </div>
         )}
-        
       </div>
     );
   }
