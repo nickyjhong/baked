@@ -1,14 +1,15 @@
 .cover-container {
-  height: 80vh;
+  height: 82vh;
   background-image: url(https://images.unsplash.com/photo-1567752588693-ad10a647c5a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1460&q=80);
   background-size: cover;
   background-position: center;
+  
 }
 
 .bg-overlay:before {
   background: rgba(245, 211, 206, 0.5);
   content: '';
-  height: 80%;
+  height: 82%;
   left: 0;
   position: absolute;
   width: 100%;
@@ -21,7 +22,6 @@
   font-style: normal;
   color: white !important;
   line-height: 1.5em;
-
   text-shadow: 0 0.15rem 0.1rem rgb(0 0 0 / 50%);
 }
 
