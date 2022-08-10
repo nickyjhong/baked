@@ -4,8 +4,15 @@ import { connect } from 'react-redux';
 export const Home = (props) => {
   const { firstName } = props;
   return (
-    <div>
-      home page: hello, {firstName}
+    <div className="cover-container bg-overlay">
+      <div className="home-main">
+        {firstName ? (
+          <h1>Hello, {firstName}</h1>
+        ) : (
+          <h1>Welcome to Baked by Fullstack</h1>
+        )}
+
+      </div>
     </div>
   );
 };

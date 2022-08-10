@@ -11,12 +11,7 @@ const Product = db.define('product', {
   },
   imageURL: {
     type: Sequelize.TEXT,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-    defaultValue:
-      'https://www.electricmirror.com/wp-content/uploads/2022/05/image-coming-soon-300x300.jpg',
+    defaultValue: 'https://img.freepik.com/premium-vector/cartoon-illustration-cupcake-with-question-mark-cute-design_152558-23988.jpg',
   },
   price: {
     type: Sequelize.FLOAT,

@@ -30,62 +30,65 @@ export class CreateUser extends React.Component {
     return (
       <div className="create-form form div-container">
         <form onSubmit={this.handleSubmit}>
-          <div className="form-container">
-            <div className="input-container">
-              <label className="labelName">
-                <p>First Name</p>
-                <input
-                  className="input"
-                  type="text"
-                  name="firstName"
-                  onChange={this.handleChange}
-                  value={this.state.firstName}
-                />
-              </label>
-            </div>
+          <div className="form-container signup">
+            <div className="signup-card">
+              <p className="title">Sign Up</p>
+              <div className="input-container">
+                <label className="labelName">
+                  <input
+                    className="input"
+                    type="text"
+                    name="firstName"
+                    placeholder="First name"
+                    onChange={this.handleChange}
+                    value={this.state.firstName}
+                  />
+                </label>
+              </div>
 
-            <div className="input-container">
-              <label className="labelName">
-                <p>Last Name</p>
-                <input
-                  className="input"
-                  type="text"
-                  name="lastName"
-                  onChange={this.handleChange}
-                  value={this.state.lastName}
-                />
-              </label>
-            </div>
+              <div className="input-container">
+                <label className="labelName">
+                  <input
+                    className="input"
+                    type="text"
+                    name="lastName"
+                    placeholder="Last name"
+                    onChange={this.handleChange}
+                    value={this.state.lastName}
+                  />
+                </label>
+              </div>
 
-            <div className="input-container">
-              <label className="labelName">
-                <p>Email</p>
-                <input
-                  className="input"
-                  type="text"
-                  name="email"
-                  onChange={this.handleChange}
-                  value={this.state.email}
-                />
-              </label>
-            </div>
+              <div className="input-container">
+                <label className="labelName">
+                  <input
+                    className="input"
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    onChange={this.handleChange}
+                    value={this.state.email}
+                  />
+                </label>
+              </div>
 
-            <div className="input-container">
-              <label className="labelName">
-                <p>Password</p>
-                <input
-                  className="input"
-                  type="password"
-                  name="password"
-                  onChange={this.handleChange}
-                  value={this.state.password}
-                />
-              </label>
-            </div>
-            <div>
-              <button className="button submit-btn" type="submit">
-                Submit
-              </button>
+              <div className="input-container">
+                <label className="labelName">
+                  <input
+                    className="input"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={this.handleChange}
+                    value={this.state.password}
+                  />
+                </label>
+              </div>
+              <div>
+                <button className="button submit-btn buttonShadow" type="submit">
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
         </form>
