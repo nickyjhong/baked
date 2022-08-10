@@ -18,10 +18,7 @@ export class OrderHistory extends React.Component {
           <div className="all-order-container">
             {orders.map((order) => (
               <div order={order} key={order.id} className="order-container">
-                <h4 style={{ marginLeft: '2rem' }}>
-                  Order number: {order.id}
-                  <span>Purchase Total: {order.products.map()}</span>
-                </h4>
+                <h4 style={{ marginLeft: '2rem' }}>Order number: {order.id}</h4>
                 <div className="order-item-container">
                   <div></div>
                   <div style={{ fontWeight: 'bold' }}>Name</div>
