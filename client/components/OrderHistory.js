@@ -18,12 +18,16 @@ export class OrderHistory extends React.Component {
           <div className="all-order-container">
             {orders.map((order) => (
               <div order={order} key={order.id} className="order-container">
-                <h4 style={{ marginLeft: '2rem' }}>Order number: {order.id}</h4>
+                <h4 style={{ marginLeft: '2rem' }}>
+                  Order number: {order.id}
+                  <span>Purchase Total: {order.products.map()}</span>
+                </h4>
                 <div className="order-item-container">
                   <div></div>
                   <div style={{ fontWeight: 'bold' }}>Name</div>
                   <div style={{ fontWeight: 'bold' }}>Price</div>
                   <div style={{ fontWeight: 'bold' }}>Quantity</div>
+                  <div style={{ fontWeight: 'bold' }}>Total</div>
                 </div>
                 {order.products.map((item) => {
                   return (
@@ -40,6 +44,9 @@ export class OrderHistory extends React.Component {
                       </span>
                       <span style={{ fontSize: '.8rem' }}>
                         {item.cartItem.quantity}
+                      </span>
+                      <span style={{ fontSize: '.8rem' }}>
+                        {(item.price / 100) * item.cartItem.quantity}
                       </span>
                     </div>
                   );
