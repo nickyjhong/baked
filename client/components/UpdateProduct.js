@@ -28,7 +28,7 @@ class UpdateProduct extends React.Component {
       this.setState({
         name: this.props.product.name || "",
         imageURL: this.props.product.imageURL || "",
-        price: this.props.product.price || "",
+        price: parseInt(this.props.product.price) || "",
         description: this.props.product.description || "",
         category: this.props.product.category || "",
       });
@@ -49,6 +49,7 @@ class UpdateProduct extends React.Component {
   render() {
     const { name, imageURL, price, description, category } = this.state;
     const { handleSubmit, handleChange } = this;
+    console.log(typeof price)
     return (
       <div className="add-product-form">
         <form className="add-form-input" onSubmit={handleSubmit}>
@@ -106,7 +107,7 @@ class UpdateProduct extends React.Component {
                 <input
                   name="price"
                   onChange={handleChange}
-                  value={price / 100}
+                  value={price}
                   required
                   onInvalid={(e) =>
                     e.target.setCustomValidity(
