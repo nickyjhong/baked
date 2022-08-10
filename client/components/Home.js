@@ -6,7 +6,12 @@ export const Home = (props) => {
   return (
     <div className="cover-container bg-overlay">
       <div className="home-main">
-        <h1>Hello, {firstName}</h1>
+        {firstName ? (
+          <h1>Hello, {firstName}</h1>
+        ) : (
+          <h1>Welcome to Baked by Fullstack</h1>
+        )}
+
       </div>
     </div>
   );

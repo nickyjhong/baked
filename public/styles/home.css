@@ -21,7 +21,8 @@
   font-style: normal;
   color: white !important;
   line-height: 1.5em;
-  text-shadow: 0 0.05rem 0.1rem rgb(0 0 0 / 50%);
+
+  text-shadow: 0 0.15rem 0.1rem rgb(0 0 0 / 50%);
 }
 
 .home-main {
@@ -29,4 +30,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
