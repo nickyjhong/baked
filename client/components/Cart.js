@@ -24,6 +24,7 @@ class Cart extends Component {
   }
 
   render() {
+    const cartItemProps = this.props.cart.products || [];
     return (
       <div>
         <h2 style={{ textAlign: 'center' }}>Shopping Cart</h2>
