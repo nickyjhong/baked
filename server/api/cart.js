@@ -51,7 +51,10 @@ router.post('/', requireToken, async (req, res, next) => {
         productId: req.body.productId,
       });
     } else {
-      
+      let newQuantity = parseInt(product.quantity) + 1
+      await product.update({
+        quantity: newQuantity
+      })
     }
     res.send(order);
   } catch (err) {
