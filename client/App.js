@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <div>
+    <div className="div-container">
       <Navbar />
       <Routes />
       <Footer />

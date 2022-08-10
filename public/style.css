@@ -21,6 +21,9 @@ body {
   width: auto;
 }
 
+#app, .div-container {
+  height: 78vh;
+}
 a {
   text-decoration: none;
 }

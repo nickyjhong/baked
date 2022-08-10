@@ -4,7 +4,7 @@ import { fetchUsers } from '../store/allUsers'
 
 export const Admin = () => {
   return (
-    <div>
+    <div className="div-container">
       <button>
         See all users
       </button>

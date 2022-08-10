@@ -33,7 +33,7 @@ class CreateProduct extends React.Component {
       this.state;
     const { handleSubmit, handleChange } = this;
     return (
-      <div className="add-product-form">
+      <div className="add-product-form div-container">
         <form className="add-form-input" onSubmit={handleSubmit}>
           <h1 style={{ textAlign: 'center' }}>Add Product</h1>
           <label htmlFor="productName">Name</label>
