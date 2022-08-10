@@ -168,7 +168,7 @@ export const updateQuantity = (product, newQuantity) => {
         for (let i = 0; i < cart.products.length; i++) {
           console.log('product cart', cart);
 
-          if (cart.products[i].cartItem.productId === product.id) {
+          if (cart.products[i].cartItem.productId === product.id && cart.products[i].cartItem.quantity > 0) {
             cart.products[i].cartItem.quantity =
               cart.products[i].cartItem.quantity + newQuantity;
           }
