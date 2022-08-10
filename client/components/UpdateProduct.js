@@ -159,11 +159,9 @@ class UpdateProduct extends React.Component {
           </div>
 
           <div className="update-btns">
-            <Link to="/admin/products" className="">
-              <button type="submit">
-                Update
-              </button>
-            </Link>
+            <button type="submit">
+              Update
+            </button>
 
             <button type="button" onClick={() => {
               this.props.deleteProduct(this.props.match.params.id)
