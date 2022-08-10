@@ -155,20 +155,28 @@ class UpdateProduct extends React.Component {
                   <option value="other">other</option>
                 </select>
               </div>
-
-              </div>
             </div>
+          </div>
 
           <div className="update-btns">
-            <button type="submit">Update</button>
-            <br />
+            <Link to="/admin/products" className="">
+              <button type="submit">
+                Update
+              </button>
+            </Link>
+
             <button type="button" onClick={() => {
               this.props.deleteProduct(this.props.match.params.id)
-            }}>Delete</button>
-            <br />
-            <button type="button" className="buttonShadow">
-              <Link to="/products">Cancel</Link>
+            }}>
+              Delete
             </button>
+
+            <Link to="/admin/products">
+              <button type="button" className="buttonShadow">
+                Cancel
+              </button>
+            </Link>
+
           </div>
         </form>
       </div>

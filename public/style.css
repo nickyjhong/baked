@@ -7,12 +7,15 @@
 @import './styles/order.css';
 @import './styles/footer.css';
 @import './styles/checkout.css';
+@import './styles/admin.css';
+@import './styles/home.css';
 
 html {
   font-family: "Roboto", Helvetica, sans-serif;
   font-size: 2.5vh;
   height: 100%;
   overflow-x: hidden;
+  
 }
 
 body {

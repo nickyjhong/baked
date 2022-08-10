@@ -177,16 +177,16 @@ textarea {
     padding: 11px 15px;
 }
 
-.update-btns{
+.update-btns, .create-btns{
     display: flex;
     flex-direction: column;
-    margin: 0 auto 1rem auto;
+    align-items: center;
+    margin: 1rem auto 1rem auto;
 }
 
-.update-btns button {
-    margin: 0 auto;
+.create-btns button, .update-btns {
+    margin: .5rem auto;
 }
-
 
 .cat-cont {
     margin: 0;
