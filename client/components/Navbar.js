@@ -9,7 +9,9 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
       {isLoggedIn ? (
         <div>
           {isAdmin ? (
-            <div className="nav-container"> {/* Navbar if logged in but not admin */}
+            <div className="nav-container">
+              {' '}
+              {/* Navbar if logged in but not admin */}
               <Link to="/">
                 <img src="/baked-logo.png" alt="logo" className="navLogo" />
               </Link>
@@ -32,7 +34,9 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
               </div>
             </div>
           ) : (
-            <div className="nav-container"> {/* Navbar if logged in but not admin */}
+            <div className="nav-container">
+              {' '}
+              {/* Navbar if logged in but not admin */}
               <Link to="/">
                 <img src="/baked-logo.png" alt="logo" className="navLogo" />
               </Link>
@@ -54,7 +58,9 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
           )}
         </div>
       ) : (
-        <div className="nav-container"> {/* Navbar if not logged in */}
+        <div className="nav-container">
+          {' '}
+          {/* Navbar if not logged in */}
           <Link to="/">
             <img src="/baked-logo.png" alt="logo" className="navLogo" />
           </Link>
@@ -81,14 +87,14 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
 /**
  * CONTAINER
  */
-const mapState = (state) => {
+const mapStateToProps = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
     isAdmin: !!state.auth.isAdmin,
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleClick() {
       dispatch(logout());
@@ -96,12 +102,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(Navbar);
-
-// Footer
-// © 2022 GitHub, Inc.
-// Footer navigation
-// Terms
-// Privacy
-// Security
-// Status
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

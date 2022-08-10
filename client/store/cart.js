@@ -164,16 +164,14 @@ export const updateQuantity = (product, newQuantity) => {
       } else {
         // GUEST
         const cart = JSON.parse(window.localStorage.getItem(GUEST_CART));
-
-        for (let i = 0; i < cart.products.length; i++) {
-          console.log('product cart', cart);
-
-          if (cart.products[i].cartItem.productId === product.id && cart.products[i].cartItem.quantity > 0) {
-            cart.products[i].cartItem.quantity =
-              cart.products[i].cartItem.quantity + newQuantity;
-          }
+        const productIdx = cart.products.findIndex(
+          (item) => item.id === product.id
+        );
+        cart.products[productIdx].cartItem.quantity =
+          cart.products[productIdx].cartItem.quantity + newQuantity;
+        if (cart.products[productIdx].cartItem.quantity <= 0) {
+          cart.products.splice(productIdx, 1);
         }
-
         window.localStorage.setItem(GUEST_CART, JSON.stringify(cart));
         dispatch(_updateCart(cart));
       }

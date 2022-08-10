@@ -16,10 +16,10 @@ export const Home = (props) => {
   );
 };
 
-const mapState = (state) => {
+const mapStateToProps = (state) => {
   return {
     firstName: state.auth.firstName,
   };
 };
 
-export default connect(mapState)(Home);
+export default connect(mapStateToProps)(Home);

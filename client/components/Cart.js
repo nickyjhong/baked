@@ -166,98 +166,15 @@ class Cart extends Component {
   }
 }
 
-const mapState = (state) => ({
+const mapStateToProps = (state) => ({
   cart: state.cart,
 });
 
-const mapDispatch = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchCart: () => dispatch(fetchCart()),
   deleteFromCart: (productId) => dispatch(deleteFromCart(productId)),
   updateCart: (product, newQuantity) =>
     dispatch(updateQuantity(product, newQuantity)),
 });
 
-export default connect(mapState, mapDispatch)(Cart);
-
-
-
-
-
-// {productFilter.map((product) => {
-//   const displayPrice = parseFloat(product.price / 100).toFixed(2)
-//   // console.log(product.name.toLowerCase().includes(this.state.term.toLowerCase()))
-//   return (
-
-//   )
-
-
-
-  // {product.name.toLowerCase().includes(this.state.term.toLowerCase()) ? (
-      // <div className="grid-item" key={product.id}>
-      //   <Link to={`/products/${product.id}`} >
-      //     <img
-      //       className="shop-image"
-      //       src={product.imageURL}
-      //       alt={`Image of ${product.name}`}
-      //     />
-      //   </Link>
-      //   <div className="cookie-description">
-      //     <h3 className="grid-item-text">{product.name}</h3>
-      //     <p className="grid-item-text">${displayPrice}</p>
-      //     <div className="shop-btn-container">
-      //       <Link to={`/products/${product.id}`}>
-      //         <button className='view-more-btn shop-btn'>View More</button>
-      //       </Link>
-      //       <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); alert('added to cart') }}>Add To Cart</button>
-      //     </div>
-      //   </div>
-      // </div>
-  //     <div>Hello</div>
-  // ) : (
-      // <div className="grid-item" key={product.id}>
-      //   <Link to={`/products/${product.id}`} >
-      //     <img
-      //       className="shop-image"
-      //       src={product.imageURL}
-      //       alt={`Image of ${product.name}`}
-      //     />
-      //   </Link>
-      //   <div className="cookie-description">
-      //     <h3 className="grid-item-text">{product.name}</h3>
-      //     <p className="grid-item-text">${displayPrice}</p>
-      //     <div className="shop-btn-container">
-      //       <Link to={`/products/${product.id}`}>
-      //         <button className='view-more-btn shop-btn'>View More</button>
-      //       </Link>
-      //       <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); alert('added to cart') }}>Add To Cart</button>
-      //     </div>
-      //   </div>
-      // </div>
-//   )}
-// })}
-
-{/* {productFilter.map((product) => {
-              const displayPrice = parseFloat(product.price / 100).toFixed(2) 
-              return (
-                <div className="grid-item" key={product.id}>
-                  <Link to={`/products/${product.id}`} >
-                    <img
-                      className="shop-image"
-                      src={product.imageURL}
-                      alt={`Image of ${product.name}`}
-                    />
-                  </Link>
-                  <div className="cookie-description">
-                    <h3 className="grid-item-text">{product.name}</h3>
-                    <p className="grid-item-text">${displayPrice}</p>
-                    <div className="shop-btn-container">
-                      <Link to={`/products/${product.id}`}>
-                        <button className='view-more-btn shop-btn'>View More</button>
-                      </Link>
-                      <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); alert('added to cart') }}>Add To Cart</button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })} */}
-              // const displayPrice = parseFloat(product.price / 100).toFixed(2)
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
