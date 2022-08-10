@@ -49,7 +49,7 @@ class Checkout extends React.Component {
     return (
       <div>
         <div>
-        <h2 style={{ textAlign: 'center' }}>Shopping Cart</h2>
+        <h2 style={{ textAlign: 'center' }}>Checkout</h2>
         </div>
         <div>
             <h3 style={{marginLeft: '2rem', fontWeight: 'lighter'}}>Shipping Information</h3>

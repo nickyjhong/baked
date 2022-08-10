@@ -32,7 +32,7 @@ footer {
   grid-row: 1 / 2;
 }
 
-.footer-link:hover ~ li p {
+.footer-list:hover ~ li p {
   animation: wave-animation 0.3s infinite;
 }
 
