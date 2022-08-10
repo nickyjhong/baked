@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => (
   <footer>
-  <div className="footer-links">
-        <Link to={{ pathname: "https://github.com/2206-fsa-gs-team-gemini/baked" }} target="_blank" className="footer-link">Github</Link>
-        <Link to='/about' className="footer-link">About</Link>
-        <Link to='/contact'className="footer-link">Contact</Link>
-  </div>
+    <div className='footer-container'>
+  <ul className='footer-list'>
+    <li>
+      <p>👋</p>
+    </li>
+    <li><a className='footer-link' href="https://github.com/2206-fsa-gs-team-gemini/baked">Github</a></li>
+    <li><a className='footer-link' href="#">About The Team</a></li>
+    <li><a className='footer-link' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">Contact Us</a></li>
+  </ul>
+</div>
   </footer>
 )
 
