@@ -1,15 +1,14 @@
 .cover-container {
-  height: 86vh;
+  height: 86.4vh;
   background-image: url(https://images.unsplash.com/photo-1567752588693-ad10a647c5a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1460&q=80);
   background-size: cover;
   background-position: center;
-  
 }
 
 .bg-overlay:before {
   background: rgba(245, 211, 206, 0.5);
   content: '';
-  height: 86%;
+  height: 86.4%;
   left: 0;
   position: absolute;
   width: 100%;

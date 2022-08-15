@@ -3,16 +3,9 @@ footer {
   width: 100%;
 }
 
-.page-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .footer-container {
   background-color: #fdefe1 ;
-  height: 2rem;
+  padding: .25rem;
   display: flex;
   justify-content: space-evenly;
 

@@ -24,6 +24,13 @@ body {
   width: auto;
 }
 
+.page-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .div-container {
   height: 100vh;
   overflow: hidden;
