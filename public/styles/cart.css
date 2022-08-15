@@ -14,10 +14,10 @@
   background-color: #fdefe1 ;
   color: black;
   height: 20rem;
-  /* margin-right: 1.5rem;
-  margin-top: 1rem; */
+  margin-right: 1.5rem;
+  margin-top: 1rem;
   border-radius: 10px;
-  /* box-shadow: 0 0px 0px  rgba(0, 0, 0, 0.2), 0 2px 7px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow: 0 .5rem .75rem rgba(19, 19, 18, 0.164);
   transition-duration: .5s;
   }
 
@@ -120,4 +120,9 @@
 
 .price-sec-heading {
   padding-right: 2rem;
+}
+
+.checkout-button-cont {
+  display: flex;
+  justify-content: space-around;
 }

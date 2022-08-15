@@ -151,7 +151,7 @@ class Cart extends Component {
                     : '$ 2.99'}
                 </div>
               </div>
-              <div className="checkout-card-row">
+              <div className="checkout-card-row checkout-button-cont">
                 <Link to="/checkout">
                   <button className="checkout-btn">Proceed To Checkout</button>
                 </Link>
