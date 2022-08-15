@@ -24,7 +24,7 @@ class UpdateProduct extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.product.id !== this.props.product.id) { //
+    if (prevProps.product.id !== this.props.product.id) { 
       this.setState({
         name: this.props.product.name || "",
         imageURL: this.props.product.imageURL || "",

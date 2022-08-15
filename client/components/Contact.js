@@ -15,9 +15,6 @@ export class Contact extends React.Component {
             The good news is that the developers of this e-commerce site can be
             contacted!
           </p>
-          <br />
-          <br />
-
           <h3 className="contact-desc">Our Bakers:</h3>
           <div className="team-member">
             <img
@@ -32,7 +29,6 @@ export class Contact extends React.Component {
             >
               Github
             </Link>
-            <br />
             <Link
               to={{
                 pathname: '',
@@ -42,8 +38,6 @@ export class Contact extends React.Component {
             >
               LinkedIn
             </Link>
-            <br />
-            <br />
           </div>
 
           <div className="team-member">
@@ -59,7 +53,6 @@ export class Contact extends React.Component {
             >
               Github
             </Link>
-            <br />
             <Link
               to={{
                 pathname: '',
@@ -69,8 +62,6 @@ export class Contact extends React.Component {
             >
               LinkedIn
             </Link>
-            <br />
-            <br />
           </div>
 
           <div className="team-member">
@@ -86,7 +77,6 @@ export class Contact extends React.Component {
             >
               Github
             </Link>
-            <br />
             <Link
               to={{
                 pathname: 'https://www.linkedin.com/in/amyawong/',
@@ -96,8 +86,6 @@ export class Contact extends React.Component {
             >
               LinkedIn
             </Link>
-            <br />
-            <br />
           </div>
 
           <div className="team-member">
@@ -113,7 +101,6 @@ export class Contact extends React.Component {
             >
               Github
             </Link>
-            <br />
             <Link
               to={{
                 pathname: '',
@@ -123,13 +110,8 @@ export class Contact extends React.Component {
             >
               LinkedIn
             </Link>
-            <br />
-            <br />
           </div>
         </article>
-        <br />
-        <br />
-        <br />
       </div>
     );
   }

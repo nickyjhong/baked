@@ -29,7 +29,6 @@ export class OrderHistory extends React.Component {
                   return (
                     <div key={item.id} className="order-item-container">
                       <img className="order-img" src={item.imageURL} />{' '}
-                      {/* CHANGE TO imageURL for pic to load */}
                       <div>
                         <Link to={`/products/${item.id}`}>
                           <span>{item.name}</span>

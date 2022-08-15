@@ -112,7 +112,6 @@ router.put('/', requireToken, async (req, res, next) => {
         userId: req.user.dataValues.id,
         status: 'open',
       },
-      // include: [Product]
     });
 
     if (!order) {
@@ -149,10 +148,6 @@ router.put('/', requireToken, async (req, res, next) => {
         order: [[Product, 'id', 'DESC']]
       })
     );
-
-    // res.send(order)
-
-
   } catch (err) {
     next(err);
   }

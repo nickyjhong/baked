@@ -246,7 +246,6 @@ class Checkout extends React.Component {
               }
               onInput={(e) => e.target.setCustomValidity('')}
             />
-            <br />
 
             <input
               className="shipping-info-field"

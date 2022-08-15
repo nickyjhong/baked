@@ -31,7 +31,6 @@ export const fetchOrders = () => {
 };
 
 // REDUCER
-
 const initialState = [];
 
 export default function ordersReducer(state = initialState, action) {
