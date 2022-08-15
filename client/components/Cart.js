@@ -28,24 +28,24 @@ class Cart extends Component {
     return (
       <div>
         <h2 style={{ textAlign: 'center' }}>Shopping Cart</h2>
-        <div className="cart-container div-container">
+        <div className="cart-container">
           <div className="cart-section-left">
             <div className="shopping-cart-left-container">
               <div className="checkout-card-row">
                 <div
-                  className="subtotal-inline-block"
+                  className="subtotal-inline-block product-sec"
                   style={{ fontWeight: 'bold' }}
                 >
                   Product
                 </div>
                 <div
-                  className="subtotal-inline-block"
+                  className="subtotal-inline-block quantity-sec-heading"
                   style={{ fontWeight: 'bold' }}
                 >
                   Quantity
                 </div>
                 <div
-                  className="subtotal-inline-block"
+                  className="subtotal-inline-block price-sec-heading"
                   style={{ fontWeight: 'bold' }}
                 >
                   Price
@@ -55,9 +55,8 @@ class Cart extends Component {
               {this.props.cart !== null && this.props.cart.products ? (
                 this.props.cart.products.map((product) => (
                   <div key={product.id} className="checkout-card-row">
-                    <div className="subtotal-inline-block">{product.name}</div>
-                    <img src={product.imageUrl} />{' '}
-                    <div className="quantity-section">
+                    <div className="subtotal-inline-block product-sec">{product.name}</div>
+                    <div className="quantity-section quantity-sec">
                       <button
                         className="increment-btn"
                         onClick={() => this.props.updateCart(product, -1)}
