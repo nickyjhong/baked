@@ -26,21 +26,30 @@
 .about-technologies-list {
   list-style: none;
   padding: 0 5rem;
+  cursor:default;
 }
 
 .about-technologies-name {
   font-size: 1.25rem;
+  cursor:default;
 }
 
 .about-technologies-pic {
   height: 1.5rem;
+  cursor:default;
 }
 
 .about-technologies {
   display: flex;
   justify-content: space-evenly;
+  cursor:default;
 }
 
 .about-technologies-item {
   padding: .5rem 0;
+  cursor:default;
+}
+
+.about-technologies-item:hover {
+  cursor: default;
 }

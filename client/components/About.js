@@ -52,6 +52,10 @@ export class About extends React.Component {
                   <img src="/css.png" alt="css-logo" className="about-technologies-pic"/>
                   <span className="about-technologies-name"> CSS</span>
                 </li>
+                <li className="about-technologies-item">
+                  <img src="/heroku.png" alt="heroku-logo" className="about-technologies-pic"/>
+                  <span className="about-technologies-name"> Heroku</span>
+                </li>
               </ul>
             </span>
           </div>
