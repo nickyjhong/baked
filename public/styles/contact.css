@@ -1,18 +1,10 @@
-.member {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100rem;
-  width: 100%;
-  background: #f2f3f7;
-}
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
+
 .container .card {
   width: 10rem;
   height: 15rem;
@@ -23,12 +15,14 @@
               -0.5em -0.5em 1em #ffffff;
   border-radius: 20px;
 }
+
 .container .card .content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 .container .card .content .imgBx {
   width: 180px;
   height: 180px;
@@ -37,6 +31,7 @@
   margin-bottom: 20px;
   overflow: hidden;
 }
+
 .container .card .content .imgBx img {
   position: absolute;
   top: 0;
