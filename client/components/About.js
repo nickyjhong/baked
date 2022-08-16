@@ -8,8 +8,8 @@ export class About extends React.Component {
         <div className="about-info">
           <h3 className="about-heading">Thanks for stopping by!</h3> 
           <p className="about-description">
-            Here at Baked By Fullstack, we guarantee top
-            quality products at affordable prices. Our products are freshly
+            Here at Baked by Fullstack, we guarantee top
+            quality product at affordable prices. Our products are freshly
             baked everyday with quality as our top priority. Each baked good is
             handcrafted with love that can be tasted in every bite. 
           </p>
