@@ -5,10 +5,12 @@ const Footer = () => (
   <div className="footer-container">
     <ul className='footer-list'>
       <li className='footer-link'>
-        <p className="footer-wave">👋</p>
+        <a href="https://nicolehong.dev" className="footer-wave">👋</a>
       </li>
       <li className='footer-link'>
-        <Link to={{ pathname: "https://github.com/nickyjhong/baked" }} target="_blank" className="footer-link">Recipe</Link>
+        <a href="https://github.com/nickyjhong/baked" className="footer-link">
+          Recipe
+        </a>
       </li>
       <li className='footer-link'>
         <Link to='/about' className="footer-link">About</Link>

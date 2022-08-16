@@ -18,7 +18,8 @@ import OrderSuccess from './components/OrderSuccess';
 import Checkout from './components/Checkout';
 import AdminUsers from './components/AdminUsers';
 import AdminShop from './components/AdminShop';
-import Contact from './components/Contact'
+import Contact from './components/Contact';
+import About from './components/About';
 
 class Routes extends Component {
   componentDidMount() {
@@ -47,6 +48,7 @@ class Routes extends Component {
                 <Route path="/users/orders" component={OrderHistory} />
                 <Route path="/checkout" component={Checkout} />
                 <Route path="/contact" component={Contact} />
+                <Route path="/about" component={About} />
                 <Route path="/orderSuccess" component={OrderSuccess} />
                 <Route path="*" component={NotFoundPage} status={404} />
               </Switch>
@@ -61,6 +63,7 @@ class Routes extends Component {
                 <Route path="/users/orders" component={OrderHistory} />
                 <Route path="/checkout" component={Checkout} />
                 <Route path="/contact" component={Contact} />
+                <Route path="/about" component={About} />
                 <Route path="/orderSuccess" component={OrderSuccess} />
                 <Route path="*" component={NotFoundPage} status={404} />
               </Switch>
@@ -77,6 +80,7 @@ class Routes extends Component {
             <Route exact path="/cart" component={Cart} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/contact" component={Contact} />
+            <Route path="/about" component={About} />
             <Route path="/orderSuccess" component={OrderSuccess} />
             <Route path="*" component={NotFoundPage} status={404} />
           </Switch>

@@ -10,6 +10,7 @@
 @import './styles/admin.css';
 @import './styles/home.css';
 @import './styles/contact.css';
+@import './styles/about.css';
 
 html {
   font-family: "Roboto", Helvetica, sans-serif;

@@ -1,0 +1,46 @@
+.about-container {
+  padding: 0 2rem;
+}
+
+.about-info, .about-technologies-container {
+  padding: 0 4rem;
+}
+
+.about-heading {
+  font-size: 2.25rem;
+  text-align: center;
+  color: #ef757a;
+}
+
+.about-description {
+  font-size: 1.25rem;
+  padding: 0;
+}
+
+.about-technologies-heading {
+  font-size: 1.75rem;
+  text-align: center;
+  color: #d49090;
+}
+
+.about-technologies-list {
+  list-style: none;
+  padding: 0 5rem;
+}
+
+.about-technologies-name {
+  font-size: 1.25rem;
+}
+
+.about-technologies-pic {
+  height: 1.5rem;
+}
+
+.about-technologies {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.about-technologies-item {
+  padding: .5rem 0;
+}

@@ -3,8 +3,9 @@ import React from "react";
 export class Contact extends React.Component {
   render() {
     return (
-      <div className="members">
-        <div className="container">
+      <div className="contact-container">
+        <h3 className="contact-heading">Our Bakers:</h3>
+        <div className="members-container">
           <div className="card">
             <div className="content">
               <div className="imgBx">

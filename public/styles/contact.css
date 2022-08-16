@@ -1,11 +1,17 @@
-.container {
+.contact-heading {
+  font-size: 2rem;
+  text-align: center;
+  color: #d49090;
+}
+
+.members-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.container .card {
+.members-container .card {
   width: 10rem;
   height: 15rem;
   padding: 60px 30px;
@@ -16,14 +22,14 @@
   border-radius: 20px;
 }
 
-.container .card .content {
+.members-container .card .content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.container .card .content .imgBx {
+.members-container .card .content .imgBx {
   width: 180px;
   height: 180px;
   border-radius: 50%;
@@ -32,7 +38,7 @@
   overflow: hidden;
 }
 
-.container .card .content .imgBx img {
+.members-container .card .content .imgBx img {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,7 +51,7 @@
   letter-spacing: 0.5px;
 }
 
-.container .card .content .sci a {
+.members-container .card .content .sci a {
   text-align: center;
   margin: 10px;
   transition: color 0.4s;
