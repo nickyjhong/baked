@@ -51,8 +51,9 @@ export class Shop extends Component {
             >
             </input>
             <p className="grid-section-left-category-bold">Categories</p>
-            <ul>
+            <ul className="all-categories-list">
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('All');
                 }}
@@ -61,6 +62,7 @@ export class Shop extends Component {
                 All
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Cakes');
                 }}
@@ -69,6 +71,7 @@ export class Shop extends Component {
                 Cakes
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Cookies');
                 }}
@@ -77,6 +80,7 @@ export class Shop extends Component {
                 Cookies
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Cupcakes');
                 }}
@@ -85,6 +89,7 @@ export class Shop extends Component {
                 Cupcakes
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Mini');
                 }}
@@ -94,6 +99,7 @@ export class Shop extends Component {
                 Mini
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Other');
                 }}
