@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export class Contact extends React.Component {
   render() {
@@ -16,23 +15,14 @@ export class Contact extends React.Component {
               </div>
               <div className="sci">
                 <div className="github">
-                  <Link
-                    to={{ pathname: "https://github.com/nickyjhong" }}
-                    target="_blank"
-                    className="github"
-                  >
+                  <a href="https://github.com/nickyjhong">
                     Github
-                  </Link>
+                  </a>
                 </div>
                 <div className="linkedin">
-                  <Link
-                    to={{
-                      pathname: "https://www.linkedin.com/in/nicolejhong/",
-                    }}
-                    target="_blank"
-                  >
+                  <a href="https://www.linkedin.com/in/nicolejhong/">
                     LinkedIn
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -48,23 +38,14 @@ export class Contact extends React.Component {
               </div>
               <div className="sci">
                 <div className="github">
-                  <Link
-                    to={{ pathname: "https://github.com/mscherryxu" }}
-                    target="_blank"
-                  >
+                  <a href="https://github.com/mscherryxu">
                     Github
-                  </Link>
+                  </a>
                 </div>
                 <div className="linkedin">
-                  <Link
-                    to={{
-                      pathname: "https://www.linkedin.com/in/cherry-xu-rd-cdn/",
-                    }}
-                    target="_blank"
-                    className="linkedin"
-                  >
+                  <a href="https://www.linkedin.com/in/cherry-xu-rd-cdn/">
                     LinkedIn
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -80,23 +61,14 @@ export class Contact extends React.Component {
               </div>
               <div className="sci">
                 <div className="github">
-                  <Link
-                    to={{ pathname: "https://github.com/amyawong" }}
-                    target="_blank"
-                    className="github"
-                  >
+                  <a href="https://github.com/amyawong">
                     Github
-                  </Link>
+                  </a>
                 </div>
                 <div className="linkedin">
-                  <Link
-                    to={{
-                      pathname: "https://www.linkedin.com/in/amyawong/",
-                    }}
-                    target="_blank"
-                  >
+                  <a href="https://www.linkedin.com/in/amyawong/">
                     LinkedIn
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -112,24 +84,14 @@ export class Contact extends React.Component {
               </div>
               <div className="sci">
                 <div className="github">
-                  <Link
-                    to={{ pathname: "https://github.com/Ctomshack" }}
-                    target="_blank"
-                    className="github"
-                  >
+                  <a href="https://github.com/Ctomshack">
                     Github
-                  </Link>
+                  </a>
                 </div>
                 <div className="linkedin">
-                  <Link
-                    to={{
-                      pathname: "https://www.linkedin.com/in/christomshack/",
-                    }}
-                    target="_blank"
-                    className="linkedin"
-                  >
+                  <a href="https://www.linkedin.com/in/christomshack/">
                     LinkedIn
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

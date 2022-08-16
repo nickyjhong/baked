@@ -4,7 +4,7 @@ footer {
 }
 
 .footer-container {
-  background-color: #fdefe1 ;
+  background-color: rgba(247, 202, 203, 0.2);
   padding: .25rem;
   display: flex;
   justify-content: space-evenly;

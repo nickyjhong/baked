@@ -8,7 +8,7 @@ const Footer = () => (
         <p className="footer-wave">👋</p>
       </li>
       <li className='footer-link'>
-        <Link to={{ pathname: "https://github.com/2206-fsa-gs-team-gemini/baked" }} target="_blank" className="footer-link">Recipe</Link>
+        <Link to={{ pathname: "https://github.com/nickyjhong/baked" }} target="_blank" className="footer-link">Recipe</Link>
       </li>
       <li className='footer-link'>
         <Link to='/about' className="footer-link">About</Link>
