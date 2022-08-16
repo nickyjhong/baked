@@ -7,10 +7,11 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 3rem;
 }
 
 .navLogo {
-  width: 25vh;
+  height: 6vh;
 }
 
 .navLink {

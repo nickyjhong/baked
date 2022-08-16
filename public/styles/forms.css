@@ -1,42 +1,6 @@
-
-/* ALL COMMENTED-OUT STYLING IS FOR THE PREVIOUS LOGIN FORM. 
-THE PREVIOUS LOGIN FORM IS STILL NESTED IN THE AUTHFORM.JS COMPONENT,
-AND IS COMMENTED-OUT. */
-
- .form-container {
-  display: flex;
-  /* flex-direction: column; */
+.form-container {
+    display: flex;
 }
-
-/* form {
-	margin:10% auto 0 auto;
-	padding:30px;
-	width:400px;
-	height:auto;
-	overflow:hidden;
-	background:white;
-	border-radius:10px;
-}
-
-form label {
-	font-size:14px;
-	color:darkgray;
-	cursor:pointer;
-}
-
-input {
-	padding:15px 10px;
-	width:100%;
-	outline:none;
-	border:1px solid #bbb;
-	border-radius:20px;
-	display:inline-block;
-}
-
-input:focus {
-	border-color:cornflowerblue;
-} */ 
-
 
 .login, .signup, .update {
     display: flex;
