@@ -21,7 +21,7 @@ class SingleProduct extends Component {
   render() {
     const { product } = this.props;
     return (
-      <div className="div-container">
+      <div>
         {product && product.id ? (
           <div>
             <section className="s-product-name">

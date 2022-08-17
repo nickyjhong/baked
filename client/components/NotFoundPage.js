@@ -24,7 +24,6 @@ const NotFoundPage = ({ isAdmin }) => {
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: !!state.auth.id,
     isAdmin: !!state.auth.isAdmin,
   };
 };

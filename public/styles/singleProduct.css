@@ -1,7 +1,8 @@
 .s-product-main-description {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  height: 15rem;
 }
 
 .s-product-name {
@@ -11,9 +12,10 @@
 
 .s-product-main {
   display: flex;
-  justify-content: space-evenly;
-  padding: 30px;
-  
+  justify-content: center;
+  gap: 5rem;
+  min-height: 60vh;
+  padding: 2rem;
 }
 
 .s-product-img {
@@ -37,13 +39,12 @@
   opacity: 70%;
 }
 
-
 .s-product-detail {
   padding: 0 20px;
 }
 
 .category {
-  font-size: .4rem;
+  font-size: .6rem;
   opacity: 60%;
 }
 
