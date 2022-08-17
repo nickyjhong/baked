@@ -3,6 +3,14 @@
 ## About
 [Baked by Fullstack](https://baked-by-fs.herokuapp.com/) is a e-commerce website built by a team of four bakers. 
 
+You can use the site with the following credentials:
+
+| User Type     | Email           | Password |
+| ------------- | --------------- | -------- |
+| Guest         |                 |          |
+| Customer      | custy@cdc.gov   | 123      |
+| Admin         | admin@gmail.com | 123      |
+
 ### Bakers
 - [Amy Wong](https://github.com/amyawong)
 - [Cherry Xu](https://github.com/mscherryxu)

@@ -409,11 +409,6 @@ const seed = async () => {
   try {
     await db.sync({ force: true });
 
-    // await Promise.all(
-    //   activeUsers.map((user) => {
-    //     return User.create(user);
-    //   })
-    // );
     await Promise.all(
       products.map((product) => {
         return Product.create(product);
