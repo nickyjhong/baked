@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProduct } from '../store/singleProduct';
 import { addToCart } from '../store/cart';
+import { Link } from 'react-router-dom';
 
 class SingleProduct extends Component {
   constructor() {
@@ -52,11 +53,13 @@ class SingleProduct extends Component {
             </div>
           </div>
         ) : (
-          <div>
-            <p style={{ textAlign: 'center' }}>
-              We're not done baking that yet
-            </p>
-            <p style={{ textAlign: 'center' }}>Check back soon!</p>
+          <div className="nfp-single-product">
+            <p className="nfp-info">We're not done baking that yet</p>
+            <p className="nfp-info">Check back soon!</p>
+            <p className="nfp-directions">Click the cake to go back to home</p>
+            <Link to='/'>
+              <img src={'/icon.png'} className="nfp-icon" />
+            </Link>
           </div>
         )}
       </div>

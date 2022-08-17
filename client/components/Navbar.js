@@ -10,7 +10,6 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
         <div>
           {isAdmin ? (
             <div className="nav-container">
-              {' '}
               {/* Navbar if logged in but not admin */}
               <Link to="/">
                 <img src="/baked-logo.png" alt="logo" className="navLogo" />
@@ -35,7 +34,6 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
             </div>
           ) : (
             <div className="nav-container">
-              {' '}
               {/* Navbar if logged in but not admin */}
               <Link to="/">
                 <img src="/baked-logo.png" alt="logo" className="navLogo" />
@@ -59,7 +57,6 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
         </div>
       ) : (
         <div className="nav-container">
-          {' '}
           {/* Navbar if not logged in */}
           <Link to="/">
             <img src="/baked-logo.png" alt="logo" className="navLogo" />
@@ -84,9 +81,6 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   </div>
 );
 
-/**
- * CONTAINER
- */
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
