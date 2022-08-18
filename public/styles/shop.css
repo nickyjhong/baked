@@ -94,7 +94,7 @@ li:hover {
   align-items: center;
 }
 
-.add-to-cart {
+.add-to-cart, .update-profile {
   border-radius: 5px;
   background-color: #d49090;
   height: 1rem;
@@ -111,7 +111,7 @@ li:hover {
 .shop-btn {
   margin: .5rem;
 }
-.add-to-cart:hover {
+.add-to-cart:hover, .update-profile:hover {
   background-color: #ef757a;
 }
 

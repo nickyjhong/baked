@@ -9,3 +9,9 @@
 .profile-order-container {
   padding: 0 3rem;
 }
+
+.profile-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 4rem;
+}
