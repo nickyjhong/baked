@@ -1,3 +1,11 @@
-#welcome-user {
-  font-size: 1rem;
+.profile-container {
+  min-height: 60vh;
+}
+
+.profile-heading {
+  text-align: center;
+}
+
+.profile-order-container {
+  padding: 0 3rem;
 }

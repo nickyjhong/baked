@@ -8,10 +8,10 @@
 .admin-btn {
     border-radius: 10px;
     background-color: #d49090;
-    height: 45px;
+    height: 2.5rem;
     padding: 12px;
-    width: 260px;
-    font-size: 14px;
+    width: 15rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #fff;
     border: none;
@@ -20,3 +20,11 @@
     transition: .2s;
 }  
 
+.admin-btn:hover{
+  background-color: #ef757a;
+}
+
+.admin-page-container {
+  min-height: 70vh;
+  padding: 3rem;
+}

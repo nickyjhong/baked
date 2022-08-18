@@ -23,11 +23,12 @@ export const fetchProduct = (id) => async (dispatch) => {
   dispatch(_setProduct(data));
 }
 
-export const updateProduct = (product, id) => {
+export const updateProduct = (product, history) => {
   return async (dispatch) => {
     try {
       const { data: updated } = await axios.put(`/api/products/${product.id}`, product);
       dispatch(_updateProduct(updated, product));
+      history.push(`/products/${product.id}`)
     } catch (err) {
       console.log(err)
     }

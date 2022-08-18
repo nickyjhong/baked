@@ -5,23 +5,26 @@ import { fetchUsers } from '../store/allUsers'
 
 export const Admin = () => {
   return (
-    <div className="div-container admin-btns">
-      <Link to={`/admin/users`}>
-        <button className="admin-btn">
-          See all users
-        </button>
-      </Link>
-      <Link to={`/admin/products`}>
-        <button className="admin-btn">
-          Edit a product
-        </button>
-      </Link>
-      <Link to={`/products/add`}>
-        <button className="admin-btn">
-          Add a product
-        </button>
-      </Link>
-
+    <div className="admin-page-container">
+      <h2>Welcome to the admin dashboard!</h2>
+      <p></p>
+      <div className="div-container admin-btns">
+        <Link to={`/admin/users`}>
+          <button className="admin-btn">
+            See all users
+          </button>
+        </Link>
+        <Link to={`/admin/products`}>
+          <button className="admin-btn">
+            Edit a product
+          </button>
+        </Link>
+        <Link to={`/products/add`}>
+          <button className="admin-btn">
+            Add a product
+          </button>
+        </Link>
+      </div>
     </div>
   )
 }

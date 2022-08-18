@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.login, .signup, .update {
+.login, .signup {
     display: flex;
     align-items: center;
     justify-content: center;
