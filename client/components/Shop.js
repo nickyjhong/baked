@@ -27,7 +27,6 @@ export class Shop extends Component {
   }
 
   render() {
-    console.log('TERM', this.state.term)
     const { products } = this.props;
 
     const productFilter = products.filter((product) => {

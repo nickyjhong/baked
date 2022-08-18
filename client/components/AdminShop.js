@@ -27,7 +27,6 @@ export class AdminShop extends Component {
   }
 
   render() {
-    console.log('TERM', this.state.term)
     const { products } = this.props;
 
     const productFilter = products.filter((product) => {
@@ -53,6 +52,7 @@ export class AdminShop extends Component {
             <p className="grid-section-left-category-bold">Categories</p>
             <ul>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('All');
                 }}
@@ -61,6 +61,7 @@ export class AdminShop extends Component {
                 All
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Cakes');
                 }}
@@ -69,6 +70,7 @@ export class AdminShop extends Component {
                 Cakes
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Cookies');
                 }}
@@ -77,6 +79,7 @@ export class AdminShop extends Component {
                 Cookies
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Cupcakes');
                 }}
@@ -85,6 +88,7 @@ export class AdminShop extends Component {
                 Cupcakes
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Mini');
                 }}
@@ -94,6 +98,7 @@ export class AdminShop extends Component {
                 Mini
               </li>
               <li
+                className="cat-list"
                 onClick={() => {
                   this.handleFilterClick('Other');
                 }}
