@@ -12,6 +12,7 @@
 @import './styles/contact.css';
 @import './styles/about.css';
 @import './styles/notfoundpage.css';
+@import './styles/allusers.css';
 
 html {
   font-family: "Roboto", Helvetica, sans-serif;

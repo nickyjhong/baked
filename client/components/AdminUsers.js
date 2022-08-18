@@ -10,16 +10,26 @@ export class AdminUsers extends Component {
   render() {
     const users = this.props.users;
     return (
-      <div>
-        <h2>Users:</h2>
-        {users.map((user) => (
-          <div key={user.id}>
-            <p>First name: {user.firstName}</p>
-            <p>Last name: {user.lastName} </p>
-            <p>Email: {user.email} </p>
-            <hr />
-          </div>
-        ))}
+      <div className="all-users-container">
+        <h2>Customer Information</h2>
+        <table className="all-users-table">
+          <tbody className="all-users-table-body">
+            <tr className="all-users-content-label">
+              <td className="table-label-name">First name</td>
+              <td className="table-label-name">Last name</td>
+              <td className="table-label-long">Email</td>
+              <td className="table-label-long">Address</td>
+            </tr>
+            {users.map((user) => (
+              <tr key={user.id} className="all-users-content">
+                <td className="table-content-name">{user.firstName}</td>
+                <td className="table-content-name">{user.lastName} </td>
+                <td className="table-content-long">{user.email} </td>
+                <td className="table-content-long">{user.address} </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }
