@@ -49,7 +49,6 @@ class UpdateProduct extends React.Component {
   render() {
     const { name, imageURL, price, description, category } = this.state;
     const { handleSubmit, handleChange } = this;
-    console.log(typeof price)
     return (
       <div className="add-product-form">
         <form className="add-form-input" onSubmit={handleSubmit}>

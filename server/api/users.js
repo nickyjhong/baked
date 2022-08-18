@@ -31,17 +31,6 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// ADMIN VIEW: UPDATE USER ***requireToken
-// router.put('/:id', async (req, res, next) => {
-//   try {
-//     const user = await User.findByPk(req.params.id);
-//     await user.update(req.body);
-//     res.send(user);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 // ADMIN VIEW: DELETE USER
 router.delete('/:id', async (req, res, next) => {
   try {
@@ -57,7 +46,7 @@ router.delete('/:id', async (req, res, next) => {
 router.get('/profile', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.dataValues.id, {
-      attributes: ['firstName', 'email'],
+      attributes: ['id', 'firstName', 'lastName', 'email', 'password', 'address'],
     });
     res.send(user);
   } catch (err) {

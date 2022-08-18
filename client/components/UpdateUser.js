@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser, _setUser, fetchUser } from '../store/singleUser'
+import { updateUser, fetchUser } from '../store/singleUser'
 import { Link } from "react-router-dom";
 
 export class UpdateUser extends Component {
@@ -17,13 +17,20 @@ export class UpdateUser extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-
   componentDidMount() {
     this.props.fetchUser()
   }
 
-  componentWillUnmount() {
-    this.props.clearUser()
+  componentDidUpdate(prevProps) {
+    if (prevProps.user.id !== this.props.user.id) { 
+      this.setState({
+        firstName: this.props.user.firstName || "",
+        lastName: this.props.user.lastName || "",
+        email: this.props.user.email || "",
+        password: this.props.user.password || "",
+        address: this.props.user.address || "",
+      });
+    }
   }
 
   handleSubmit(event){
@@ -36,7 +43,7 @@ export class UpdateUser extends Component {
     })
   }
   render() {
-    console.log(this.state)
+    console.log('props', this.props)
     return (
       <div className="update-form form">
         <form onSubmit={this.handleSubmit}>
@@ -129,7 +136,6 @@ const mapDispatchToProps = (dispatch, { history }) => {
   return {
     fetchUser: () => dispatch(fetchUser()),
     updateUser: (user) => dispatch(updateUser(user, history)),
-    clearUser: () => dispatch(_setUser({}))
   }
 }
 
