@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { me } from './auth'
 
 // ACTION TYPES
 const SET_USER = 'SET_USER';
@@ -36,6 +37,27 @@ export const fetchUser = () => {
   };
 };
 
+export const updateUser = (user, history) => {
+  return async (dispatch) => {
+    try {
+      const token = window.localStorage.getItem('token');
+
+      if (token) {
+        const { data } = await axios.put(`/api/users/account`, user, {
+          headers: {
+            authorization: token
+          }
+        })
+        dispatch(_updateUser(data))
+        dispatch(me())
+        history.push('/profile')
+      }
+    } catch (err) {
+      console.error(`Can't find user!`);
+    }
+  }
+}
+
 // REDUCER
 const initialState = [];
 
@@ -44,7 +66,7 @@ export default function singleUserReducer(state = initialState, action) {
     case SET_USER:
       return action.user;
     case UPDATE_USER:
-      return action.user;
+      return action.user
     default:
       return state;
   }

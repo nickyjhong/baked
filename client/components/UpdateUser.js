@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser, setUser } from '../store/singleUser'
+import { updateUser, _setUser, fetchUser } from '../store/singleUser'
+import { Link } from "react-router-dom";
 
 export class UpdateUser extends Component {
   constructor() {
     super()
     this.state = {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
       address: ''
@@ -15,46 +17,54 @@ export class UpdateUser extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.user.id !== this.props.user.id) {
-      this.setState({
-        name: this.props.user.name || '',
-        email: this.props.user.email || '',
-        password: this.props.user.password || '',
-        address: this.props.user.address || ''
-      })
-    }
+
+  componentDidMount() {
+    this.props.fetchUser()
   }
+
   componentWillUnmount() {
     this.props.clearUser()
   }
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.updateUser(this.props.user.id, this.state);
+    this.props.updateUser({...this.props.user, ...this.state});
   }
 
   handleChange(event){
-    this.setState({
-      [event.target.name]: event.target.value
+    this.setState({[event.target.name]: event.target.value
     })
   }
   render() {
+    console.log(this.state)
     return (
       <div className="update-form form">
         <form onSubmit={this.handleSubmit}>
           <div className="form-container">
 
           <div className="input-container">
-              <label className="labelName" htmlFor="name">
-                <p>Name</p>
+              <label className="labelName" htmlFor="firstName">
+                <p>First name</p>
               </label>
               <input
                 className="input"
                 type="name"
-                name="name"
+                name="firstName"
                 onChange={this.handleChange}
-                value={this.state.name}
+                value={this.state.firstName}
+              />
+            </div>
+
+            <div className="input-container">
+              <label className="labelName" htmlFor="lastName">
+                <p>Last name</p>
+              </label>
+              <input
+                className="input"
+                type="name"
+                name="lastName"
+                onChange={this.handleChange}
+                value={this.state.lastName}
               />
             </div>
 
@@ -115,10 +125,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { history }) => {
   return {
-    updateUser: (id, update) => dispatch(updateUser(id, update)),
-    clearUser: () => dispatch(setUser({}))
+    fetchUser: () => dispatch(fetchUser()),
+    updateUser: (user) => dispatch(updateUser(user, history)),
+    clearUser: () => dispatch(_setUser({}))
   }
 }
 

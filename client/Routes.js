@@ -13,6 +13,7 @@ import UserProfile from './components/UserProfile';
 import CreateProduct from './components/CreateProduct';
 import CreateUser from './components/CreateUser';
 import UpdateProduct from './components/UpdateProduct';
+import UpdateUser from './components/UpdateUser';
 import NotFoundPage from './components/NotFoundPage';
 import OrderSuccess from './components/OrderSuccess';
 import Checkout from './components/Checkout';
@@ -60,6 +61,7 @@ class Routes extends Component {
                 <Route exact path="/products/:id" component={SingleProduct} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/profile" component={UserProfile} />
+                <Route exact path="/profile/edit" component={UpdateUser} />
                 <Route path="/users/orders" component={OrderHistory} />
                 <Route path="/checkout" component={Checkout} />
                 <Route path="/contact" component={Contact} />
