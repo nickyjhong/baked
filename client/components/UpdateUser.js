@@ -43,78 +43,88 @@ export class UpdateUser extends Component {
     })
   }
   render() {
-    console.log('props', this.props)
     return (
-      <div className="update-form form">
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-container">
+      <div className="add-product-form">
+        <form onSubmit={this.handleSubmit} className="add-form-input">
+          <div className="form update">
+          <h1 style={{ textAlign: "center" }}>Update Information</h1>
 
-          <div className="input-container">
-              <label className="labelName" htmlFor="firstName">
-                <p>First name</p>
-              </label>
-              <input
-                className="input"
-                type="name"
-                name="firstName"
-                onChange={this.handleChange}
-                value={this.state.firstName}
-              />
+            <div className="product-info-div">
+              <div className="product-info-name" htmlFor="firstName">
+                <p className="productName">First name</p>
+              </div>
+              <div className="product-info-input">
+                <input
+                  className="product-info-input"
+                  type="name"
+                  name="firstName"
+                  onChange={this.handleChange}
+                  value={this.state.firstName}
+                />
+              </div>
             </div>
 
-            <div className="input-container">
-              <label className="labelName" htmlFor="lastName">
-                <p>Last name</p>
-              </label>
-              <input
-                className="input"
-                type="name"
-                name="lastName"
-                onChange={this.handleChange}
-                value={this.state.lastName}
-              />
+            <div className="product-info-div">
+              <div className="product-info-name" htmlFor="lastName">
+                <p className="productName">Last name</p>
+              </div>
+              <div className="product-info-input">
+                <input
+                  className="product-info-input"
+                  type="name"
+                  name="lastName"
+                  onChange={this.handleChange}
+                  value={this.state.lastName}
+                />
+              </div>
             </div>
 
-            <div className="input-container">
-              <label className="labelName" htmlFor="email">
-                <p>Email</p>
-              </label>
-              <input
-                className="input"
-                type="text"
-                name="email"
-                onChange={this.handleChange}
-                value={this.state.email}
-              />
+            <div className="product-info-div">
+              <div className="product-info-name" htmlFor="email">
+                <p className="productName">Email</p>
+              </div>
+              <div className="product-info-input">
+                <input
+                  className="product-info-input"
+                  type="text"
+                  name="email"
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                />
+              </div>
             </div>
 
-            <div className="input-container">
-              <label htmlFor="password" className="labelName">
-                <p>Password</p>
-              </label>
-              <input
-                className="input"
-                type="password"
-                name="password"
-                onChange={this.handleChange}
-                value={this.state.password}
-              />
+            <div className="product-info-div">
+              <div htmlFor="password" className="product-info-name">
+                <p className="productName">Password</p>
+              </div>
+              <div className="product-info-input">
+                <input
+                  className="product-info-input"
+                  type="password"
+                  name="password"
+                  onChange={this.handleChange}
+                  value={this.state.password}
+                />
+              </div>
             </div>
 
-            <div className="input-container">
-              <label htmlFor="address" className="labelName">
-                <p>Address</p>
-              </label>
-              <input
-                className="input"
-                type="address"
-                name="address"
-                onChange={this.handleChange}
-                value={this.state.address}
-              />
+            <div className="product-info-div">
+              <div htmlFor="address" className="product-info-name">
+                <p className="productName">Address</p>
+              </div>
+              <div className="product-info-input">
+                <input
+                  className="product-info-input"
+                  type="address"
+                  name="address"
+                  onChange={this.handleChange}
+                  value={this.state.address}
+                />
+              </div>
             </div>
-            <div>
-              <button className="button submit-btn" type="submit">
+            <div className="update-btns">
+              <button type="submit">
                 Submit
               </button>
             </div>
