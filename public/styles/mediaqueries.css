@@ -1,0 +1,26 @@
+/* Phone  
+@media only screen and (max-width: 420px) {
+}
+*/
+
+/* Tablet  
+@media (min-width: 421px) and (max-width: 820px) {
+}
+*/
+
+/*
+@media (min-width: 821px) and (max-width: 1230px) { }
+*/
+
+@media (min-width: 1231px) and (max-height: 840px) {
+  .grid-item {
+    height: 19rem;
+    width: 11rem;
+  }
+
+  .shop-image {
+    height: 11rem;
+    width: 11rem;
+  }
+
+}

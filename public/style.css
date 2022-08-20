@@ -13,6 +13,7 @@
 @import './styles/about.css';
 @import './styles/notfoundpage.css';
 @import './styles/allusers.css';
+@import './styles/mediaqueries.css';
 
 html {
   font-family: "Roboto", Helvetica, sans-serif;
