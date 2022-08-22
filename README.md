@@ -9,7 +9,6 @@ You can use the site with the following credentials:
 | ------------- | --------------- | -------- |
 | Guest         |                 |          |
 | Customer      | custy@cdc.gov   | 123      |
-| Admin         | admin@gmail.com | 123      |
 
 ### Bakers
 - [Amy Wong](https://github.com/amyawong)
