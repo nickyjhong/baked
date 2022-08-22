@@ -52,25 +52,17 @@ localhost:8080
 <br/>
 
 ## Technologies Used:
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,redux,js,nodejs,express" />
+  </a>
+</p>
 
-### **React**
-[![React](https://skillicons.dev/icons?i=react)](https://reactjs.org/)
-### **Redux**
-[![Redux](https://skillicons.dev/icons?i=redux)](https://redux.js.org/)
-### Javascript
-[![Javascript](https://skillicons.dev/icons?i=js)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
-### **Node.js**
-[![Nodes](https://skills.thijs.gg/icons?i=nodejs)](https://nodejs.org/en/)
-### **Express**
-[![Express](https://skillicons.dev/icons?i=express)](https://expressjs.com/)
-### **PostgreSQL**
-[![PostgreSQL](https://skills.thijs.gg/icons?i=postgres)](https://www.postgresql.org/)
-### HTML
-[![HTML](https://skillicons.dev/icons?i=html)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-### CSS
-[![CSS](https://skillicons.dev/icons?i=css)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-### **Heroku**
-[![Heroku](https://skillicons.dev/icons?i=heroku)](https://www.heroku.com/)
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=postgres,html,css,heroku" />
+  </a>
+</p>
 
 <br/>
 
