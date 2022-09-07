@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/allProducts';
 import { addToCart } from '../store/cart';
+import { toast } from 'react-toastify';
 
 export class AdminShop extends Component {
   constructor() {
@@ -127,7 +128,7 @@ export class AdminShop extends Component {
                     <Link to={`/products/${product.id}/update`}>
                       <button className='view-more-btn shop-btn'>Edit Product</button>
                     </Link>
-                    <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); alert('added to cart') }}>Add To Cart</button>
+                    <button className='add-to-cart shop-btn' onClick={() => {this.props.addToCart(product); toast('Added to cart') }}>Add To Cart</button>
                   </div>
                 </div>
               </div>
