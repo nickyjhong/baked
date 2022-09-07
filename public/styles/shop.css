@@ -54,8 +54,8 @@ li:hover {
 }
 
 .shop-image {
-  height: 10.5rem;
-  width: 10rem;
+  height: 11.5rem;
+  width: 11rem;
   border-radius: 10px;
   opacity: 90%;
   transition-duration: .5s;
@@ -69,8 +69,8 @@ li:hover {
 .grid-item {
   font-size: .6em;
   color: black;
-  width: 10rem;
-  height: 18rem;
+  width: 11rem;
+  height: 19rem;
   border-radius: 10px;
   box-shadow: 0 0px 0px  rgba(0, 0, 0, 0.2), 0 2px 7px 0 rgba(0, 0, 0, 0.19);
   transition-duration: .5s;
