@@ -40,7 +40,7 @@
 }
 
 .order-price {
-  padding-left: 2.5rem;
+  padding-left: 2rem;
 }
 
 a {
@@ -52,4 +52,20 @@ a {
 a:hover {
   color: #d49090;
   transition-duration: .2s;
+}
+
+
+.s-order-name {
+  width: 7rem;
+  padding-left: 1rem;
+  text-align: center;
+}
+
+.s-order-price {
+  width: 5rem;
+
+}
+
+.s-order-quantity {
+  padding-right: 2.5rem;
 }

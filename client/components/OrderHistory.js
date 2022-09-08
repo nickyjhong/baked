@@ -29,15 +29,15 @@ export class OrderHistory extends React.Component {
                   return (
                     <div key={item.id} className="order-item-container">
                       <img className="order-img" src={item.imageURL} />{' '}
-                      <div>
+                      <div className="s-order-name">
                         <Link to={`/products/${item.id}`}>
-                          <span>{item.name}</span>
+                          <span >{item.name}</span>
                         </Link>
                       </div>
-                      <span style={{ fontSize: '.8rem' }}>
+                      <span style={{ fontSize: '.8rem' }} className="s-order-price">
                         $ {item.price / 100}
                       </span>
-                      <span style={{ fontSize: '.8rem' }}>
+                      <span style={{ fontSize: '.8rem' }} className="s-order-quantity">
                         {item.cartItem.quantity}
                       </span>
                       <span style={{ fontSize: '.8rem' }}>
