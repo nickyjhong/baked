@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchProduct } from '../store/singleProduct';
 import { addToCart } from '../store/cart';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 class SingleProduct extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class SingleProduct extends Component {
   }
   handleAdd() {
     this.props.addToCart(this.props.product);
-    alert('item added to cart');
+    toast('Added to cart');
   }
 
   render() {

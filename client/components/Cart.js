@@ -7,6 +7,7 @@ import {
   updateQuantity,
 } from '../store/cart';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 class Cart extends Component {
   constructor() {
@@ -20,7 +21,7 @@ class Cart extends Component {
 
   handleDelete(productId) {
     this.props.deleteFromCart(productId);
-    alert('deleted from cart ' + productId);
+    toast('Deleted from cart');
   }
 
   render() {
